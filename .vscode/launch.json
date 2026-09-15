@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "client (local)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "apps/client",
+      "program": "apps/client/lib/main.dart"
+    },
+    {
+      "name": "operator (local)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "apps/operator",
+      "program": "apps/operator/lib/main.dart"
+    }
+  ]
+}

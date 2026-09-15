@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:5280
+@token = 
+
+### Listar zonas
+GET {{baseUrl}}/api/zones
+
+### Listar espacios
+GET {{baseUrl}}/api/spaces
+
+### Espacios libres
+GET {{baseUrl}}/api/spaces?status=free
+
+### Login operador
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "ana",
+  "pin": "1234"
+}
+
+### Cámara simulada (reproducir en loop en el cliente)
+GET {{baseUrl}}/api/cameras/demo
+
+### Identidad por DNI
+GET {{baseUrl}}/api/clients/12345678
+Authorization: Bearer {{token}}
+
+### Reservar espacio
+POST {{baseUrl}}/api/spaces/00000000-0000-0000-0000-000000000000/reserve
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "dni": "12345678"
+}

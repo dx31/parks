@@ -1,0 +1,5429 @@
+{
+  "Parkimetro.Api.dll": {
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Program.cs": {
+      "Program/<<Main>$>d__0": {
+        "System.Void Program/<<Main>$>d__0::MoveNext()": {
+          "Lines": {
+            "8": 9,
+            "10": 9,
+            "11": 9,
+            "12": 9,
+            "13": 9,
+            "14": 9,
+            "15": 9,
+            "16": 18,
+            "17": 9,
+            "18": 9,
+            "19": 1,
+            "20": 1,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 10,
+            "27": 9,
+            "28": 9,
+            "29": 9,
+            "30": 9,
+            "32": 9,
+            "33": 9,
+            "34": 9,
+            "35": 18,
+            "36": 27,
+            "38": 9,
+            "40": 9,
+            "42": 9,
+            "43": 9,
+            "44": 9,
+            "45": 9,
+            "46": 9,
+            "48": 9,
+            "50": 8,
+            "51": 8,
+            "52": 8,
+            "53": 8,
+            "54": 8,
+            "55": 16,
+            "58": 9,
+            "59": 9,
+            "60": 9
+          },
+          "Branches": [
+            {
+              "Line": 48,
+              "Offset": 734,
+              "EndOffset": 736,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 8
+            },
+            {
+              "Line": 48,
+              "Offset": 734,
+              "EndOffset": 796,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            },
+            {
+              "Line": 33,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 23,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\obj\\Release\\net10.0\\Microsoft.AspNetCore.OpenApi.SourceGenerators\\Microsoft.AspNetCore.OpenApi.SourceGenerators.XmlCommentGenerator\\OpenApiXmlCommentSupport.generated.cs": {
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment": {
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Summary()": {
+          "Lines": {
+            "47": 0
+          },
+          "Branches": []
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Description()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Remarks()": {
+          "Lines": {
+            "49": 0
+          },
+          "Branches": []
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Returns()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Value()": {
+          "Lines": {
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Deprecated()": {
+          "Lines": {
+            "52": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.String> Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Examples()": {
+          "Lines": {
+            "53": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlParameterComment> Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Parameters()": {
+          "Lines": {
+            "54": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlResponseComment> Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::get_Responses()": {
+          "Lines": {
+            "55": 0
+          },
+          "Branches": []
+        },
+        "System.Void Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment::.ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Collections.Generic.List`1<System.String>,System.Collections.Generic.List`1<Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlParameterComment>,System.Collections.Generic.List`1<Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlResponseComment>)": {
+          "Lines": {
+            "46": 0
+          },
+          "Branches": []
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlParameterComment": {
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlParameterComment::get_Name()": {
+          "Lines": {
+            "58": 0
+          },
+          "Branches": []
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlResponseComment": {
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlResponseComment::get_Code()": {
+          "Lines": {
+            "61": 0
+          },
+          "Branches": []
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentCache": {
+        "System.Collections.Generic.Dictionary`2<System.String,Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment> Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentCache::get_Cache()": {
+          "Lines": {
+            "67": 1253
+          },
+          "Branches": [
+            {
+              "Line": 67,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 6,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1253
+            }
+          ]
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlComment> Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentCache::GenerateCacheEntries()": {
+          "Lines": {
+            "71": 1,
+            "74": 1
+          },
+          "Branches": []
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper": {
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper::CreateDocumentationId(System.Type)": {
+          "Lines": {
+            "87": 673,
+            "89": 0,
+            "92": 673
+          },
+          "Branches": [
+            {
+              "Line": 87,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 7,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 673
+            }
+          ]
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper::CreateDocumentationId(System.Reflection.PropertyInfo)": {
+          "Lines": {
+            "101": 558,
+            "103": 0,
+            "106": 558,
+            "107": 558,
+            "109": 558,
+            "111": 558,
+            "114": 558,
+            "115": 558,
+            "118": 558,
+            "119": 558,
+            "121": 0,
+            "122": 0,
+            "124": 0,
+            "126": 0,
+            "129": 0,
+            "131": 0,
+            "134": 558
+          },
+          "Branches": [
+            {
+              "Line": 101,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 7,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 558
+            },
+            {
+              "Line": 109,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 558
+            },
+            {
+              "Line": 109,
+              "Offset": 50,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 558
+            },
+            {
+              "Line": 119,
+              "Offset": 103,
+              "EndOffset": 105,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 122,
+              "Offset": 161,
+              "EndOffset": 118,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 120,
+              "EndOffset": 122,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 120,
+              "EndOffset": 131,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 122,
+              "Offset": 161,
+              "EndOffset": 163,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 119,
+              "Offset": 103,
+              "EndOffset": 172,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 558
+            }
+          ]
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper::CreateDocumentationId(System.Type,System.String)": {
+          "Lines": {
+            "143": 0,
+            "145": 0,
+            "147": 0,
+            "149": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "158": 0
+          },
+          "Branches": [
+            {
+              "Line": 143,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 7,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 147,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 147,
+              "Offset": 26,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper::CreateDocumentationId(System.Reflection.MethodInfo)": {
+          "Lines": {
+            "169": 22,
+            "171": 0,
+            "174": 22,
+            "175": 22,
+            "178": 22,
+            "180": 22,
+            "183": 22,
+            "186": 22,
+            "188": 0,
+            "192": 22,
+            "193": 22,
+            "195": 0,
+            "196": 0,
+            "201": 22,
+            "202": 22,
+            "204": 20,
+            "205": 94,
+            "207": 27,
+            "209": 7,
+            "213": 27,
+            "215": 20,
+            "219": 22,
+            "221": 22,
+            "223": 22,
+            "226": 22
+          },
+          "Branches": [
+            {
+              "Line": 169,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 169,
+              "Offset": 7,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 22
+            },
+            {
+              "Line": 178,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 22
+            },
+            {
+              "Line": 178,
+              "Offset": 50,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 22
+            },
+            {
+              "Line": 186,
+              "Offset": 87,
+              "EndOffset": 89,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 188,
+              "Offset": 96,
+              "EndOffset": 98,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 188,
+              "Offset": 96,
+              "EndOffset": 105,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 186,
+              "Offset": 87,
+              "EndOffset": 118,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 22
+            },
+            {
+              "Line": 193,
+              "Offset": 137,
+              "EndOffset": 139,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 193,
+              "Offset": 137,
+              "EndOffset": 181,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 22
+            },
+            {
+              "Line": 202,
+              "Offset": 190,
+              "EndOffset": 192,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 20
+            },
+            {
+              "Line": 205,
+              "Offset": 248,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 27
+            },
+            {
+              "Line": 207,
+              "Offset": 207,
+              "EndOffset": 209,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 7
+            },
+            {
+              "Line": 207,
+              "Offset": 207,
+              "EndOffset": 218,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 27
+            },
+            {
+              "Line": 205,
+              "Offset": 248,
+              "EndOffset": 250,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 20
+            },
+            {
+              "Line": 202,
+              "Offset": 190,
+              "EndOffset": 259,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 22
+            },
+            {
+              "Line": 219,
+              "Offset": 280,
+              "EndOffset": 282,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 22
+            },
+            {
+              "Line": 219,
+              "Offset": 280,
+              "EndOffset": 311,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 22
+            }
+          ]
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper::GetTypeDocId(System.Type,System.Boolean,System.Boolean)": {
+          "Lines": {
+            "239": 1348,
+            "242": 0,
+            "244": 0,
+            "246": 0,
+            "248": 0,
+            "252": 0,
+            "256": 1348,
+            "258": 87,
+            "259": 87,
+            "261": 87,
+            "264": 4860,
+            "266": 2430,
+            "267": 2430,
+            "269": 0,
+            "271": 2430,
+            "277": 2343,
+            "281": 87,
+            "283": 41,
+            "284": 41,
+            "285": 41,
+            "288": 87,
+            "290": 46,
+            "291": 46,
+            "293": 184,
+            "295": 46,
+            "297": 0,
+            "300": 46,
+            "303": 46,
+            "306": 87,
+            "310": 1261
+          },
+          "Branches": [
+            {
+              "Line": 239,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 242,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 242,
+              "Offset": 20,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 246,
+              "Offset": 59,
+              "EndOffset": 61,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 246,
+              "Offset": 59,
+              "EndOffset": 86,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 239,
+              "Offset": 6,
+              "EndOffset": 93,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1348
+            },
+            {
+              "Line": 256,
+              "Offset": 99,
+              "EndOffset": 104,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 87
+            },
+            {
+              "Line": 259,
+              "Offset": 118,
+              "EndOffset": 120,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 259,
+              "Offset": 118,
+              "EndOffset": 127,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 87
+            },
+            {
+              "Line": 264,
+              "Offset": 201,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 2430
+            },
+            {
+              "Line": 267,
+              "Offset": 159,
+              "EndOffset": 161,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 267,
+              "Offset": 159,
+              "EndOffset": 172,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 2430
+            },
+            {
+              "Line": 271,
+              "Offset": 176,
+              "EndOffset": 178,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 2343
+            },
+            {
+              "Line": 271,
+              "Offset": 176,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 87
+            },
+            {
+              "Line": 264,
+              "Offset": 201,
+              "EndOffset": 203,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 87
+            },
+            {
+              "Line": 281,
+              "Offset": 204,
+              "EndOffset": 206,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 41
+            },
+            {
+              "Line": 281,
+              "Offset": 204,
+              "EndOffset": 249,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 87
+            },
+            {
+              "Line": 288,
+              "Offset": 250,
+              "EndOffset": 252,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 46
+            },
+            {
+              "Line": 288,
+              "Offset": 258,
+              "EndOffset": 260,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 46
+            },
+            {
+              "Line": 293,
+              "Offset": 327,
+              "EndOffset": 282,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 46
+            },
+            {
+              "Line": 295,
+              "Offset": 285,
+              "EndOffset": 287,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 295,
+              "Offset": 285,
+              "EndOffset": 296,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 46
+            },
+            {
+              "Line": 293,
+              "Offset": 327,
+              "EndOffset": 329,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 46
+            },
+            {
+              "Line": 288,
+              "Offset": 250,
+              "EndOffset": 338,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 87
+            },
+            {
+              "Line": 288,
+              "Offset": 258,
+              "EndOffset": 338,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 87
+            },
+            {
+              "Line": 256,
+              "Offset": 99,
+              "EndOffset": 345,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1261
+            },
+            {
+              "Line": 310,
+              "Offset": 352,
+              "EndOffset": 354,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 310,
+              "Offset": 352,
+              "EndOffset": 361,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 1261
+            }
+          ]
+        },
+        "System.String Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__DocumentationCommentIdHelper::NormalizeDocId(System.String)": {
+          "Lines": {
+            "322": 1253,
+            "323": 1253,
+            "326": 1231,
+            "331": 22,
+            "333": 0,
+            "337": 22
+          },
+          "Branches": [
+            {
+              "Line": 323,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1231
+            },
+            {
+              "Line": 323,
+              "Offset": 11,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 22
+            },
+            {
+              "Line": 331,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 22
+            },
+            {
+              "Line": 331,
+              "Offset": 26,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 331,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 331,
+              "Offset": 39,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 22
+            }
+          ]
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentOperationTransformer": {
+        "System.Threading.Tasks.Task Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentOperationTransformer::TransformAsync(Microsoft.OpenApi.OpenApiOperation,Microsoft.AspNetCore.OpenApi.OpenApiOperationTransformerContext,System.Threading.CancellationToken)": {
+          "Lines": {
+            "346": 22,
+            "347": 22,
+            "348": 22,
+            "350": 22,
+            "352": 0,
+            "354": 22,
+            "356": 0,
+            "358": 0,
+            "360": 0,
+            "362": 0,
+            "364": 0,
+            "366": 0,
+            "368": 0,
+            "370": 0,
+            "372": 0,
+            "373": 0,
+            "374": 0,
+            "376": 0,
+            "377": 0,
+            "378": 0,
+            "380": 0,
+            "382": 0,
+            "386": 0,
+            "387": 0,
+            "389": 0,
+            "390": 0,
+            "392": 0,
+            "393": 0,
+            "397": 0,
+            "399": 0,
+            "407": 0,
+            "409": 0,
+            "410": 0,
+            "413": 0,
+            "415": 0,
+            "417": 0,
+            "418": 0,
+            "420": 0,
+            "425": 96,
+            "427": 26,
+            "428": 26,
+            "429": 26,
+            "430": 26,
+            "431": 26,
+            "433": 0,
+            "434": 0,
+            "436": 0,
+            "437": 0,
+            "438": 0,
+            "440": 0,
+            "442": 0,
+            "444": 0,
+            "446": 0,
+            "448": 0,
+            "450": 0,
+            "451": 0,
+            "453": 0,
+            "454": 0,
+            "458": 0,
+            "459": 0,
+            "461": 0,
+            "467": 0,
+            "468": 0,
+            "470": 0,
+            "471": 0,
+            "473": 0,
+            "480": 22
+          },
+          "Branches": [
+            {
+              "Line": 346,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 346,
+              "Offset": 18,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 22
+            },
+            {
+              "Line": 350,
+              "Offset": 56,
+              "EndOffset": 58,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 350,
+              "Offset": 56,
+              "EndOffset": 64,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 22
+            },
+            {
+              "Line": 354,
+              "Offset": 87,
+              "EndOffset": 92,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 356,
+              "Offset": 100,
+              "EndOffset": 102,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 356,
+              "Offset": 100,
+              "EndOffset": 109,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 360,
+              "Offset": 119,
+              "EndOffset": 121,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 360,
+              "Offset": 119,
+              "EndOffset": 129,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 364,
+              "Offset": 139,
+              "EndOffset": 141,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 364,
+              "Offset": 139,
+              "EndOffset": 149,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 368,
+              "Offset": 159,
+              "EndOffset": 164,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 368,
+              "Offset": 172,
+              "EndOffset": 177,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 370,
+              "Offset": 508,
+              "EndOffset": 195,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 373,
+              "Offset": 249,
+              "EndOffset": 251,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 373,
+              "Offset": 249,
+              "EndOffset": 255,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 374,
+              "Offset": 277,
+              "EndOffset": 279,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 378,
+              "Offset": 323,
+              "EndOffset": 325,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 378,
+              "Offset": 323,
+              "EndOffset": 339,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 374,
+              "Offset": 277,
+              "EndOffset": 363,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 387,
+              "Offset": 373,
+              "EndOffset": 375,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 390,
+              "Offset": 410,
+              "EndOffset": 412,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 392,
+              "Offset": 414,
+              "EndOffset": 416,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 392,
+              "Offset": 414,
+              "EndOffset": 419,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 392,
+              "Offset": 427,
+              "EndOffset": 429,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 392,
+              "Offset": 427,
+              "EndOffset": 433,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 393,
+              "Offset": 442,
+              "EndOffset": 444,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 397,
+              "Offset": 485,
+              "EndOffset": 455,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 397,
+              "Offset": 485,
+              "EndOffset": 487,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 387,
+              "Offset": 373,
+              "EndOffset": 501,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 390,
+              "Offset": 410,
+              "EndOffset": 501,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 393,
+              "Offset": 442,
+              "EndOffset": 501,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 370,
+              "Offset": 508,
+              "EndOffset": 513,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 368,
+              "Offset": 159,
+              "EndOffset": 529,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 368,
+              "Offset": 172,
+              "EndOffset": 529,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 407,
+              "Offset": 539,
+              "EndOffset": 541,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 407,
+              "Offset": 551,
+              "EndOffset": 553,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 0
+            },
+            {
+              "Line": 407,
+              "Offset": 561,
+              "EndOffset": 563,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 0
+            },
+            {
+              "Line": 407,
+              "Offset": 539,
+              "EndOffset": 590,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 407,
+              "Offset": 551,
+              "EndOffset": 590,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 0
+            },
+            {
+              "Line": 407,
+              "Offset": 561,
+              "EndOffset": 590,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 0
+            },
+            {
+              "Line": 413,
+              "Offset": 600,
+              "EndOffset": 605,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 0
+            },
+            {
+              "Line": 413,
+              "Offset": 613,
+              "EndOffset": 618,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 0
+            },
+            {
+              "Line": 413,
+              "Offset": 628,
+              "EndOffset": 630,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 0
+            },
+            {
+              "Line": 413,
+              "Offset": 638,
+              "EndOffset": 640,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 0
+            },
+            {
+              "Line": 415,
+              "Offset": 737,
+              "EndOffset": 655,
+              "Path": 1,
+              "Ordinal": 53,
+              "Hits": 0
+            },
+            {
+              "Line": 418,
+              "Offset": 704,
+              "EndOffset": 706,
+              "Path": 0,
+              "Ordinal": 50,
+              "Hits": 0
+            },
+            {
+              "Line": 418,
+              "Offset": 704,
+              "EndOffset": 730,
+              "Path": 1,
+              "Ordinal": 51,
+              "Hits": 0
+            },
+            {
+              "Line": 415,
+              "Offset": 737,
+              "EndOffset": 739,
+              "Path": 0,
+              "Ordinal": 52,
+              "Hits": 0
+            },
+            {
+              "Line": 354,
+              "Offset": 87,
+              "EndOffset": 755,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 22
+            },
+            {
+              "Line": 413,
+              "Offset": 600,
+              "EndOffset": 755,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 22
+            },
+            {
+              "Line": 413,
+              "Offset": 613,
+              "EndOffset": 755,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 22
+            },
+            {
+              "Line": 413,
+              "Offset": 628,
+              "EndOffset": 755,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 22
+            },
+            {
+              "Line": 413,
+              "Offset": 638,
+              "EndOffset": 755,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 22
+            },
+            {
+              "Line": 425,
+              "Offset": 1238,
+              "EndOffset": 778,
+              "Path": 1,
+              "Ordinal": 93,
+              "Hits": 26
+            },
+            {
+              "Line": 428,
+              "Offset": 815,
+              "EndOffset": 820,
+              "Path": 0,
+              "Ordinal": 54,
+              "Hits": 26
+            },
+            {
+              "Line": 428,
+              "Offset": 833,
+              "EndOffset": 838,
+              "Path": 0,
+              "Ordinal": 56,
+              "Hits": 0
+            },
+            {
+              "Line": 428,
+              "Offset": 854,
+              "EndOffset": 859,
+              "Path": 0,
+              "Ordinal": 58,
+              "Hits": 0
+            },
+            {
+              "Line": 428,
+              "Offset": 875,
+              "EndOffset": 880,
+              "Path": 0,
+              "Ordinal": 60,
+              "Hits": 0
+            },
+            {
+              "Line": 434,
+              "Offset": 910,
+              "EndOffset": 915,
+              "Path": 0,
+              "Ordinal": 62,
+              "Hits": 0
+            },
+            {
+              "Line": 436,
+              "Offset": 922,
+              "EndOffset": 924,
+              "Path": 0,
+              "Ordinal": 64,
+              "Hits": 0
+            },
+            {
+              "Line": 436,
+              "Offset": 922,
+              "EndOffset": 928,
+              "Path": 1,
+              "Ordinal": 65,
+              "Hits": 0
+            },
+            {
+              "Line": 438,
+              "Offset": 964,
+              "EndOffset": 966,
+              "Path": 0,
+              "Ordinal": 66,
+              "Hits": 0
+            },
+            {
+              "Line": 438,
+              "Offset": 978,
+              "EndOffset": 980,
+              "Path": 0,
+              "Ordinal": 68,
+              "Hits": 0
+            },
+            {
+              "Line": 438,
+              "Offset": 964,
+              "EndOffset": 1003,
+              "Path": 1,
+              "Ordinal": 67,
+              "Hits": 0
+            },
+            {
+              "Line": 438,
+              "Offset": 978,
+              "EndOffset": 1003,
+              "Path": 1,
+              "Ordinal": 69,
+              "Hits": 0
+            },
+            {
+              "Line": 442,
+              "Offset": 1010,
+              "EndOffset": 1012,
+              "Path": 0,
+              "Ordinal": 70,
+              "Hits": 0
+            },
+            {
+              "Line": 442,
+              "Offset": 1010,
+              "EndOffset": 1021,
+              "Path": 1,
+              "Ordinal": 71,
+              "Hits": 0
+            },
+            {
+              "Line": 446,
+              "Offset": 1023,
+              "EndOffset": 1028,
+              "Path": 0,
+              "Ordinal": 72,
+              "Hits": 0
+            },
+            {
+              "Line": 448,
+              "Offset": 1034,
+              "EndOffset": 1039,
+              "Path": 0,
+              "Ordinal": 74,
+              "Hits": 0
+            },
+            {
+              "Line": 451,
+              "Offset": 1060,
+              "EndOffset": 1062,
+              "Path": 0,
+              "Ordinal": 76,
+              "Hits": 0
+            },
+            {
+              "Line": 451,
+              "Offset": 1060,
+              "EndOffset": 1066,
+              "Path": 1,
+              "Ordinal": 77,
+              "Hits": 0
+            },
+            {
+              "Line": 451,
+              "Offset": 1075,
+              "EndOffset": 1080,
+              "Path": 0,
+              "Ordinal": 78,
+              "Hits": 0
+            },
+            {
+              "Line": 453,
+              "Offset": 1092,
+              "EndOffset": 1094,
+              "Path": 0,
+              "Ordinal": 80,
+              "Hits": 0
+            },
+            {
+              "Line": 453,
+              "Offset": 1092,
+              "EndOffset": 1098,
+              "Path": 1,
+              "Ordinal": 81,
+              "Hits": 0
+            },
+            {
+              "Line": 454,
+              "Offset": 1107,
+              "EndOffset": 1109,
+              "Path": 0,
+              "Ordinal": 82,
+              "Hits": 0
+            },
+            {
+              "Line": 459,
+              "Offset": 1154,
+              "EndOffset": 1129,
+              "Path": 1,
+              "Ordinal": 85,
+              "Hits": 0
+            },
+            {
+              "Line": 459,
+              "Offset": 1154,
+              "EndOffset": 1156,
+              "Path": 0,
+              "Ordinal": 84,
+              "Hits": 0
+            },
+            {
+              "Line": 446,
+              "Offset": 1023,
+              "EndOffset": 1170,
+              "Path": 1,
+              "Ordinal": 73,
+              "Hits": 0
+            },
+            {
+              "Line": 468,
+              "Offset": 1181,
+              "EndOffset": 1183,
+              "Path": 0,
+              "Ordinal": 86,
+              "Hits": 0
+            },
+            {
+              "Line": 471,
+              "Offset": 1200,
+              "EndOffset": 1202,
+              "Path": 0,
+              "Ordinal": 88,
+              "Hits": 0
+            },
+            {
+              "Line": 471,
+              "Offset": 1200,
+              "EndOffset": 1206,
+              "Path": 1,
+              "Ordinal": 89,
+              "Hits": 0
+            },
+            {
+              "Line": 471,
+              "Offset": 1215,
+              "EndOffset": 1217,
+              "Path": 0,
+              "Ordinal": 90,
+              "Hits": 0
+            },
+            {
+              "Line": 428,
+              "Offset": 815,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 55,
+              "Hits": 48
+            },
+            {
+              "Line": 428,
+              "Offset": 833,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 57,
+              "Hits": 48
+            },
+            {
+              "Line": 428,
+              "Offset": 854,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 59,
+              "Hits": 48
+            },
+            {
+              "Line": 428,
+              "Offset": 875,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 61,
+              "Hits": 48
+            },
+            {
+              "Line": 434,
+              "Offset": 910,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 63,
+              "Hits": 48
+            },
+            {
+              "Line": 448,
+              "Offset": 1034,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 75,
+              "Hits": 48
+            },
+            {
+              "Line": 451,
+              "Offset": 1075,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 79,
+              "Hits": 48
+            },
+            {
+              "Line": 454,
+              "Offset": 1107,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 83,
+              "Hits": 48
+            },
+            {
+              "Line": 468,
+              "Offset": 1181,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 87,
+              "Hits": 48
+            },
+            {
+              "Line": 471,
+              "Offset": 1215,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 91,
+              "Hits": 48
+            },
+            {
+              "Line": 425,
+              "Offset": 1238,
+              "EndOffset": 1243,
+              "Path": 0,
+              "Ordinal": 92,
+              "Hits": 22
+            }
+          ]
+        },
+        "Microsoft.OpenApi.OpenApiParameter Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentOperationTransformer::UnwrapOpenApiParameter(Microsoft.OpenApi.IOpenApiParameter)": {
+          "Lines": {
+            "485": 0,
+            "487": 0,
+            "489": 0,
+            "493": 0,
+            "496": 0,
+            "498": 0,
+            "502": 0
+          },
+          "Branches": [
+            {
+              "Line": 485,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 487,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 487,
+              "Offset": 23,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 485,
+              "Offset": 8,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 496,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 496,
+              "Offset": 46,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentSchemaTransformer": {
+        "System.Threading.Tasks.Task Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__XmlCommentSchemaTransformer::TransformAsync(Microsoft.OpenApi.OpenApiSchema,Microsoft.AspNetCore.OpenApi.OpenApiSchemaTransformerContext,System.Threading.CancellationToken)": {
+          "Lines": {
+            "513": 673,
+            "515": 0,
+            "516": 0,
+            "518": 0,
+            "522": 673,
+            "525": 558,
+            "527": 0,
+            "528": 0,
+            "530": 0,
+            "532": 0,
+            "534": 0,
+            "536": 0,
+            "537": 0,
+            "538": 0,
+            "541": 0,
+            "542": 0,
+            "544": 0,
+            "550": 0,
+            "552": 0,
+            "554": 0,
+            "556": 0,
+            "561": 673
+          },
+          "Branches": [
+            {
+              "Line": 513,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 516,
+              "Offset": 54,
+              "EndOffset": 56,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 516,
+              "Offset": 54,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 516,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 513,
+              "Offset": 33,
+              "EndOffset": 113,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 673
+            },
+            {
+              "Line": 516,
+              "Offset": 67,
+              "EndOffset": 113,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 673
+            },
+            {
+              "Line": 522,
+              "Offset": 123,
+              "EndOffset": 128,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 558
+            },
+            {
+              "Line": 522,
+              "Offset": 142,
+              "EndOffset": 147,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 558
+            },
+            {
+              "Line": 525,
+              "Offset": 170,
+              "EndOffset": 175,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 528,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 528,
+              "Offset": 205,
+              "EndOffset": 207,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 528,
+              "Offset": 191,
+              "EndOffset": 230,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 528,
+              "Offset": 205,
+              "EndOffset": 230,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 532,
+              "Offset": 237,
+              "EndOffset": 239,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 532,
+              "Offset": 237,
+              "EndOffset": 248,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 536,
+              "Offset": 254,
+              "EndOffset": 256,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 536,
+              "Offset": 274,
+              "EndOffset": 276,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 536,
+              "Offset": 254,
+              "EndOffset": 290,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 536,
+              "Offset": 274,
+              "EndOffset": 290,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 536,
+              "Offset": 288,
+              "EndOffset": 290,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 542,
+              "Offset": 306,
+              "EndOffset": 308,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 542,
+              "Offset": 306,
+              "EndOffset": 312,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 542,
+              "Offset": 321,
+              "EndOffset": 323,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 536,
+              "Offset": 288,
+              "EndOffset": 370,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 550,
+              "Offset": 377,
+              "EndOffset": 379,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 550,
+              "Offset": 377,
+              "EndOffset": 397,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 554,
+              "Offset": 405,
+              "EndOffset": 407,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 554,
+              "Offset": 405,
+              "EndOffset": 411,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 554,
+              "Offset": 420,
+              "EndOffset": 422,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 522,
+              "Offset": 123,
+              "EndOffset": 445,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 673
+            },
+            {
+              "Line": 522,
+              "Offset": 142,
+              "EndOffset": 445,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 673
+            },
+            {
+              "Line": 525,
+              "Offset": 170,
+              "EndOffset": 445,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 673
+            },
+            {
+              "Line": 542,
+              "Offset": 321,
+              "EndOffset": 445,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 673
+            },
+            {
+              "Line": 554,
+              "Offset": 420,
+              "EndOffset": 445,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 673
+            }
+          ]
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__JsonNodeExtensions": {
+        "System.Text.Json.Nodes.JsonNode Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__JsonNodeExtensions::Parse(System.String)": {
+          "Lines": {
+            "570": 0,
+            "572": 0,
+            "577": 0,
+            "579": 0,
+            "584": 0,
+            "586": 0,
+            "588": 0,
+            "591": 0
+          },
+          "Branches": [
+            {
+              "Line": 570,
+              "Offset": 1,
+              "EndOffset": 3,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 570,
+              "Offset": 1,
+              "EndOffset": 5,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__GeneratedServiceCollectionExtensions": {
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.AspNetCore.OpenApi.Generated.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__GeneratedServiceCollectionExtensions::AddOpenApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action`1<Microsoft.AspNetCore.OpenApi.OpenApiOptions>)": {
+          "Lines": {
+            "600": 9,
+            "601": 9,
+            "602": 1,
+            "603": 1,
+            "604": 1,
+            "605": 10
+          },
+          "Branches": []
+        }
+      },
+      "System.Runtime.CompilerServices.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__InterceptsLocationAttribute": {
+        "System.Void System.Runtime.CompilerServices.<OpenApiXmlCommentSupport_generated>F805EB45E0C2ADCF82E1A7DA4905DE10E602960A6047B174886AA27E6283DFABE__InterceptsLocationAttribute::.ctor(System.Int32,System.String)": {
+          "Lines": {
+            "20": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Models\\OperatorAccount.cs": {
+      "Parkimetro.Api.Models.OperatorAccount": {
+        "System.Guid Parkimetro.Api.Models.OperatorAccount::get_Id()": {
+          "Lines": {
+            "5": 28
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.OperatorAccount::get_Name()": {
+          "Lines": {
+            "6": 28
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.OperatorAccount::get_Username()": {
+          "Lines": {
+            "7": 23
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.OperatorAccount::get_Pin()": {
+          "Lines": {
+            "8": 12
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Models\\ParkingSession.cs": {
+      "Parkimetro.Api.Models.ParkingSession": {
+        "System.Guid Parkimetro.Api.Models.ParkingSession::get_Id()": {
+          "Lines": {
+            "5": 15
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Models.ParkingSession::get_SpaceId()": {
+          "Lines": {
+            "6": 9
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Models.ParkingSpace Parkimetro.Api.Models.ParkingSession::get_Space()": {
+          "Lines": {
+            "7": 10
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Models.ParkingSession::get_OperatorId()": {
+          "Lines": {
+            "8": 9
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Models.OperatorAccount Parkimetro.Api.Models.ParkingSession::get_Operator()": {
+          "Lines": {
+            "9": 7
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.ParkingSession::get_LicensePlate()": {
+          "Lines": {
+            "10": 9
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset Parkimetro.Api.Models.ParkingSession::get_StartedAt()": {
+          "Lines": {
+            "11": 24
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTimeOffset> Parkimetro.Api.Models.ParkingSession::get_EndedAt()": {
+          "Lines": {
+            "12": 28
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Models.ParkingSession::get_IsActive()": {
+          "Lines": {
+            "14": 8
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Models\\ParkingSpace.cs": {
+      "Parkimetro.Api.Models.ParkingSpace": {
+        "System.Guid Parkimetro.Api.Models.ParkingSpace::get_Id()": {
+          "Lines": {
+            "5": 112
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.ParkingSpace::get_Code()": {
+          "Lines": {
+            "6": 108
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Models.ParkingSpace::get_ZoneId()": {
+          "Lines": {
+            "7": 98
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Models.Zone Parkimetro.Api.Models.ParkingSpace::get_Zone()": {
+          "Lines": {
+            "8": 31
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Models.ParkingSpace::get_Latitude()": {
+          "Lines": {
+            "9": 98
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Models.ParkingSpace::get_Longitude()": {
+          "Lines": {
+            "10": 98
+          },
+          "Branches": []
+        },
+        "System.Decimal Parkimetro.Api.Models.ParkingSpace::get_HourlyRate()": {
+          "Lines": {
+            "11": 99
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Models.SpaceStatus Parkimetro.Api.Models.ParkingSpace::get_Status()": {
+          "Lines": {
+            "12": 124
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.ParkingSpace::get_Notes()": {
+          "Lines": {
+            "13": 38
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.ParkingSpace::get_ClientDni()": {
+          "Lines": {
+            "14": 35
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.ParkingSpace::get_ClientRuc()": {
+          "Lines": {
+            "15": 35
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.ParkingSpace::get_ClientName()": {
+          "Lines": {
+            "16": 35
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset Parkimetro.Api.Models.ParkingSpace::get_UpdatedAt()": {
+          "Lines": {
+            "17": 217
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<Parkimetro.Api.Models.ParkingSession> Parkimetro.Api.Models.ParkingSpace::get_Sessions()": {
+          "Lines": {
+            "18": 154
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Models\\Zone.cs": {
+      "Parkimetro.Api.Models.Zone": {
+        "System.Guid Parkimetro.Api.Models.Zone::get_Id()": {
+          "Lines": {
+            "5": 94
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.Zone::get_Name()": {
+          "Lines": {
+            "6": 63
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.Zone::get_City()": {
+          "Lines": {
+            "7": 33
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Models.Zone::get_VideoUrl()": {
+          "Lines": {
+            "8": 34
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<Parkimetro.Api.Models.ParkingSpace> Parkimetro.Api.Models.Zone::get_Spaces()": {
+          "Lines": {
+            "9": 73
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Mapping\\EntityMapper.cs": {
+      "Parkimetro.Api.Mapping.EntityMapper": {
+        "Parkimetro.Api.Dtos.ZoneDto Parkimetro.Api.Mapping.EntityMapper::ToDto(Parkimetro.Api.Models.Zone)": {
+          "Lines": {
+            "10": 9,
+            "11": 9,
+            "12": 9,
+            "13": 9,
+            "14": 9,
+            "15": 8,
+            "16": 9
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Dtos.SpaceDto Parkimetro.Api.Mapping.EntityMapper::ToDto(Parkimetro.Api.Models.ParkingSpace)": {
+          "Lines": {
+            "19": 31,
+            "20": 31,
+            "21": 31,
+            "22": 31,
+            "23": 31,
+            "24": 31,
+            "25": 31,
+            "26": 31,
+            "27": 31,
+            "28": 31,
+            "29": 31,
+            "30": 4,
+            "31": 31,
+            "32": 31,
+            "33": 31
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 25,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 30
+            },
+            {
+              "Line": 19,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 37,
+              "EndOffset": 45,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 31
+            },
+            {
+              "Line": 19,
+              "Offset": 124,
+              "EndOffset": 126,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 29
+            },
+            {
+              "Line": 19,
+              "Offset": 124,
+              "EndOffset": 138,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            }
+          ]
+        },
+        "Parkimetro.Api.Dtos.SessionDto Parkimetro.Api.Mapping.EntityMapper::ToDto(Parkimetro.Api.Models.ParkingSession)": {
+          "Lines": {
+            "36": 6,
+            "37": 6,
+            "38": 6,
+            "39": 6,
+            "40": 6,
+            "41": 6,
+            "42": 6,
+            "43": 6,
+            "44": 6,
+            "45": 6
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 19,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 36,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 31,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 6
+            },
+            {
+              "Line": 36,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 52,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 6
+            },
+            {
+              "Line": 36,
+              "Offset": 64,
+              "EndOffset": 66,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 64,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 6
+            }
+          ]
+        },
+        "Parkimetro.Api.Dtos.ClientIdentityDto Parkimetro.Api.Mapping.EntityMapper::ToDto(Parkimetro.Api.Identity.ClientIdentity)": {
+          "Lines": {
+            "48": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Identity\\ClientIdentity.cs": {
+      "Parkimetro.Api.Identity.ClientIdentity": {
+        "System.String Parkimetro.Api.Identity.ClientIdentity::get_Dni()": {
+          "Lines": {
+            "3": 16
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Identity\\DniRuc.cs": {
+      "Parkimetro.Api.Identity.DniRuc": {
+        "System.String Parkimetro.Api.Identity.DniRuc::NormalizeDni(System.String)": {
+          "Lines": {
+            "7": 28,
+            "9": 2,
+            "12": 26,
+            "13": 26
+          },
+          "Branches": [
+            {
+              "Line": 7,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 7,
+              "Offset": 6,
+              "EndOffset": 10,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 26
+            },
+            {
+              "Line": 13,
+              "Offset": 61,
+              "EndOffset": 63,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 6
+            },
+            {
+              "Line": 13,
+              "Offset": 61,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 20
+            }
+          ]
+        },
+        "System.String Parkimetro.Api.Identity.DniRuc::ToRuc(System.String)": {
+          "Lines": {
+            "18": 7,
+            "19": 7,
+            "21": 6,
+            "22": 6,
+            "23": 6,
+            "24": 132,
+            "26": 60,
+            "29": 6,
+            "30": 6,
+            "32": 5,
+            "35": 6
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 18,
+              "Offset": 7,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 24,
+              "Offset": 94,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 60
+            },
+            {
+              "Line": 24,
+              "Offset": 94,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 6
+            },
+            {
+              "Line": 30,
+              "Offset": 109,
+              "EndOffset": 111,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 5
+            },
+            {
+              "Line": 30,
+              "Offset": 109,
+              "EndOffset": 118,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 6
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Identity\\InMemoryRucDirectory.cs": {
+      "Parkimetro.Api.Identity.InMemoryRucDirectory": {
+        "System.Threading.Tasks.Task`1<Parkimetro.Api.Identity.ClientIdentity> Parkimetro.Api.Identity.InMemoryRucDirectory::FindByDniAsync(System.String,System.Threading.CancellationToken)": {
+          "Lines": {
+            "18": 8,
+            "19": 8,
+            "21": 1,
+            "24": 7,
+            "25": 7
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 8,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Identity.InMemoryRucDirectory::.ctor()": {
+          "Lines": {
+            "7": 4,
+            "10": 4,
+            "11": 4,
+            "12": 4,
+            "13": 4,
+            "14": 4
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Identity\\MariaDbRucDirectory.cs": {
+      "Parkimetro.Api.Identity.MariaDbRucDirectory": {
+        "System.String Parkimetro.Api.Identity.MariaDbRucDirectory::SelectSql(System.String)": {
+          "Lines": {
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 16,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Identity.MariaDbRucDirectory::.ctor(Microsoft.Extensions.Options.IOptions`1<Parkimetro.Api.Identity.RucDirectoryOptions>)": {
+          "Lines": {
+            "6": 1,
+            "8": 1
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Identity.MariaDbRucDirectory/<FindByDniAsync>d__2": {
+        "System.Void Parkimetro.Api.Identity.MariaDbRucDirectory/<FindByDniAsync>d__2::MoveNext()": {
+          "Lines": {
+            "12": 1,
+            "13": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "30": 1
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 41,
+              "EndOffset": 43,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 13,
+              "Offset": 41,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 362,
+              "EndOffset": 364,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 362,
+              "EndOffset": 482,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 517,
+              "EndOffset": 519,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 517,
+              "EndOffset": 622,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Identity.MariaDbRucDirectory/<QueryByDniPrefixAsync>d__4": {
+        "System.Void Parkimetro.Api.Identity.MariaDbRucDirectory/<QueryByDniPrefixAsync>d__4::MoveNext()": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 273,
+              "EndOffset": 275,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 273,
+              "EndOffset": 378,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Identity.MariaDbRucDirectory/<QueryByRucAsync>d__3": {
+        "System.Void Parkimetro.Api.Identity.MariaDbRucDirectory/<QueryByRucAsync>d__3::MoveNext()": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 255,
+              "EndOffset": 257,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 255,
+              "EndOffset": 360,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Identity.MariaDbRucDirectory/<ReadIdentityAsync>d__6": {
+        "System.Void Parkimetro.Api.Identity.MariaDbRucDirectory/<ReadIdentityAsync>d__6::MoveNext()": {
+          "Lines": {
+            "73": 0,
+            "74": 0,
+            "76": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "84": 0,
+            "87": 0,
+            "88": 0
+          },
+          "Branches": [
+            {
+              "Line": 74,
+              "Offset": 268,
+              "EndOffset": 270,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 268,
+              "EndOffset": 282,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 312,
+              "EndOffset": 314,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 312,
+              "EndOffset": 333,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 351,
+              "EndOffset": 353,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 351,
+              "EndOffset": 367,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 365,
+              "EndOffset": 367,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 365,
+              "EndOffset": 370,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 395,
+              "EndOffset": 397,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 395,
+              "EndOffset": 406,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 422,
+              "EndOffset": 424,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 422,
+              "EndOffset": 428,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 466,
+              "EndOffset": 468,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 466,
+              "EndOffset": 571,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Identity\\RucDirectoryOptions.cs": {
+      "Parkimetro.Api.Identity.RucDirectoryOptions": {
+        "System.String Parkimetro.Api.Identity.RucDirectoryOptions::get_ConnectionString()": {
+          "Lines": {
+            "7": 1
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Identity.RucDirectoryOptions::get_Table()": {
+          "Lines": {
+            "10": 1
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Identity.RucDirectoryOptions::get_RucColumn()": {
+          "Lines": {
+            "12": 1
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Identity.RucDirectoryOptions::get_NameColumn()": {
+          "Lines": {
+            "14": 1
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Identity.RucDirectoryOptions::get_AddressColumn()": {
+          "Lines": {
+            "16": 1
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Identity.RucDirectoryOptions::.ctor()": {
+          "Lines": {
+            "8": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Dtos\\AuthDtos.cs": {
+      "Parkimetro.Api.Dtos.LoginRequest": {
+        "System.String Parkimetro.Api.Dtos.LoginRequest::get_Username()": {
+          "Lines": {
+            "3": 40
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.OperatorDto": {
+        "System.Guid Parkimetro.Api.Dtos.OperatorDto::get_Id()": {
+          "Lines": {
+            "5": 44
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.LoginResponse": {
+        "System.String Parkimetro.Api.Dtos.LoginResponse::get_Token()": {
+          "Lines": {
+            "7": 21
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.CreateOperatorRequest": {
+        "System.String Parkimetro.Api.Dtos.CreateOperatorRequest::get_Name()": {
+          "Lines": {
+            "9": 32
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.UpdateOperatorRequest": {
+        "System.String Parkimetro.Api.Dtos.UpdateOperatorRequest::get_Name()": {
+          "Lines": {
+            "11": 10
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Dtos\\ClientDtos.cs": {
+      "Parkimetro.Api.Dtos.ClientIdentityDto": {
+        "System.String Parkimetro.Api.Dtos.ClientIdentityDto::get_Dni()": {
+          "Lines": {
+            "3": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Dtos\\SessionDtos.cs": {
+      "Parkimetro.Api.Dtos.SessionDto": {
+        "System.Guid Parkimetro.Api.Dtos.SessionDto::get_Id()": {
+          "Lines": {
+            "4": 5
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Dtos.SessionDto::get_SpaceId()": {
+          "Lines": {
+            "5": 5
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SessionDto::get_SpaceCode()": {
+          "Lines": {
+            "6": 6
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Dtos.SessionDto::get_OperatorId()": {
+          "Lines": {
+            "7": 5
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SessionDto::get_OperatorName()": {
+          "Lines": {
+            "8": 6
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SessionDto::get_LicensePlate()": {
+          "Lines": {
+            "9": 5
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset Parkimetro.Api.Dtos.SessionDto::get_StartedAt()": {
+          "Lines": {
+            "10": 6
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTimeOffset> Parkimetro.Api.Dtos.SessionDto::get_EndedAt()": {
+          "Lines": {
+            "11": 5
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Dtos.SessionDto::get_IsActive()": {
+          "Lines": {
+            "12": 12
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Dtos.SessionDto::.ctor(System.Guid,System.Guid,System.String,System.Guid,System.String,System.String,System.DateTimeOffset,System.Nullable`1<System.DateTimeOffset>,System.Boolean)": {
+          "Lines": {
+            "3": 6
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.StartSessionRequest": {
+        "System.Guid Parkimetro.Api.Dtos.StartSessionRequest::get_SpaceId()": {
+          "Lines": {
+            "14": 26
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Dtos\\SpaceDtos.cs": {
+      "Parkimetro.Api.Dtos.SpaceDto": {
+        "System.Guid Parkimetro.Api.Dtos.SpaceDto::get_Id()": {
+          "Lines": {
+            "6": 30
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SpaceDto::get_Code()": {
+          "Lines": {
+            "7": 30
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Dtos.SpaceDto::get_ZoneId()": {
+          "Lines": {
+            "8": 30
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SpaceDto::get_ZoneName()": {
+          "Lines": {
+            "9": 31
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Dtos.SpaceDto::get_Latitude()": {
+          "Lines": {
+            "10": 30
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Dtos.SpaceDto::get_Longitude()": {
+          "Lines": {
+            "11": 30
+          },
+          "Branches": []
+        },
+        "System.Decimal Parkimetro.Api.Dtos.SpaceDto::get_HourlyRate()": {
+          "Lines": {
+            "12": 30
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Models.SpaceStatus Parkimetro.Api.Dtos.SpaceDto::get_Status()": {
+          "Lines": {
+            "13": 30
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SpaceDto::get_Notes()": {
+          "Lines": {
+            "14": 30
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset Parkimetro.Api.Dtos.SpaceDto::get_UpdatedAt()": {
+          "Lines": {
+            "15": 30
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Guid> Parkimetro.Api.Dtos.SpaceDto::get_ActiveSessionId()": {
+          "Lines": {
+            "16": 31
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SpaceDto::get_ClientDni()": {
+          "Lines": {
+            "17": 30
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SpaceDto::get_ClientRuc()": {
+          "Lines": {
+            "18": 30
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.SpaceDto::get_ClientName()": {
+          "Lines": {
+            "19": 62
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Dtos.SpaceDto::.ctor(System.Guid,System.String,System.Guid,System.String,System.Double,System.Double,System.Decimal,Parkimetro.Api.Models.SpaceStatus,System.String,System.DateTimeOffset,System.Nullable`1<System.Guid>,System.String,System.String,System.String)": {
+          "Lines": {
+            "5": 31
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.CreateSpaceRequest": {
+        "System.String Parkimetro.Api.Dtos.CreateSpaceRequest::get_Code()": {
+          "Lines": {
+            "22": 31
+          },
+          "Branches": []
+        },
+        "System.Guid Parkimetro.Api.Dtos.CreateSpaceRequest::get_ZoneId()": {
+          "Lines": {
+            "23": 30
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Dtos.CreateSpaceRequest::get_Latitude()": {
+          "Lines": {
+            "24": 15
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Dtos.CreateSpaceRequest::get_Longitude()": {
+          "Lines": {
+            "25": 15
+          },
+          "Branches": []
+        },
+        "System.Decimal Parkimetro.Api.Dtos.CreateSpaceRequest::get_HourlyRate()": {
+          "Lines": {
+            "26": 15
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.CreateSpaceRequest::get_Notes()": {
+          "Lines": {
+            "27": 24
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Dtos.CreateSpaceRequest::.ctor(System.String,System.Guid,System.Double,System.Double,System.Decimal,System.String)": {
+          "Lines": {
+            "21": 9
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.UpdateSpaceRequest": {
+        "System.String Parkimetro.Api.Dtos.UpdateSpaceRequest::get_Code()": {
+          "Lines": {
+            "30": 3
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Dtos.UpdateSpaceRequest::get_Latitude()": {
+          "Lines": {
+            "31": 3
+          },
+          "Branches": []
+        },
+        "System.Double Parkimetro.Api.Dtos.UpdateSpaceRequest::get_Longitude()": {
+          "Lines": {
+            "32": 3
+          },
+          "Branches": []
+        },
+        "System.Decimal Parkimetro.Api.Dtos.UpdateSpaceRequest::get_HourlyRate()": {
+          "Lines": {
+            "33": 3
+          },
+          "Branches": []
+        },
+        "System.String Parkimetro.Api.Dtos.UpdateSpaceRequest::get_Notes()": {
+          "Lines": {
+            "34": 5
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Dtos.UpdateSpaceRequest::.ctor(System.String,System.Double,System.Double,System.Decimal,System.String)": {
+          "Lines": {
+            "29": 2
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.ChangeStatusRequest": {
+        "Parkimetro.Api.Models.SpaceStatus Parkimetro.Api.Dtos.ChangeStatusRequest::get_Status()": {
+          "Lines": {
+            "36": 19
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.ReserveSpaceRequest": {
+        "System.String Parkimetro.Api.Dtos.ReserveSpaceRequest::get_Dni()": {
+          "Lines": {
+            "38": 14
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Dtos\\ZoneDtos.cs": {
+      "Parkimetro.Api.Dtos.ZoneDto": {
+        "System.Guid Parkimetro.Api.Dtos.ZoneDto::get_Id()": {
+          "Lines": {
+            "3": 60
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.CreateZoneRequest": {
+        "System.String Parkimetro.Api.Dtos.CreateZoneRequest::get_Name()": {
+          "Lines": {
+            "5": 23
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Dtos.UpdateZoneRequest": {
+        "System.String Parkimetro.Api.Dtos.UpdateZoneRequest::get_Name()": {
+          "Lines": {
+            "7": 18
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Data\\AppDbContext.cs": {
+      "Parkimetro.Api.Data.AppDbContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<Parkimetro.Api.Models.Zone> Parkimetro.Api.Data.AppDbContext::get_Zones()": {
+          "Lines": {
+            "8": 39
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<Parkimetro.Api.Models.ParkingSpace> Parkimetro.Api.Data.AppDbContext::get_Spaces()": {
+          "Lines": {
+            "9": 56
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<Parkimetro.Api.Models.ParkingSession> Parkimetro.Api.Data.AppDbContext::get_Sessions()": {
+          "Lines": {
+            "10": 11
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<Parkimetro.Api.Models.OperatorAccount> Parkimetro.Api.Data.AppDbContext::get_Operators()": {
+          "Lines": {
+            "11": 32
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Data.AppDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "15": 3,
+            "16": 3,
+            "17": 3,
+            "18": 3,
+            "20": 3,
+            "21": 3,
+            "22": 3,
+            "24": 3,
+            "25": 3,
+            "26": 3,
+            "27": 3,
+            "29": 3,
+            "30": 3,
+            "31": 3,
+            "32": 3,
+            "34": 3,
+            "35": 3,
+            "36": 3,
+            "37": 3
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Data.AppDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Parkimetro.Api.Data.AppDbContext>)": {
+          "Lines": {
+            "6": 78
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Data\\DbSeeder.cs": {
+      "Parkimetro.Api.Data.DbSeeder": {
+        "Parkimetro.Api.Models.ParkingSpace Parkimetro.Api.Data.DbSeeder::Space(System.Guid,System.String,System.Double,System.Double,System.Decimal,Parkimetro.Api.Models.SpaceStatus)": {
+          "Lines": {
+            "80": 60,
+            "81": 60,
+            "82": 60,
+            "83": 60,
+            "84": 60,
+            "85": 60,
+            "86": 60,
+            "87": 60,
+            "88": 60,
+            "89": 60,
+            "90": 60
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Data.DbSeeder/<>c": {
+        "System.Boolean Parkimetro.Api.Data.DbSeeder/<>c::<AssignDemoCameraAsync>b__1_1(Parkimetro.Api.Models.Zone)": {
+          "Lines": {
+            "62": 4
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Data.DbSeeder/<AssignDemoCameraAsync>d__1": {
+        "System.Void Parkimetro.Api.Data.DbSeeder/<AssignDemoCameraAsync>d__1::MoveNext()": {
+          "Lines": {
+            "56": 1,
+            "57": 1,
+            "58": 1,
+            "59": 1,
+            "60": 1,
+            "64": 0,
+            "67": 1,
+            "69": 1,
+            "71": 1
+          },
+          "Branches": [
+            {
+              "Line": 62,
+              "Offset": 442,
+              "EndOffset": 414,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 442,
+              "EndOffset": 444,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 469,
+              "EndOffset": 471,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 469,
+              "EndOffset": 578,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Data.DbSeeder/<SeedAsync>d__0": {
+        "System.Void Parkimetro.Api.Data.DbSeeder/<SeedAsync>d__0::MoveNext()": {
+          "Lines": {
+            "10": 11,
+            "12": 1,
+            "13": 1,
+            "16": 10,
+            "17": 10,
+            "18": 10,
+            "19": 10,
+            "20": 10,
+            "21": 10,
+            "22": 10,
+            "23": 10,
+            "24": 10,
+            "25": 10,
+            "26": 10,
+            "27": 10,
+            "28": 10,
+            "29": 10,
+            "31": 10,
+            "32": 10,
+            "33": 10,
+            "34": 10,
+            "35": 10,
+            "36": 10,
+            "37": 10,
+            "38": 10,
+            "39": 10,
+            "41": 10,
+            "42": 10,
+            "43": 10,
+            "44": 10,
+            "45": 10,
+            "46": 10,
+            "47": 10,
+            "48": 10,
+            "49": 10,
+            "51": 10,
+            "52": 11
+          },
+          "Branches": [
+            {
+              "Line": 10,
+              "Offset": 143,
+              "EndOffset": 145,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 10,
+              "Offset": 143,
+              "EndOffset": 249,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Data\\SchemaPatcher.cs": {
+      "Parkimetro.Api.Data.SchemaPatcher/<AddColumnIfMissingAsync>d__1": {
+        "System.Void Parkimetro.Api.Data.SchemaPatcher/<AddColumnIfMissingAsync>d__1::MoveNext()": {
+          "Lines": {
+            "22": 44,
+            "24": 40,
+            "27": 4,
+            "28": 44
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 127,
+              "EndOffset": 129,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 40
+            },
+            {
+              "Line": 22,
+              "Offset": 127,
+              "EndOffset": 134,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Data.SchemaPatcher/<ApplyAsync>d__0": {
+        "System.Void Parkimetro.Api.Data.SchemaPatcher/<ApplyAsync>d__0::MoveNext()": {
+          "Lines": {
+            "9": 12,
+            "11": 1,
+            "14": 11,
+            "15": 11,
+            "16": 11,
+            "17": 11,
+            "18": 12
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 55,
+              "EndOffset": 57,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 9,
+              "Offset": 55,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 11
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Data.SchemaPatcher/<ColumnExistsAsync>d__2": {
+        "System.Void Parkimetro.Api.Data.SchemaPatcher/<ColumnExistsAsync>d__2::MoveNext()": {
+          "Lines": {
+            "32": 44,
+            "33": 44,
+            "35": 9,
+            "38": 44,
+            "39": 44,
+            "40": 11,
+            "41": 33,
+            "42": 0,
+            "43": 44,
+            "44": 44,
+            "45": 338,
+            "47": 334,
+            "49": 40,
+            "53": 4,
+            "54": 44
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 33,
+              "Offset": 99,
+              "EndOffset": 202,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 44
+            },
+            {
+              "Line": 38,
+              "Offset": 229,
+              "EndOffset": 231,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 33
+            },
+            {
+              "Line": 38,
+              "Offset": 229,
+              "EndOffset": 247,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 11
+            },
+            {
+              "Line": 38,
+              "Offset": 243,
+              "EndOffset": 256,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 33
+            },
+            {
+              "Line": 38,
+              "Offset": 243,
+              "EndOffset": 265,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 563,
+              "EndOffset": 425,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 334
+            },
+            {
+              "Line": 47,
+              "Offset": 449,
+              "EndOffset": 451,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 40
+            },
+            {
+              "Line": 47,
+              "Offset": 449,
+              "EndOffset": 460,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 338
+            },
+            {
+              "Line": 45,
+              "Offset": 563,
+              "EndOffset": 568,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 4
+            },
+            {
+              "Line": 53,
+              "Offset": 602,
+              "EndOffset": 604,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 44
+            },
+            {
+              "Line": 53,
+              "Offset": 602,
+              "EndOffset": 707,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 44
+            },
+            {
+              "Line": 53,
+              "Offset": 810,
+              "EndOffset": 812,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 44
+            },
+            {
+              "Line": 53,
+              "Offset": 810,
+              "EndOffset": 915,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 44
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\AuthController.cs": {
+      "Parkimetro.Api.Controllers.AuthController": {
+        "System.Void Parkimetro.Api.Controllers.AuthController::.ctor(Parkimetro.Api.Data.AppDbContext,Parkimetro.Api.Auth.OperatorSessionStore)": {
+          "Lines": {
+            "11": 8
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.AuthController/<Login>d__3": {
+        "System.Void Parkimetro.Api.Controllers.AuthController/<Login>d__3::MoveNext()": {
+          "Lines": {
+            "16": 8,
+            "17": 8,
+            "19": 8,
+            "21": 1,
+            "24": 7,
+            "25": 7,
+            "26": 8
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 359,
+              "EndOffset": 361,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 359,
+              "EndOffset": 385,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\CamerasController.cs": {
+      "Parkimetro.Api.Controllers.CamerasController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult Parkimetro.Api.Controllers.CamerasController::Get(System.String)": {
+          "Lines": {
+            "12": 3,
+            "14": 1,
+            "17": 2,
+            "18": 2,
+            "20": 1,
+            "23": 1,
+            "24": 1
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 12,
+              "Offset": 6,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 18,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 18,
+              "Offset": 34,
+              "EndOffset": 53,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.String Parkimetro.Api.Controllers.CamerasController::ResolveVideoPath(System.String)": {
+          "Lines": {
+            "29": 2,
+            "30": 2,
+            "31": 2,
+            "32": 2,
+            "33": 2,
+            "34": 2,
+            "36": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Controllers.CamerasController::IsSafeName(System.String)": {
+          "Lines": {
+            "40": 20
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 40,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 40,
+              "Offset": 9,
+              "EndOffset": 54,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 17
+            },
+            {
+              "Line": 40,
+              "Offset": 14,
+              "EndOffset": 54,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 20,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Controllers.CamerasController::.ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)": {
+          "Lines": {
+            "7": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\ClientsController.cs": {
+      "Parkimetro.Api.Controllers.ClientsController": {
+        "System.Boolean Parkimetro.Api.Controllers.ClientsController::TryGetOperatorId()": {
+          "Lines": {
+            "41": 4,
+            "42": 4,
+            "43": 4,
+            "44": 4,
+            "45": 4
+          },
+          "Branches": [
+            {
+              "Line": 42,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 42,
+              "Offset": 43,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Controllers.ClientsController::.ctor(Parkimetro.Api.Identity.IRucDirectory,Parkimetro.Api.Auth.OperatorSessionStore)": {
+          "Lines": {
+            "11": 4
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.ClientsController/<GetByDni>d__3": {
+        "System.Void Parkimetro.Api.Controllers.ClientsController/<GetByDni>d__3::MoveNext()": {
+          "Lines": {
+            "16": 4,
+            "18": 1,
+            "21": 3,
+            "23": 1,
+            "28": 2,
+            "29": 2,
+            "30": 2,
+            "31": 2,
+            "33": 0,
+            "35": 0,
+            "37": 4
+          },
+          "Branches": [
+            {
+              "Line": 16,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 16,
+              "Offset": 23,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 21,
+              "Offset": 63,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 21,
+              "Offset": 63,
+              "EndOffset": 92,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 29,
+              "Offset": 213,
+              "EndOffset": 215,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 29,
+              "Offset": 213,
+              "EndOffset": 234,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\OperatorsController.cs": {
+      "Parkimetro.Api.Controllers.OperatorsController": {
+        "System.String Parkimetro.Api.Controllers.OperatorsController::Validate(System.String,System.String,System.String,System.Boolean)": {
+          "Lines": {
+            "123": 5,
+            "125": 1,
+            "128": 4,
+            "130": 0,
+            "133": 4,
+            "135": 1,
+            "138": 3
+          },
+          "Branches": [
+            {
+              "Line": 123,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 123,
+              "Offset": 6,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 128,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 20,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 4
+            },
+            {
+              "Line": 133,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 3
+            },
+            {
+              "Line": 133,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 3
+            },
+            {
+              "Line": 133,
+              "Offset": 37,
+              "EndOffset": 53,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 133,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 133,
+              "Offset": 29,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 3
+            },
+            {
+              "Line": 133,
+              "Offset": 51,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Controllers.OperatorsController::.ctor(Parkimetro.Api.Data.AppDbContext)": {
+          "Lines": {
+            "11": 9
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.OperatorsController/<Create>d__4": {
+        "System.Void Parkimetro.Api.Controllers.OperatorsController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "36": 4,
+            "37": 4,
+            "39": 2,
+            "42": 2,
+            "43": 2,
+            "45": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 1,
+            "56": 1,
+            "57": 1,
+            "58": 1,
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "62": 4
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 79,
+              "EndOffset": 81,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 37,
+              "Offset": 79,
+              "EndOffset": 104,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 43,
+              "Offset": 355,
+              "EndOffset": 357,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 43,
+              "Offset": 355,
+              "EndOffset": 384,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.OperatorsController/<Delete>d__6": {
+        "System.Void Parkimetro.Api.Controllers.OperatorsController/<Delete>d__6::MoveNext()": {
+          "Lines": {
+            "100": 2,
+            "101": 2,
+            "103": 0,
+            "106": 2,
+            "108": 1,
+            "111": 1,
+            "113": 0,
+            "116": 1,
+            "117": 1,
+            "118": 1,
+            "119": 2
+          },
+          "Branches": [
+            {
+              "Line": 101,
+              "Offset": 309,
+              "EndOffset": 311,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 309,
+              "EndOffset": 323,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 106,
+              "Offset": 442,
+              "EndOffset": 444,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 106,
+              "Offset": 442,
+              "EndOffset": 466,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 111,
+              "Offset": 701,
+              "EndOffset": 703,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 701,
+              "EndOffset": 725,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.OperatorsController/<GetAll>d__2": {
+        "System.Void Parkimetro.Api.Controllers.OperatorsController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "16": 2,
+            "17": 2,
+            "18": 2,
+            "19": 2,
+            "21": 2,
+            "22": 2
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.OperatorsController/<GetById>d__3": {
+        "System.Void Parkimetro.Api.Controllers.OperatorsController/<GetById>d__3::MoveNext()": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 272,
+              "EndOffset": 274,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 272,
+              "EndOffset": 313,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.OperatorsController/<Update>d__5": {
+        "System.Void Parkimetro.Api.Controllers.OperatorsController/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "67": 1,
+            "68": 1,
+            "70": 0,
+            "73": 1,
+            "74": 1,
+            "75": 1,
+            "77": 0,
+            "80": 1,
+            "81": 1,
+            "83": 0,
+            "86": 1,
+            "87": 1,
+            "88": 1,
+            "90": 0,
+            "93": 1,
+            "94": 1,
+            "95": 1
+          },
+          "Branches": [
+            {
+              "Line": 68,
+              "Offset": 307,
+              "EndOffset": 309,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 307,
+              "EndOffset": 326,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 75,
+              "Offset": 397,
+              "EndOffset": 399,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 397,
+              "EndOffset": 422,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 81,
+              "Offset": 757,
+              "EndOffset": 759,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 757,
+              "EndOffset": 786,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 88,
+              "Offset": 841,
+              "EndOffset": 843,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 841,
+              "EndOffset": 870,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\SessionsController.cs": {
+      "Parkimetro.Api.Controllers.SessionsController": {
+        "System.Boolean Parkimetro.Api.Controllers.SessionsController::TryGetOperatorId(System.Guid&)": {
+          "Lines": {
+            "119": 9,
+            "120": 9,
+            "121": 9,
+            "122": 9,
+            "123": 9
+          },
+          "Branches": [
+            {
+              "Line": 120,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 120,
+              "Offset": 43,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 8
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Controllers.SessionsController::.ctor(Parkimetro.Api.Data.AppDbContext,Parkimetro.Api.Auth.OperatorSessionStore)": {
+          "Lines": {
+            "13": 11
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.SessionsController/<>c": {
+        "System.DateTimeOffset Parkimetro.Api.Controllers.SessionsController/<>c::<GetAll>b__3_3(Parkimetro.Api.Models.ParkingSession)": {
+          "Lines": {
+            "29": 2
+          },
+          "Branches": []
+        },
+        "Parkimetro.Api.Dtos.SessionDto Parkimetro.Api.Controllers.SessionsController/<>c::<GetAll>b__3_4(Parkimetro.Api.Models.ParkingSession)": {
+          "Lines": {
+            "31": 4
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Controllers.SessionsController/<>c::<Start>b__4_0(Parkimetro.Api.Models.ParkingSession)": {
+          "Lines": {
+            "56": 4
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.SessionsController/<End>d__5": {
+        "System.Void Parkimetro.Api.Controllers.SessionsController/<End>d__5::MoveNext()": {
+          "Lines": {
+            "86": 3,
+            "88": 0,
+            "91": 3,
+            "92": 3,
+            "93": 3,
+            "94": 3,
+            "96": 3,
+            "98": 1,
+            "101": 2,
+            "103": 1,
+            "106": 1,
+            "107": 1,
+            "109": 1,
+            "110": 1,
+            "113": 1,
+            "114": 1,
+            "115": 3
+          },
+          "Branches": [
+            {
+              "Line": 86,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 86,
+              "Offset": 53,
+              "EndOffset": 82,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 96,
+              "Offset": 454,
+              "EndOffset": 456,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 96,
+              "Offset": 454,
+              "EndOffset": 473,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 101,
+              "Offset": 493,
+              "EndOffset": 495,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 101,
+              "Offset": 493,
+              "EndOffset": 522,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 107,
+              "Offset": 554,
+              "EndOffset": 556,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 107,
+              "Offset": 554,
+              "EndOffset": 594,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SessionsController/<GetAll>d__3": {
+        "System.Void Parkimetro.Api.Controllers.SessionsController/<GetAll>d__3::MoveNext()": {
+          "Lines": {
+            "18": 2,
+            "19": 2,
+            "20": 2,
+            "21": 2,
+            "23": 2,
+            "25": 1,
+            "28": 2,
+            "32": 2
+          },
+          "Branches": [
+            {
+              "Line": 23,
+              "Offset": 173,
+              "EndOffset": 175,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 173,
+              "EndOffset": 293,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SessionsController/<Start>d__4": {
+        "System.Void Parkimetro.Api.Controllers.SessionsController/<Start>d__4::MoveNext()": {
+          "Lines": {
+            "37": 6,
+            "39": 1,
+            "42": 5,
+            "43": 5,
+            "44": 5,
+            "46": 5,
+            "48": 1,
+            "51": 4,
+            "53": 1,
+            "58": 1,
+            "61": 2,
+            "62": 2,
+            "63": 2,
+            "64": 2,
+            "65": 2,
+            "66": 2,
+            "67": 2,
+            "68": 2,
+            "70": 2,
+            "71": 2,
+            "72": 2,
+            "73": 2,
+            "75": 2,
+            "76": 2,
+            "77": 2,
+            "78": 2,
+            "80": 2,
+            "81": 6
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 72,
+              "EndOffset": 74,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 37,
+              "Offset": 72,
+              "EndOffset": 101,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            },
+            {
+              "Line": 46,
+              "Offset": 423,
+              "EndOffset": 425,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 46,
+              "Offset": 423,
+              "EndOffset": 452,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 4
+            },
+            {
+              "Line": 51,
+              "Offset": 459,
+              "EndOffset": 461,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 51,
+              "Offset": 459,
+              "EndOffset": 488,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 3
+            },
+            {
+              "Line": 56,
+              "Offset": 530,
+              "EndOffset": 532,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 530,
+              "EndOffset": 559,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 2
+            },
+            {
+              "Line": 61,
+              "Offset": 627,
+              "EndOffset": 629,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 61,
+              "Offset": 627,
+              "EndOffset": 657,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\SpacesController.cs": {
+      "Parkimetro.Api.Controllers.SpacesController": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController::ClearClient(Parkimetro.Api.Models.ParkingSpace)": {
+          "Lines": {
+            "214": 2,
+            "215": 2,
+            "216": 2,
+            "217": 2
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<Parkimetro.Api.Models.ParkingSpace> Parkimetro.Api.Controllers.SpacesController::FindSpaceAsync(System.Guid)": {
+          "Lines": {
+            "220": 21,
+            "221": 21,
+            "222": 21,
+            "223": 21
+          },
+          "Branches": []
+        },
+        "System.Void Parkimetro.Api.Controllers.SpacesController::.ctor(Parkimetro.Api.Data.AppDbContext,Parkimetro.Api.Identity.IRucDirectory)": {
+          "Lines": {
+            "13": 29
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<>c": {
+        "Parkimetro.Api.Dtos.SpaceDto Parkimetro.Api.Controllers.SpacesController/<>c::<GetAll>b__3_4(Parkimetro.Api.Models.ParkingSpace)": {
+          "Lines": {
+            "40": 22
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Controllers.SpacesController/<>c::<ChangeStatus>b__7_0(Parkimetro.Api.Models.ParkingSession)": {
+          "Lines": {
+            "126": 7
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Controllers.SpacesController/<>c::<ReserveCore>b__10_0(Parkimetro.Api.Models.ParkingSession)": {
+          "Lines": {
+            "177": 4
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<ChangeStatus>d__7": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<ChangeStatus>d__7::MoveNext()": {
+          "Lines": {
+            "113": 3,
+            "114": 3,
+            "116": 0,
+            "119": 3,
+            "121": 1,
+            "124": 2,
+            "128": 1,
+            "132": 2,
+            "134": 2,
+            "137": 2,
+            "138": 2,
+            "139": 2,
+            "140": 2,
+            "141": 3
+          },
+          "Branches": [
+            {
+              "Line": 114,
+              "Offset": 146,
+              "EndOffset": 148,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 146,
+              "EndOffset": 165,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 119,
+              "Offset": 177,
+              "EndOffset": 179,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 119,
+              "Offset": 177,
+              "EndOffset": 300,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 124,
+              "Offset": 311,
+              "EndOffset": 313,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 126,
+              "Offset": 402,
+              "EndOffset": 369,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 126,
+              "Offset": 402,
+              "EndOffset": 404,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 2
+            },
+            {
+              "Line": 124,
+              "Offset": 311,
+              "EndOffset": 422,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            },
+            {
+              "Line": 132,
+              "Offset": 437,
+              "EndOffset": 439,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 132,
+              "Offset": 437,
+              "EndOffset": 444,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 2
+            },
+            {
+              "Line": 132,
+              "Offset": 442,
+              "EndOffset": 444,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 2
+            },
+            {
+              "Line": 132,
+              "Offset": 442,
+              "EndOffset": 449,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 132,
+              "Offset": 454,
+              "EndOffset": 456,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 2
+            },
+            {
+              "Line": 132,
+              "Offset": 454,
+              "EndOffset": 467,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<Create>d__5": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<Create>d__5::MoveNext()": {
+          "Lines": {
+            "53": 9,
+            "55": 1,
+            "58": 8,
+            "59": 8,
+            "61": 1,
+            "64": 7,
+            "65": 7,
+            "66": 7,
+            "68": 1,
+            "71": 6,
+            "72": 6,
+            "73": 6,
+            "74": 6,
+            "75": 6,
+            "76": 6,
+            "77": 6,
+            "78": 6,
+            "79": 6,
+            "80": 6,
+            "81": 6,
+            "82": 6,
+            "84": 6,
+            "85": 6,
+            "87": 6,
+            "88": 6,
+            "89": 9
+          },
+          "Branches": [
+            {
+              "Line": 53,
+              "Offset": 85,
+              "EndOffset": 87,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 85,
+              "EndOffset": 114,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 8
+            },
+            {
+              "Line": 59,
+              "Offset": 371,
+              "EndOffset": 373,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 59,
+              "Offset": 371,
+              "EndOffset": 400,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 7
+            },
+            {
+              "Line": 66,
+              "Offset": 772,
+              "EndOffset": 774,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 66,
+              "Offset": 772,
+              "EndOffset": 801,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 6
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<Delete>d__9": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<Delete>d__9::MoveNext()": {
+          "Lines": {
+            "158": 1,
+            "159": 1,
+            "161": 0,
+            "164": 1,
+            "165": 1,
+            "166": 1,
+            "167": 1,
+            "168": 1
+          },
+          "Branches": [
+            {
+              "Line": 159,
+              "Offset": 130,
+              "EndOffset": 132,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 159,
+              "Offset": 130,
+              "EndOffset": 144,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<GetAll>d__3": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<GetAll>d__3::MoveNext()": {
+          "Lines": {
+            "20": 5,
+            "21": 5,
+            "22": 5,
+            "23": 5,
+            "25": 5,
+            "27": 1,
+            "30": 5,
+            "32": 3,
+            "35": 5,
+            "36": 5,
+            "37": 5,
+            "38": 5,
+            "41": 5
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 209,
+              "EndOffset": 214,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 25,
+              "Offset": 209,
+              "EndOffset": 350,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            },
+            {
+              "Line": 30,
+              "Offset": 361,
+              "EndOffset": 366,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 30,
+              "Offset": 361,
+              "EndOffset": 501,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 5
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<GetById>d__4": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<GetById>d__4::MoveNext()": {
+          "Lines": {
+            "46": 4,
+            "47": 4,
+            "48": 4
+          },
+          "Branches": [
+            {
+              "Line": 47,
+              "Offset": 120,
+              "EndOffset": 122,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 47,
+              "Offset": 120,
+              "EndOffset": 141,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<Reserve>d__8": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<Reserve>d__8::MoveNext()": {
+          "Lines": {
+            "146": 5,
+            "147": 5,
+            "149": 1,
+            "152": 4,
+            "153": 5
+          },
+          "Branches": [
+            {
+              "Line": 147,
+              "Offset": 130,
+              "EndOffset": 132,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 147,
+              "Offset": 130,
+              "EndOffset": 149,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<ReserveCore>d__10": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<ReserveCore>d__10::MoveNext()": {
+          "Lines": {
+            "172": 5,
+            "174": 1,
+            "179": 0,
+            "182": 4,
+            "184": 1,
+            "190": 3,
+            "191": 3,
+            "193": 1,
+            "196": 2,
+            "197": 2,
+            "198": 0,
+            "200": 0,
+            "203": 2,
+            "204": 2,
+            "205": 2,
+            "206": 2,
+            "207": 2,
+            "208": 2,
+            "209": 2,
+            "210": 5
+          },
+          "Branches": [
+            {
+              "Line": 172,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 172,
+              "Offset": 39,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 177,
+              "Offset": 115,
+              "EndOffset": 117,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 177,
+              "Offset": 115,
+              "EndOffset": 144,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 4
+            },
+            {
+              "Line": 182,
+              "Offset": 155,
+              "EndOffset": 157,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 182,
+              "Offset": 155,
+              "EndOffset": 184,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 3
+            },
+            {
+              "Line": 191,
+              "Offset": 311,
+              "EndOffset": 313,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 191,
+              "Offset": 311,
+              "EndOffset": 340,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.SpacesController/<Update>d__6": {
+        "System.Void Parkimetro.Api.Controllers.SpacesController/<Update>d__6::MoveNext()": {
+          "Lines": {
+            "94": 2,
+            "95": 2,
+            "97": 1,
+            "100": 1,
+            "101": 1,
+            "102": 1,
+            "103": 1,
+            "104": 1,
+            "105": 1,
+            "106": 1,
+            "107": 1,
+            "108": 2
+          },
+          "Branches": [
+            {
+              "Line": 95,
+              "Offset": 138,
+              "EndOffset": 140,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 95,
+              "Offset": 138,
+              "EndOffset": 157,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Controllers\\ZonesController.cs": {
+      "Parkimetro.Api.Controllers.ZonesController": {
+        "System.String Parkimetro.Api.Controllers.ZonesController::NormalizeVideoUrl(System.String)": {
+          "Lines": {
+            "75": 3
+          },
+          "Branches": [
+            {
+              "Line": 75,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 75,
+              "Offset": 6,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Controllers.ZonesController::.ctor(Parkimetro.Api.Data.AppDbContext)": {
+          "Lines": {
+            "12": 9
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.ZonesController/<>c": {
+        "Parkimetro.Api.Dtos.ZoneDto Parkimetro.Api.Controllers.ZonesController/<>c::<GetAll>b__2_0(Parkimetro.Api.Models.Zone)": {
+          "Lines": {
+            "22": 5
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.ZonesController/<Create>d__4": {
+        "System.Void Parkimetro.Api.Controllers.ZonesController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "35": 3,
+            "37": 1,
+            "40": 2,
+            "41": 2,
+            "42": 2,
+            "43": 2,
+            "44": 2,
+            "45": 2,
+            "46": 2,
+            "48": 2,
+            "49": 2,
+            "50": 2,
+            "51": 3
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 36,
+              "EndOffset": 38,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 36,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 40,
+              "Offset": 121,
+              "EndOffset": 123,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 40,
+              "Offset": 121,
+              "EndOffset": 141,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.ZonesController/<GetAll>d__2": {
+        "System.Void Parkimetro.Api.Controllers.ZonesController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "23": 1
+          },
+          "Branches": []
+        }
+      },
+      "Parkimetro.Api.Controllers.ZonesController/<GetById>d__3": {
+        "System.Void Parkimetro.Api.Controllers.ZonesController/<GetById>d__3::MoveNext()": {
+          "Lines": {
+            "28": 2,
+            "29": 2,
+            "30": 2
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 334,
+              "EndOffset": 336,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 29,
+              "Offset": 334,
+              "EndOffset": 356,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "Parkimetro.Api.Controllers.ZonesController/<Update>d__5": {
+        "System.Void Parkimetro.Api.Controllers.ZonesController/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "56": 3,
+            "57": 3,
+            "59": 1,
+            "62": 2,
+            "64": 1,
+            "67": 1,
+            "68": 1,
+            "69": 1,
+            "70": 1,
+            "71": 1,
+            "72": 3
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 352,
+              "EndOffset": 354,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 57,
+              "Offset": 352,
+              "EndOffset": 371,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 62,
+              "Offset": 387,
+              "EndOffset": 389,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 62,
+              "Offset": 387,
+              "EndOffset": 416,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 68,
+              "Offset": 465,
+              "EndOffset": 467,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 68,
+              "Offset": 465,
+              "EndOffset": 485,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\docto\\progra-avanzado\\proyecto\\api\\Auth\\OperatorSessionStore.cs": {
+      "Parkimetro.Api.Auth.OperatorSessionStore": {
+        "System.String Parkimetro.Api.Auth.OperatorSessionStore::Issue(System.Guid)": {
+          "Lines": {
+            "11": 8,
+            "12": 8,
+            "13": 8
+          },
+          "Branches": []
+        },
+        "System.Boolean Parkimetro.Api.Auth.OperatorSessionStore::TryGetOperatorId(System.String,System.Guid&)": {
+          "Lines": {
+            "18": 18,
+            "19": 18
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 13
+            },
+            {
+              "Line": 19,
+              "Offset": 17,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Void Parkimetro.Api.Auth.OperatorSessionStore::.ctor()": {
+          "Lines": {
+            "7": 9
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+  errors:
+    unused_import: error
+    unused_local_variable: error
+    dead_code: error
+    missing_required_param: error
+    missing_return: error
+
+linter:
+  rules:
+    cancel_subscriptions: true
+    unawaited_futures: true
+    unnecessary_null_checks: true

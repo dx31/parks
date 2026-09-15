@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    name: API quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - name: Restore
+        run: dotnet restore Parkimetro.slnx
+      - name: Format
+        run: dotnet format Parkimetro.slnx --verify-no-changes --severity warn
+      - name: Build
+        run: dotnet build Parkimetro.slnx -c Release --no-restore
+      - name: Test + coverage threshold
+        run: >
+          dotnet test tests/Parkimetro.Api.Tests/Parkimetro.Api.Tests.csproj
+          -c Release
+          --no-build
+          --settings coverlet.runsettings
+          /p:CollectCoverage=true
+          /p:CoverletOutputFormat=cobertura
+          /p:Threshold=70
+          /p:ThresholdType=line
+          /p:Exclude="[xunit*]*"
+
+  flutter:
+    name: Flutter quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.47.0"
+          channel: stable
+          cache: true
+      - name: Format
+        run: dart format --set-exit-if-changed apps/parkimetro_core apps/operator apps/client
+      - name: Core
+        working-directory: apps/parkimetro_core
+        run: flutter pub get && flutter analyze --fatal-warnings && flutter test
+      - name: Operator
+        working-directory: apps/operator
+        run: flutter pub get && flutter analyze --fatal-warnings && flutter test
+      - name: Client
+        working-directory: apps/client
+        run: flutter pub get && flutter analyze --fatal-warnings && flutter test
+
+  quality:
+    name: Quality gates
+    needs: [api, flutter]
+    runs-on: ubuntu-latest
+    steps:
+      - name: All gates passed
+        run: echo "API, Flutter tests, format, analyze and coverage thresholds passed."
+
+  android-release:
+    name: Android release APKs
+    needs: [quality]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    uses: ./.github/workflows/release-apps.yml
+    secrets: inherit

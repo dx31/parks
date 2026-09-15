@@ -1,0 +1,15 @@
+namespace Parkimetro.Api.Models;
+
+public class ParkingSession
+{
+    public Guid Id { get; set; }
+    public Guid SpaceId { get; set; }
+    public ParkingSpace? Space { get; set; }
+    public Guid OperatorId { get; set; }
+    public OperatorAccount? Operator { get; set; }
+    public string? LicensePlate { get; set; }
+    public DateTimeOffset StartedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset? EndedAt { get; set; }
+
+    public bool IsActive => EndedAt is null;
+}

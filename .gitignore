@@ -1,0 +1,58 @@
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+publish/
+TestResults/
+coverage/
+*.cobertura.xml
+
+# Flutter / Dart
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/.widget_preview/
+**/build/
+*.class
+*.log
+app.*.symbols
+app.*.map.json
+
+# Node (admin)
+**/node_modules/
+**/dist/
+
+# IDEs
+.idea/
+.vs/
+*.iml
+*.ipr
+*.iws
+*.swp
+.DS_Store
+Thumbs.db
+
+# Android / signing
+**/.gradle/
+**/local.properties
+**/*.keystore
+**/*.jks
+**/key.properties
+*.apk
+*.aab
+
+# Secrets and local env (keep *.example tracked)
+*.db
+*.db-shm
+*.db-wal
+api_env.json
+**/.env
+**/.env.local
+**/ignorable/
+
+api/media/*
