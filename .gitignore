@@ -55,4 +55,6 @@ api_env.json
 **/.env.local
 **/ignorable/
 
+# Local camera recordings. The demo clip used by CI and the operator app is tracked.
 api/media/*
+!api/media/demo.mp4
