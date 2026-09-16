@@ -70,6 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     'App de operador para registrar y actualizar espacios.',
                     textAlign: TextAlign.center,
                   ),
+                  const SizedBox(height: 8),
+                  Text(
+                    widget.api.baseUrl,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                   const SizedBox(height: 32),
                   TextField(
                     controller: _username,

@@ -24,8 +24,9 @@ void main() {
     );
   });
 
-  test('production URL is not hardcoded', () {
-    expect(ApiConfig.productionBaseUrl, isEmpty);
+  test('production URL defaults to the public API', () {
+    expect(ApiConfig.productionBaseUrl, ApiConfig.publicApiUrl);
+    expect(ApiConfig.publicApiUrl, 'https://apipark.facvel.com');
   });
 
   test('debug builds use the development URL', () {
@@ -36,8 +37,8 @@ void main() {
 
   test('normalize strips a trailing slash', () {
     expect(
-      ApiConfig.normalize('https://api.example.com/'),
-      'https://api.example.com',
+      ApiConfig.normalize('https://apipark.facvel.com/'),
+      'https://apipark.facvel.com',
     );
     expect(
       ApiConfig.normalize('http://localhost:5280'),

@@ -14,8 +14,13 @@ import 'package:flutter/foundation.dart';
 class ApiConfig {
   ApiConfig._();
 
-  /// URL de producción. No la dejes en el código: pásala al compilar.
-  static const productionBaseUrl = String.fromEnvironment('API_PROD_URL');
+  /// URL pública de la API. `--dart-define=API_PROD_URL=...` la puede sustituir.
+  static const publicApiUrl = 'https://apipark.facvel.com';
+
+  static const productionBaseUrl = String.fromEnvironment(
+    'API_PROD_URL',
+    defaultValue: publicApiUrl,
+  );
 
   static const _forcedUrl = String.fromEnvironment('API_BASE_URL');
   static const _forcedEnv = String.fromEnvironment('API_ENV');
@@ -54,18 +59,18 @@ class ApiConfig {
     if (!isProduction) {
       return developmentBaseUrl();
     }
-    if (productionBaseUrl.isEmpty) {
-      throw StateError(
-        'Falta API_PROD_URL. Compila con --dart-define-from-file=api_env.json',
-      );
+    final production = productionBaseUrl.trim();
+    if (production.isEmpty) {
+      return normalize(publicApiUrl);
     }
-    return normalize(productionBaseUrl);
+    return normalize(production);
   }
 
   static String normalize(String url) {
-    if (url.endsWith('/')) {
-      return url.substring(0, url.length - 1);
+    final trimmed = url.trim();
+    if (trimmed.endsWith('/')) {
+      return trimmed.substring(0, trimmed.length - 1);
     }
-    return url;
+    return trimmed;
   }
 }

@@ -5,7 +5,32 @@ import 'screens/login_screen.dart';
 import 'screens/zones_screen.dart';
 
 void main() {
-  runApp(OperatorApp(api: ParkimetroApi()));
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    runApp(OperatorApp(api: ParkimetroApi()));
+  } catch (error) {
+    runApp(_StartupErrorApp(message: error.toString()));
+  }
+}
+
+class _StartupErrorApp extends StatelessWidget {
+  const _StartupErrorApp({required this.message});
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Text(message, textAlign: TextAlign.center),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class OperatorApp extends StatefulWidget {

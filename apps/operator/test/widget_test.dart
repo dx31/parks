@@ -20,6 +20,7 @@ void main() {
 
   testWidgets('login exitoso entra a zonas', (tester) async {
     await tester.pumpWidget(OperatorApp(api: FakeParkimetroApi()));
+    expect(find.text('http://fake.local'), findsOneWidget);
     await tester.tap(find.text('Entrar'));
     await tester.pumpAndSettle();
 
