@@ -19,11 +19,11 @@ jobs:
         with:
           dotnet-version: "10.0.x"
       - name: Restore
-        run: dotnet restore Parkimetro.slnx
+        run: dotnet restore parker.slnx
       - name: Format
-        run: dotnet format Parkimetro.slnx --verify-no-changes --severity warn
+        run: dotnet format parker.slnx --verify-no-changes --severity warn
       - name: Build
-        run: dotnet build Parkimetro.slnx -c Release --no-restore
+        run: dotnet build parker.slnx -c Release --no-restore
       - name: Test + coverage threshold
         run: >
           dotnet test tests/Parkimetro.Api.Tests/Parkimetro.Api.Tests.csproj
