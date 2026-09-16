@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Parkimetro.Api.Identity;
 
 namespace Parkimetro.Api.Tests.Unit;
