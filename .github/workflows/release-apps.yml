@@ -17,12 +17,15 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: android-actions/setup-android@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.47.0"
           channel: stable
           cache: true
+      - name: Accept Android SDK licenses
+        run: |
+          set +o pipefail
+          yes | flutter doctor --android-licenses
 
       - name: Require API_PROD_URL secret
         env:
