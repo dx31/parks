@@ -8,6 +8,7 @@ public record SessionDto(
     string OperatorName,
     string? LicensePlate,
     DateTimeOffset StartedAt,
+    DateTimeOffset? LimitUntil,
     DateTimeOffset? EndedAt,
     bool IsActive,
     int BilledHours,
@@ -15,4 +16,9 @@ public record SessionDto(
     decimal HourlyRate,
     bool Paid);
 
-public record StartSessionRequest(Guid SpaceId, string? LicensePlate);
+public record StartSessionRequest(
+    Guid SpaceId,
+    string? LicensePlate,
+    string? Dni,
+    string? ClientName,
+    DateTimeOffset? LimitUntil);

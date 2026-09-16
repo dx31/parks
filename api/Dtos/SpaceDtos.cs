@@ -17,7 +17,11 @@ public record SpaceDto(
     string? ClientDni,
     string? ClientRuc,
     string? ClientName,
-    DateTimeOffset? OccupiedSince);
+    DateTimeOffset? OccupiedSince,
+    string? LicensePlate,
+    DateTimeOffset? ReservedFrom,
+    DateTimeOffset? LimitUntil,
+    bool ExceededLimit);
 
 public record CreateSpaceRequest(
     string Code,
@@ -34,6 +38,17 @@ public record UpdateSpaceRequest(
     decimal HourlyRate,
     string? Notes);
 
-public record ChangeStatusRequest(SpaceStatus Status, string? Dni, string? ClientName);
+public record ChangeStatusRequest(
+    SpaceStatus Status,
+    string? Dni,
+    string? ClientName,
+    string? LicensePlate,
+    DateTimeOffset? StartsAt,
+    DateTimeOffset? LimitUntil);
 
-public record ReserveSpaceRequest(string Dni, string? ClientName);
+public record ReserveSpaceRequest(
+    string Dni,
+    string? ClientName,
+    DateTimeOffset? StartsAt,
+    DateTimeOffset? LimitUntil,
+    string? LicensePlate);

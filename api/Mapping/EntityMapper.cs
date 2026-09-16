@@ -2,6 +2,7 @@ using Parkimetro.Api.Billing;
 using Parkimetro.Api.Dtos;
 using Parkimetro.Api.Identity;
 using Parkimetro.Api.Models;
+using Parkimetro.Api.Parking;
 
 namespace Parkimetro.Api.Mapping;
 
@@ -34,7 +35,11 @@ public static class EntityMapper
             space.ClientDni,
             space.ClientRuc,
             space.ClientName,
-            active?.StartedAt);
+            active?.StartedAt,
+            space.LicensePlate ?? active?.LicensePlate,
+            space.ReservedFrom,
+            space.LimitUntil ?? active?.LimitUntil,
+            ParkingStay.Exceeded(space));
     }
 
     public static SessionDto ToDto(this ParkingSession session, DateTimeOffset? now = null)
@@ -51,6 +56,7 @@ public static class EntityMapper
             session.Operator?.Name ?? string.Empty,
             session.LicensePlate,
             session.StartedAt,
+            session.LimitUntil,
             session.EndedAt,
             session.IsActive,
             hours,

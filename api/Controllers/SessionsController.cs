@@ -4,14 +4,16 @@ using Parkimetro.Api.Auth;
 using Parkimetro.Api.Billing;
 using Parkimetro.Api.Data;
 using Parkimetro.Api.Dtos;
+using Parkimetro.Api.Identity;
 using Parkimetro.Api.Mapping;
 using Parkimetro.Api.Models;
+using Parkimetro.Api.Parking;
 
 namespace Parkimetro.Api.Controllers;
 
 [ApiController]
 [Route("api/sessions")]
-public class SessionsController(AppDbContext db) : ControllerBase
+public class SessionsController(AppDbContext db, IRucDirectory directory) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SessionDto>>> GetAll([FromQuery] bool activeOnly = false)
@@ -45,34 +47,27 @@ public class SessionsController(AppDbContext db) : ControllerBase
             return NotFound(new { message = "El espacio no existe." });
         }
 
-        if (space.Status == SpaceStatus.OutOfService)
+        var started = await ParkingOccupation.StartAsync(
+            directory,
+            space,
+            operatorId,
+            request.Dni,
+            request.ClientName,
+            request.LicensePlate,
+            request.LimitUntil);
+
+        if (!started.Succeeded)
         {
-            return BadRequest(new { message = "El espacio está fuera de servicio." });
+            return StatusCode(started.StatusCode, new { message = started.Message });
         }
 
-        if (space.Sessions.Any(session => session.EndedAt is null))
-        {
-            return Conflict(new { message = "Ese espacio ya tiene una sesión activa." });
-        }
-
-        var session = new ParkingSession
-        {
-            Id = Guid.NewGuid(),
-            SpaceId = space.Id,
-            OperatorId = operatorId,
-            LicensePlate = string.IsNullOrWhiteSpace(request.LicensePlate) ? null : request.LicensePlate.Trim().ToUpperInvariant(),
-            StartedAt = DateTimeOffset.UtcNow
-        };
-
-        space.Status = SpaceStatus.Occupied;
-        space.UpdatedAt = DateTimeOffset.UtcNow;
-        db.Sessions.Add(session);
+        db.Sessions.Add(started.Session!);
         await db.SaveChangesAsync();
 
-        session = await db.Sessions
+        var session = await db.Sessions
             .Include(item => item.Space)
             .Include(item => item.Operator)
-            .FirstAsync(item => item.Id == session.Id);
+            .FirstAsync(item => item.Id == started.Session!.Id);
 
         return CreatedAtAction(nameof(GetAll), session.ToDto());
     }
@@ -100,9 +95,7 @@ public class SessionsController(AppDbContext db) : ControllerBase
         {
             session.Space.Status = SpaceStatus.Free;
             session.Space.UpdatedAt = DateTimeOffset.UtcNow;
-            session.Space.ClientDni = null;
-            session.Space.ClientRuc = null;
-            session.Space.ClientName = null;
+            ParkingStay.Clear(session.Space);
         }
 
         await db.SaveChangesAsync();

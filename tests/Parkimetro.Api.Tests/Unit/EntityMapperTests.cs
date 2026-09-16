@@ -52,6 +52,8 @@ public class EntityMapperTests
         Assert.Null(dto.ClientName);
         Assert.NotNull(dto.OccupiedSince);
         Assert.Equal(12, dto.HourlyRate);
+        Assert.False(dto.ExceededLimit);
+        Assert.Null(dto.LimitUntil);
     }
 
     [Fact]

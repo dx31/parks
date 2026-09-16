@@ -7,6 +7,7 @@ using Parkimetro.Api.Dtos;
 using Parkimetro.Api.Identity;
 using Parkimetro.Api.Mapping;
 using Parkimetro.Api.Models;
+using Parkimetro.Api.Parking;
 
 namespace Parkimetro.Api.Controllers;
 
@@ -120,18 +121,25 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
 
         if (request.Status == SpaceStatus.Reserved)
         {
-            return await ReserveCore(space, request.Dni, request.ClientName);
+            return await ReserveCore(space, request.Dni, request.ClientName, request.StartsAt, request.LimitUntil, request.LicensePlate);
         }
 
         if (request.Status == SpaceStatus.Occupied && !space.Sessions.Any(item => item.EndedAt is null))
         {
-            db.Sessions.Add(new ParkingSession
+            var started = await ParkingOccupation.StartAsync(
+                directory,
+                space,
+                HttpContext.GetOperatorId(),
+                request.Dni,
+                request.ClientName,
+                request.LicensePlate,
+                request.LimitUntil);
+            if (!started.Succeeded)
             {
-                Id = Guid.NewGuid(),
-                SpaceId = space.Id,
-                OperatorId = HttpContext.GetOperatorId(),
-                StartedAt = DateTimeOffset.UtcNow
-            });
+                return StatusCode(started.StatusCode, new { message = started.Message });
+            }
+
+            db.Sessions.Add(started.Session!);
         }
 
         if (request.Status == SpaceStatus.Free)
@@ -145,7 +153,7 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
 
         if (request.Status is SpaceStatus.Free or SpaceStatus.OutOfService)
         {
-            ClearClient(space);
+            ParkingStay.Clear(space);
         }
 
         space.Status = request.Status;
@@ -164,7 +172,13 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
             return NotFound();
         }
 
-        return await ReserveCore(space, request.Dni, request.ClientName);
+        return await ReserveCore(
+            space,
+            request.Dni,
+            request.ClientName,
+            request.StartsAt,
+            request.LimitUntil,
+            request.LicensePlate);
     }
 
     [HttpDelete("{id:guid}")]
@@ -182,7 +196,13 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
         return NoContent();
     }
 
-    private async Task<ActionResult<SpaceDto>> ReserveCore(ParkingSpace space, string? dni, string? clientName)
+    private async Task<ActionResult<SpaceDto>> ReserveCore(
+        ParkingSpace space,
+        string? dni,
+        string? clientName,
+        DateTimeOffset? startsAt,
+        DateTimeOffset? limitUntil,
+        string? licensePlate)
     {
         if (space.Status == SpaceStatus.OutOfService)
         {
@@ -194,45 +214,34 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
             return Conflict(new { message = "Ese espacio ya tiene una sesión activa." });
         }
 
-        var normalizedDni = DniRuc.NormalizeDni(dni);
-        if (normalizedDni is null)
+        if (startsAt is null)
         {
-            return BadRequest(new { message = "Indica el DNI de 8 dígitos del cliente." });
+            return BadRequest(new { message = "Indica la hora de inicio de la reserva." });
         }
 
-        ClientIdentity? found = null;
-        try
+        var windowError = ParkingStay.ValidateWindow(startsAt.Value, limitUntil);
+        if (windowError is not null)
         {
-            found = await directory.FindByDniAsync(normalizedDni);
-        }
-        catch (InvalidOperationException exception)
-        {
-            if (string.IsNullOrWhiteSpace(clientName))
-            {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, new { message = exception.Message });
-            }
+            return BadRequest(new { message = windowError });
         }
 
-        var name = string.IsNullOrWhiteSpace(found?.Name) ? clientName?.Trim() : found!.Name;
-        if (string.IsNullOrWhiteSpace(name))
+        var lookup = await ClientLookup.ResolveAsync(directory, dni, clientName);
+        if (!lookup.Succeeded)
         {
-            return BadRequest(new { message = "No se encontró el nombre. Ingrésalo manualmente." });
+            return StatusCode(lookup.StatusCode, new { message = lookup.Message });
         }
 
         space.Status = SpaceStatus.Reserved;
-        space.ClientDni = normalizedDni;
-        space.ClientRuc = found?.Ruc ?? DniRuc.ToRuc(normalizedDni);
-        space.ClientName = name;
-        space.UpdatedAt = DateTimeOffset.UtcNow;
+        ParkingStay.AssignClient(
+            space,
+            lookup.Dni!,
+            lookup.Ruc!,
+            lookup.Name!,
+            ParkingStay.NormalizePlate(licensePlate),
+            startsAt,
+            limitUntil!.Value);
         await db.SaveChangesAsync();
         return Ok(space.ToDto());
-    }
-
-    private static void ClearClient(ParkingSpace space)
-    {
-        space.ClientDni = null;
-        space.ClientRuc = null;
-        space.ClientName = null;
     }
 
     private Task<ParkingSpace?> FindSpaceAsync(Guid id) =>

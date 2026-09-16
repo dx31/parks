@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Parkimetro.Api.Billing;
+using Parkimetro.Api.Identity;
 using Parkimetro.Api.Models;
 
 namespace Parkimetro.Api.Data;
@@ -41,6 +42,19 @@ public static class DbSeeder
         };
 
         var occupied = spaces[1];
+        occupied.ClientDni = "12345678";
+        occupied.ClientRuc = DniRuc.ToRuc("12345678");
+        occupied.ClientName = "PEREZ PEREZ JUAN";
+        occupied.LicensePlate = "ABC123";
+        occupied.LimitUntil = DateTimeOffset.UtcNow.AddHours(2);
+
+        var reserved = spaces[4];
+        reserved.ClientDni = "12345678";
+        reserved.ClientRuc = DniRuc.ToRuc("12345678");
+        reserved.ClientName = "PEREZ PEREZ JUAN";
+        reserved.ReservedFrom = DateTimeOffset.UtcNow;
+        reserved.LimitUntil = DateTimeOffset.UtcNow.AddHours(2);
+
         db.Zones.AddRange(centro, universidad);
         db.Spaces.AddRange(spaces);
         var ana = new OperatorAccount
@@ -56,7 +70,9 @@ public static class DbSeeder
             Id = Guid.NewGuid(),
             SpaceId = occupied.Id,
             OperatorId = ana.Id,
-            StartedAt = DateTimeOffset.UtcNow.AddMinutes(-8)
+            LicensePlate = occupied.LicensePlate,
+            StartedAt = DateTimeOffset.UtcNow.AddMinutes(-8),
+            LimitUntil = occupied.LimitUntil
         });
 
         await db.SaveChangesAsync();

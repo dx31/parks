@@ -64,7 +64,7 @@ OpenAPI: `http://localhost:5280/openapi/v1.json`
 API:
 
 ```powershell
-dotnet format Parkimetro.slnx --verify-no-changes --severity warn
+dotnet format parks.slnx --verify-no-changes --severity warn
 dotnet test tests/Parkimetro.Api.Tests/Parkimetro.Api.Tests.csproj /p:CollectCoverage=true /p:Threshold=70
 ```
 

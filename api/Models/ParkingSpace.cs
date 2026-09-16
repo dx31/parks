@@ -14,6 +14,9 @@ public class ParkingSpace
     public string? ClientDni { get; set; }
     public string? ClientRuc { get; set; }
     public string? ClientName { get; set; }
+    public string? LicensePlate { get; set; }
+    public DateTimeOffset? ReservedFrom { get; set; }
+    public DateTimeOffset? LimitUntil { get; set; }
     public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
     public ICollection<ParkingSession> Sessions { get; set; } = [];
 }

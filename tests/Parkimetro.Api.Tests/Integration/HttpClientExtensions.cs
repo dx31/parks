@@ -21,4 +21,37 @@ internal static class HttpClientExtensions
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         return token!;
     }
+
+    public static object ReservePayload(
+        string dni,
+        string? clientName = null,
+        string? licensePlate = null,
+        DateTimeOffset? startsAt = null,
+        DateTimeOffset? limitUntil = null)
+    {
+        var start = startsAt ?? DateTimeOffset.UtcNow;
+        return new
+        {
+            dni,
+            clientName,
+            licensePlate,
+            startsAt = start,
+            limitUntil = limitUntil ?? start.AddHours(2)
+        };
+    }
+
+    public static object OccupyPayload(
+        Guid spaceId,
+        string dni,
+        string? clientName = null,
+        string? licensePlate = null,
+        DateTimeOffset? limitUntil = null) =>
+        new
+        {
+            spaceId,
+            dni,
+            clientName,
+            licensePlate,
+            limitUntil = limitUntil ?? DateTimeOffset.UtcNow.AddHours(2)
+        };
 }

@@ -15,9 +15,13 @@ public static class SchemaPatcher
         await AddColumnIfMissingAsync(db, "Spaces", "ClientDni", """ALTER TABLE "Spaces" ADD COLUMN "ClientDni" TEXT""");
         await AddColumnIfMissingAsync(db, "Spaces", "ClientRuc", """ALTER TABLE "Spaces" ADD COLUMN "ClientRuc" TEXT""");
         await AddColumnIfMissingAsync(db, "Spaces", "ClientName", """ALTER TABLE "Spaces" ADD COLUMN "ClientName" TEXT""");
+        await AddColumnIfMissingAsync(db, "Spaces", "LicensePlate", """ALTER TABLE "Spaces" ADD COLUMN "LicensePlate" TEXT""");
+        await AddColumnIfMissingAsync(db, "Spaces", "ReservedFrom", """ALTER TABLE "Spaces" ADD COLUMN "ReservedFrom" TEXT""");
+        await AddColumnIfMissingAsync(db, "Spaces", "LimitUntil", """ALTER TABLE "Spaces" ADD COLUMN "LimitUntil" TEXT""");
         await AddColumnIfMissingAsync(db, "Sessions", "BilledHours", """ALTER TABLE "Sessions" ADD COLUMN "BilledHours" INTEGER""");
         await AddColumnIfMissingAsync(db, "Sessions", "Amount", """ALTER TABLE "Sessions" ADD COLUMN "Amount" TEXT""");
         await AddColumnIfMissingAsync(db, "Sessions", "ChargedRate", """ALTER TABLE "Sessions" ADD COLUMN "ChargedRate" TEXT""");
+        await AddColumnIfMissingAsync(db, "Sessions", "LimitUntil", """ALTER TABLE "Sessions" ADD COLUMN "LimitUntil" TEXT""");
     }
 
     private static async Task AddColumnIfMissingAsync(AppDbContext db, string table, string column, string sql)

@@ -25,9 +25,13 @@ public class SchemaPatcherTests
             Assert.True(await ColumnExists(db, "Zones", "VideoUrl"));
             Assert.True(await ColumnExists(db, "Spaces", "ClientDni"));
             Assert.True(await ColumnExists(db, "Spaces", "ClientName"));
+            Assert.True(await ColumnExists(db, "Spaces", "LicensePlate"));
+            Assert.True(await ColumnExists(db, "Spaces", "ReservedFrom"));
+            Assert.True(await ColumnExists(db, "Spaces", "LimitUntil"));
             Assert.True(await ColumnExists(db, "Sessions", "Amount"));
             Assert.True(await ColumnExists(db, "Sessions", "BilledHours"));
             Assert.True(await ColumnExists(db, "Sessions", "ChargedRate"));
+            Assert.True(await ColumnExists(db, "Sessions", "LimitUntil"));
             await db.Database.CloseConnectionAsync();
         }
 
