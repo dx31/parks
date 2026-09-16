@@ -9,6 +9,10 @@ public record SessionDto(
     string? LicensePlate,
     DateTimeOffset StartedAt,
     DateTimeOffset? EndedAt,
-    bool IsActive);
+    bool IsActive,
+    int BilledHours,
+    decimal Amount,
+    decimal HourlyRate,
+    bool Paid);
 
 public record StartSessionRequest(Guid SpaceId, string? LicensePlate);

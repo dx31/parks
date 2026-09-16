@@ -15,16 +15,37 @@ public static class SchemaPatcher
         await AddColumnIfMissingAsync(db, "Spaces", "ClientDni", """ALTER TABLE "Spaces" ADD COLUMN "ClientDni" TEXT""");
         await AddColumnIfMissingAsync(db, "Spaces", "ClientRuc", """ALTER TABLE "Spaces" ADD COLUMN "ClientRuc" TEXT""");
         await AddColumnIfMissingAsync(db, "Spaces", "ClientName", """ALTER TABLE "Spaces" ADD COLUMN "ClientName" TEXT""");
+        await AddColumnIfMissingAsync(db, "Sessions", "BilledHours", """ALTER TABLE "Sessions" ADD COLUMN "BilledHours" INTEGER""");
+        await AddColumnIfMissingAsync(db, "Sessions", "Amount", """ALTER TABLE "Sessions" ADD COLUMN "Amount" TEXT""");
+        await AddColumnIfMissingAsync(db, "Sessions", "ChargedRate", """ALTER TABLE "Sessions" ADD COLUMN "ChargedRate" TEXT""");
     }
 
     private static async Task AddColumnIfMissingAsync(AppDbContext db, string table, string column, string sql)
     {
-        if (await ColumnExistsAsync(db, table, column))
+        if (!await TableExistsAsync(db, table) || await ColumnExistsAsync(db, table, column))
         {
             return;
         }
 
         await db.Database.ExecuteSqlRawAsync(sql);
+    }
+
+    private static async Task<bool> TableExistsAsync(AppDbContext db, string table)
+    {
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        if (command.Connection!.State != System.Data.ConnectionState.Open)
+        {
+            await command.Connection.OpenAsync();
+        }
+
+        if (table is not ("Zones" or "Spaces" or "Sessions"))
+        {
+            throw new ArgumentOutOfRangeException(nameof(table), table, "Tabla no soportada.");
+        }
+
+        command.CommandText = $"""SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = '{table}'""";
+        var result = await command.ExecuteScalarAsync();
+        return result is not null && result is not DBNull;
     }
 
     private static async Task<bool> ColumnExistsAsync(AppDbContext db, string table, string column)
@@ -35,12 +56,7 @@ public static class SchemaPatcher
             await command.Connection.OpenAsync();
         }
 
-        command.CommandText = table switch
-        {
-            "Zones" => """PRAGMA table_info("Zones")""",
-            "Spaces" => """PRAGMA table_info("Spaces")""",
-            _ => throw new ArgumentOutOfRangeException(nameof(table), table, "Tabla no soportada.")
-        };
+        command.CommandText = $"""PRAGMA table_info("{table}")""";
         await using var reader = await command.ExecuteReaderAsync();
         while (await reader.ReadAsync())
         {

@@ -8,7 +8,9 @@ class FakeParkimetroApi extends ParkimetroApi {
   String? occupiedSpaceId;
   String? lastStatusChange;
   String? reservedDni;
+  String? reservedName;
   String? lookedUpDni;
+  final unknownDnis = <String>{};
 
   final zones = [
     const Zone(
@@ -28,11 +30,31 @@ class FakeParkimetroApi extends ParkimetroApi {
       zoneName: 'Centro Histórico',
       latitude: 19.4,
       longitude: -99.1,
-      hourlyRate: 18,
+      hourlyRate: 2,
       status: SpaceStatus.free,
       updatedAt: DateTime.utc(2026, 9, 13),
     ),
+    ParkingSpace(
+      id: 's2',
+      code: 'A-02',
+      zoneId: 'z1',
+      zoneName: 'Centro Histórico',
+      latitude: 19.41,
+      longitude: -99.11,
+      hourlyRate: 2,
+      status: SpaceStatus.occupied,
+      updatedAt: DateTime.utc(2026, 9, 13),
+      activeSessionId: 'p-occupied',
+      occupiedSince: DateTime.now().subtract(const Duration(minutes: 8)),
+    ),
   ];
+
+  void _replace(ParkingSpace space) {
+    final index = spaces.indexWhere((item) => item.id == space.id);
+    if (index >= 0) {
+      spaces[index] = space;
+    }
+  }
 
   @override
   Future<AuthSession> login(String username, String pin) async {
@@ -119,27 +141,42 @@ class FakeParkimetroApi extends ParkimetroApi {
   }
 
   @override
-  Future<ParkingSpace> reserveSpace(String id, {required String dni}) async {
+  Future<ParkingSpace> reserveSpace(
+    String id, {
+    required String dni,
+    String? clientName,
+  }) async {
     reservedDni = dni;
-    return ParkingSpace(
-      id: id,
-      code: 'A-01',
-      zoneId: 'z1',
-      zoneName: 'Centro Histórico',
-      latitude: 19.4,
-      longitude: -99.1,
-      hourlyRate: 18,
+    reservedName = clientName;
+    final current = await getSpace(id);
+    final reserved = ParkingSpace(
+      id: current.id,
+      code: current.code,
+      zoneId: current.zoneId,
+      zoneName: current.zoneName,
+      latitude: current.latitude,
+      longitude: current.longitude,
+      hourlyRate: current.hourlyRate,
       status: SpaceStatus.reserved,
+      notes: current.notes,
       updatedAt: DateTime.utc(2026, 9, 13),
       clientDni: dni,
       clientRuc: '10123456780',
-      clientName: 'PEREZ PEREZ JUAN',
+      clientName: clientName ?? 'PEREZ PEREZ JUAN',
     );
+    _replace(reserved);
+    return reserved;
   }
 
   @override
   Future<ClientIdentity> lookupClient(String dni) async {
     lookedUpDni = dni;
+    if (unknownDnis.contains(dni)) {
+      throw ApiException(
+        'No se encontró el DNI en el padrón RUC.',
+        statusCode: 404,
+      );
+    }
     return ClientIdentity(
       dni: dni,
       ruc: '10123456780',
@@ -153,15 +190,36 @@ class FakeParkimetroApi extends ParkimetroApi {
     String? licensePlate,
   }) async {
     occupiedSpaceId = spaceId;
+    final current = await getSpace(spaceId);
+    final occupied = ParkingSpace(
+      id: current.id,
+      code: current.code,
+      zoneId: current.zoneId,
+      zoneName: current.zoneName,
+      latitude: current.latitude,
+      longitude: current.longitude,
+      hourlyRate: current.hourlyRate,
+      status: SpaceStatus.occupied,
+      notes: current.notes,
+      updatedAt: DateTime.utc(2026, 9, 13),
+      activeSessionId: 'p1',
+      clientDni: current.clientDni,
+      clientRuc: current.clientRuc,
+      clientName: current.clientName,
+      occupiedSince: DateTime.now(),
+    );
+    _replace(occupied);
     return ParkingSession(
       id: 'p1',
       spaceId: spaceId,
-      spaceCode: 'A-01',
+      spaceCode: current.code,
       operatorId: 'o1',
       operatorName: 'Ana López',
       licensePlate: licensePlate,
-      startedAt: DateTime.utc(2026, 9, 13),
+      startedAt: occupied.occupiedSince!,
       isActive: true,
+      billedHours: 1,
+      amount: 2,
     );
   }
 
@@ -176,6 +234,8 @@ class FakeParkimetroApi extends ParkimetroApi {
       startedAt: DateTime.utc(2026, 9, 13),
       endedAt: DateTime.utc(2026, 9, 13, 13),
       isActive: false,
+      billedHours: 1,
+      amount: 2,
     );
   }
 }

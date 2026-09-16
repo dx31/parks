@@ -1,11 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:operator_app/main.dart';
+import 'package:parkimetro_core/parkimetro_core.dart';
 
 import '../test/helpers/fake_api.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  OccupancyClock.live = false;
 
   testWidgets('flujo de operador: login, zona y espacio', (tester) async {
     final api = FakeParkimetroApi();

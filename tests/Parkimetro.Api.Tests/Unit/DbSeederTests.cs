@@ -16,6 +16,7 @@ public class DbSeederTests
         Assert.Equal(2, await db.Zones.CountAsync());
         Assert.Equal(6, await db.Spaces.CountAsync());
         Assert.Equal(1, await db.Operators.CountAsync());
+        Assert.Equal(1, await db.Sessions.CountAsync());
         Assert.Equal("ana", (await db.Operators.SingleAsync()).Username);
     }
 

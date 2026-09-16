@@ -46,72 +46,19 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
   }
 
   Future<void> _reserve() async {
-    final dni = TextEditingController();
-    ClientIdentity? identity;
-    final accepted = await showDialog<bool>(
+    final result = await showDialog<_ReserveResult>(
       context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setDialogState) {
-            return AlertDialog(
-              title: const Text('Reservar espacio'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TextField(
-                    controller: dni,
-                    decoration: const InputDecoration(
-                      labelText: 'DNI del cliente',
-                    ),
-                    keyboardType: TextInputType.number,
-                    maxLength: 8,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () async {
-                        try {
-                          final found = await widget.api.lookupClient(
-                            dni.text.trim(),
-                          );
-                          setDialogState(() => identity = found);
-                        } on ApiException catch (error) {
-                          setDialogState(() => identity = null);
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(error.message)),
-                            );
-                          }
-                        }
-                      },
-                      child: const Text('Buscar'),
-                    ),
-                  ),
-                  if (identity != null)
-                    Text('${identity!.name}\nRUC ${identity!.ruc}'),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context, false),
-                  child: const Text('Cancelar'),
-                ),
-                FilledButton(
-                  onPressed: () => Navigator.pop(context, true),
-                  child: const Text('Reservar'),
-                ),
-              ],
-            );
-          },
-        );
-      },
+      builder: (context) => _ReserveDialog(api: widget.api),
     );
-    if (accepted != true) {
+    if (result == null) {
       return;
     }
     try {
-      await widget.api.reserveSpace(widget.spaceId, dni: dni.text.trim());
+      await widget.api.reserveSpace(
+        widget.spaceId,
+        dni: result.dni,
+        clientName: result.clientName,
+      );
       _reload();
     } on ApiException catch (error) {
       if (!mounted) {
@@ -123,35 +70,17 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
   }
 
   Future<void> _occupy() async {
-    final plate = TextEditingController();
-    final accepted = await showDialog<bool>(
+    final plate = await showDialog<String>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Iniciar ocupación'),
-        content: TextField(
-          controller: plate,
-          decoration: const InputDecoration(labelText: 'Placa (opcional)'),
-          textCapitalization: TextCapitalization.characters,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancelar'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Ocupar'),
-          ),
-        ],
-      ),
+      builder: (context) => const _OccupyDialog(),
     );
-    if (accepted != true) {
+    if (plate == null) {
       return;
     }
     try {
       await widget.api.startSession(
         widget.spaceId,
-        licensePlate: plate.text.trim().isEmpty ? null : plate.text.trim(),
+        licensePlate: plate.isEmpty ? null : plate,
       );
       _reload();
     } on ApiException catch (error) {
@@ -166,7 +95,17 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
   Future<void> _release(ParkingSpace space) async {
     try {
       if (space.activeSessionId != null) {
-        await widget.api.endSession(space.activeSessionId!);
+        final ended = await widget.api.endSession(space.activeSessionId!);
+        if (!mounted) {
+          return;
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Cobrado ${formatSoles(ended.amount)} (${ended.billedHours} h o fracción)',
+            ),
+          ),
+        );
       } else {
         await widget.api.changeStatus(space.id, SpaceStatus.free);
       }
@@ -209,7 +148,7 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
               ),
               const SizedBox(height: 8),
               Text(space.zoneName),
-              Text('\$${space.hourlyRate.toStringAsFixed(0)} por hora'),
+              Text(rateLabel(space.hourlyRate)),
               Text('Lat ${space.latitude}, Lng ${space.longitude}'),
               if (space.notes != null) Text(space.notes!),
               if (space.clientName != null) ...[
@@ -219,6 +158,13 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 Text('DNI ${space.clientDni} · RUC ${space.clientRuc}'),
+              ],
+              if (space.occupiedSince != null) ...[
+                const SizedBox(height: 16),
+                OccupancyClock(
+                  startedAt: space.occupiedSince!,
+                  hourlyRate: space.hourlyRate,
+                ),
               ],
               const SizedBox(height: 24),
               Wrap(
@@ -253,6 +199,146 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
           );
         },
       ),
+    );
+  }
+}
+
+class _ReserveResult {
+  const _ReserveResult({required this.dni, this.clientName});
+
+  final String dni;
+  final String? clientName;
+}
+
+class _ReserveDialog extends StatefulWidget {
+  const _ReserveDialog({required this.api});
+
+  final ParkimetroApi api;
+
+  @override
+  State<_ReserveDialog> createState() => _ReserveDialogState();
+}
+
+class _ReserveDialogState extends State<_ReserveDialog> {
+  final _dni = TextEditingController();
+  final _name = TextEditingController();
+  var _lookupHint = 'Si el padrón no lo trae, escríbelo aquí.';
+
+  @override
+  void dispose() {
+    _dni.dispose();
+    _name.dispose();
+    super.dispose();
+  }
+
+  Future<void> _lookup() async {
+    try {
+      final found = await widget.api.lookupClient(_dni.text.trim());
+      setState(() {
+        _name.text = found.name;
+        _lookupHint = 'RUC ${found.ruc}';
+      });
+    } on ApiException catch (error) {
+      setState(() {
+        _lookupHint = error.statusCode == 404
+            ? 'No se encontró. Ingresa el nombre completo.'
+            : error.message;
+      });
+      if (error.statusCode != 404 && mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(error.message)));
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Reservar espacio'),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _dni,
+              decoration: const InputDecoration(labelText: 'DNI del cliente'),
+              keyboardType: TextInputType.number,
+              maxLength: 8,
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: _lookup,
+                child: const Text('Buscar'),
+              ),
+            ),
+            TextField(
+              controller: _name,
+              decoration: InputDecoration(
+                labelText: 'Nombre completo',
+                helperText: _lookupHint,
+              ),
+              textCapitalization: TextCapitalization.characters,
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Cancelar'),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.pop(
+            context,
+            _ReserveResult(
+              dni: _dni.text.trim(),
+              clientName: _name.text.trim().isEmpty ? null : _name.text.trim(),
+            ),
+          ),
+          child: const Text('Reservar'),
+        ),
+      ],
+    );
+  }
+}
+
+class _OccupyDialog extends StatefulWidget {
+  const _OccupyDialog();
+
+  @override
+  State<_OccupyDialog> createState() => _OccupyDialogState();
+}
+
+class _OccupyDialogState extends State<_OccupyDialog> {
+  final _plate = TextEditingController();
+
+  @override
+  void dispose() {
+    _plate.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Iniciar ocupación'),
+      content: TextField(
+        controller: _plate,
+        decoration: const InputDecoration(labelText: 'Placa (opcional)'),
+        textCapitalization: TextCapitalization.characters,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Cancelar'),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.pop(context, _plate.text.trim()),
+          child: const Text('Ocupar'),
+        ),
+      ],
     );
   }
 }

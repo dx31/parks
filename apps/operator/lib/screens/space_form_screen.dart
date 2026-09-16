@@ -15,7 +15,7 @@ class _SpaceFormScreenState extends State<SpaceFormScreen> {
   final _code = TextEditingController();
   final _latitude = TextEditingController(text: '19.4326');
   final _longitude = TextEditingController(text: '-99.1332');
-  final _rate = TextEditingController(text: '18');
+  final _rate = TextEditingController(text: '2');
   final _notes = TextEditingController();
   bool _busy = false;
 
@@ -101,7 +101,7 @@ class _SpaceFormScreenState extends State<SpaceFormScreen> {
           TextField(
             controller: _rate,
             decoration: const InputDecoration(
-              labelText: 'Tarifa por hora',
+              labelText: 'Tarifa por hora (S/)',
               border: OutlineInputBorder(),
             ),
             keyboardType: TextInputType.number,

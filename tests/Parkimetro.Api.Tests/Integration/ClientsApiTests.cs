@@ -1,30 +1,36 @@
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace Parkimetro.Api.Tests.Integration;
 
-public class ClientsApiTests : IClassFixture<ApiFactory>
+public class ClientsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
 {
+    private readonly ApiFactory _factory;
     private readonly HttpClient _client;
 
     public ClientsApiTests(ApiFactory factory)
     {
+        _factory = factory;
         _client = factory.CreateClient();
     }
+
+    public Task InitializeAsync() => _client.LoginAsAnaAsync();
+
+    public Task DisposeAsync() => Task.CompletedTask;
 
     [Fact]
     public async Task GetClient_RequiresOperator()
     {
-        var response = await _client.GetAsync("/api/clients/12345678");
+        var anonymous = _factory.CreateClient();
+        var response = await anonymous.GetAsync("/api/clients/12345678");
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
     [Fact]
     public async Task GetClient_ValidatesAndResolvesDni()
     {
-        await _client.LoginAsAnaAsync();
-
         var invalid = await _client.GetAsync("/api/clients/123");
         Assert.Equal(HttpStatusCode.BadRequest, invalid.StatusCode);
 

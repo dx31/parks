@@ -4,27 +4,33 @@ using System.Text.Json;
 
 namespace Parkimetro.Api.Tests.Integration;
 
-public class SessionsApiTests : IClassFixture<ApiFactory>
+public class SessionsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
 {
     private static readonly Guid CentroId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+    private readonly ApiFactory _factory;
     private readonly HttpClient _client;
 
     public SessionsApiTests(ApiFactory factory)
     {
+        _factory = factory;
         _client = factory.CreateClient();
     }
+
+    public Task InitializeAsync() => _client.LoginAsAnaAsync();
+
+    public Task DisposeAsync() => Task.CompletedTask;
 
     [Fact]
     public async Task StartSession_RequiresOperator()
     {
-        var response = await _client.PostAsJsonAsync("/api/sessions", new { spaceId = Guid.NewGuid() });
+        var anonymous = _factory.CreateClient();
+        var response = await anonymous.PostAsJsonAsync("/api/sessions", new { spaceId = Guid.NewGuid() });
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
     [Fact]
     public async Task SessionLifecycle_OccupiesAndReleasesSpace()
     {
-        await _client.LoginAsAnaAsync();
         var spaceId = await CreateSpaceAsync("S-01");
 
         var started = await _client.PostAsJsonAsync("/api/sessions", new { spaceId, licensePlate = " abc123 " });
@@ -32,9 +38,12 @@ public class SessionsApiTests : IClassFixture<ApiFactory>
         var session = await started.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         Assert.Equal("ABC123", session.GetProperty("licensePlate").GetString());
         Assert.True(session.GetProperty("isActive").GetBoolean());
+        Assert.Equal(1, session.GetProperty("billedHours").GetInt32());
+        Assert.Equal(2, session.GetProperty("amount").GetDecimal());
 
         var space = await _client.GetFromJsonAsync<JsonElement>($"/api/spaces/{spaceId}", HttpClientExtensions.JsonOptions);
         Assert.Equal("occupied", space.GetProperty("status").GetString());
+        Assert.NotEqual(JsonValueKind.Null, space.GetProperty("occupiedSince").ValueKind);
 
         var conflict = await _client.PostAsJsonAsync("/api/sessions", new { spaceId });
         Assert.Equal(HttpStatusCode.Conflict, conflict.StatusCode);
@@ -45,6 +54,10 @@ public class SessionsApiTests : IClassFixture<ApiFactory>
         var sessionId = session.GetProperty("id").GetGuid();
         var ended = await _client.PostAsync($"/api/sessions/{sessionId}/end", null);
         Assert.Equal(HttpStatusCode.OK, ended.StatusCode);
+        var endedBody = await ended.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
+        Assert.Equal(1, endedBody.GetProperty("billedHours").GetInt32());
+        Assert.Equal(2, endedBody.GetProperty("amount").GetDecimal());
+        Assert.True(endedBody.GetProperty("paid").GetBoolean());
 
         var released = await _client.GetFromJsonAsync<JsonElement>($"/api/spaces/{spaceId}", HttpClientExtensions.JsonOptions);
         Assert.Equal("free", released.GetProperty("status").GetString());
@@ -56,8 +69,6 @@ public class SessionsApiTests : IClassFixture<ApiFactory>
     [Fact]
     public async Task StartSession_WhenSpaceMissingOrOutOfService_Fails()
     {
-        await _client.LoginAsAnaAsync();
-
         var missing = await _client.PostAsJsonAsync("/api/sessions", new { spaceId = Guid.NewGuid() });
         Assert.Equal(HttpStatusCode.NotFound, missing.StatusCode);
 
@@ -70,7 +81,6 @@ public class SessionsApiTests : IClassFixture<ApiFactory>
     [Fact]
     public async Task ChangeStatusToFree_ClosesActiveSession()
     {
-        await _client.LoginAsAnaAsync();
         var spaceId = await CreateSpaceAsync("S-02");
         var started = await _client.PostAsJsonAsync("/api/sessions", new { spaceId });
         var session = await started.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
@@ -86,7 +96,6 @@ public class SessionsApiTests : IClassFixture<ApiFactory>
     [Fact]
     public async Task EndSession_WhenMissing_ReturnsNotFound()
     {
-        await _client.LoginAsAnaAsync();
         var response = await _client.PostAsync($"/api/sessions/{Guid.NewGuid()}/end", null);
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
@@ -99,7 +108,7 @@ public class SessionsApiTests : IClassFixture<ApiFactory>
             zoneId = CentroId,
             latitude = 19.4,
             longitude = -99.1,
-            hourlyRate = 18
+            hourlyRate = 2
         });
         created.EnsureSuccessStatusCode();
         var space = await created.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);

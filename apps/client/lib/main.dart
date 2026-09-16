@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:parkimetro_core/parkimetro_core.dart';
 
+import 'login_screen.dart';
+
 void main() {
   runApp(ClientApp(api: ParkimetroApi()));
 }
 
-class ClientApp extends StatelessWidget {
+class ClientApp extends StatefulWidget {
   const ClientApp({super.key, required this.api});
 
   final ParkimetroApi api;
+
+  @override
+  State<ClientApp> createState() => _ClientAppState();
+}
+
+class _ClientAppState extends State<ClientApp> {
+  OperatorAccount? _account;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +27,31 @@ class ClientApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1B4F9C)),
         useMaterial3: true,
       ),
-      home: ClientHomeScreen(api: api),
+      home: _account == null
+          ? LoginScreen(
+              api: widget.api,
+              onLoggedIn: (account) => setState(() => _account = account),
+            )
+          : ClientHomeScreen(
+              api: widget.api,
+              onLogout: () {
+                widget.api.token = null;
+                setState(() => _account = null);
+              },
+            ),
     );
   }
 }
 
 class ClientHomeScreen extends StatefulWidget {
-  const ClientHomeScreen({super.key, required this.api});
+  const ClientHomeScreen({
+    super.key,
+    required this.api,
+    required this.onLogout,
+  });
 
   final ParkimetroApi api;
+  final VoidCallback onLogout;
 
   @override
   State<ClientHomeScreen> createState() => _ClientHomeScreenState();
@@ -59,6 +84,11 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
         title: const Text('Espacios disponibles'),
         actions: [
           IconButton(onPressed: _reload, icon: const Icon(Icons.refresh)),
+          IconButton(
+            onPressed: widget.onLogout,
+            tooltip: 'Salir',
+            icon: const Icon(Icons.logout),
+          ),
         ],
       ),
       body: Column(
@@ -108,9 +138,15 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                           ),
                         ),
                         title: Text('${space.code} · ${space.zoneName}'),
-                        subtitle: Text(
-                          '${spaceStatusLabel(space.status)} · \$${space.hourlyRate.toStringAsFixed(0)} / hora',
-                        ),
+                        subtitle: space.occupiedSince == null
+                            ? Text(
+                                '${spaceStatusLabel(space.status)} · ${rateLabel(space.hourlyRate)}',
+                              )
+                            : OccupancyClock(
+                                startedAt: space.occupiedSince!,
+                                hourlyRate: space.hourlyRate,
+                                compact: true,
+                              ),
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute<void>(
                             builder: (_) => SpaceInfoScreen(space: space),
@@ -147,11 +183,18 @@ class SpaceInfoScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(spaceStatusLabel(space.status)),
-          Text('\$${space.hourlyRate.toStringAsFixed(0)} por hora'),
+          Text(rateLabel(space.hourlyRate)),
           Text('Lat ${space.latitude}, Lng ${space.longitude}'),
           if (space.notes != null) ...[
             const SizedBox(height: 12),
             Text(space.notes!),
+          ],
+          if (space.occupiedSince != null) ...[
+            const SizedBox(height: 16),
+            OccupancyClock(
+              startedAt: space.occupiedSince!,
+              hourlyRate: space.hourlyRate,
+            ),
           ],
           const SizedBox(height: 24),
           const Text(

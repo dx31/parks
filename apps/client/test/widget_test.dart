@@ -5,11 +5,19 @@ import 'package:parkimetro_core/parkimetro_core.dart';
 
 import 'helpers/fake_api.dart';
 
+Future<void> _enter(WidgetTester tester) async {
+  await tester.tap(find.text('Entrar'));
+  await tester.pumpAndSettle();
+}
+
 void main() {
+  setUp(() => OccupancyClock.live = false);
+
   testWidgets('lista espacios libres y abre el detalle', (tester) async {
     final api = FakeParkimetroApi();
     await tester.pumpWidget(ClientApp(api: api));
     await tester.pumpAndSettle();
+    await _enter(tester);
 
     expect(find.text('A-01 · Centro Histórico'), findsOneWidget);
     expect(find.text('A-02 · Centro Histórico'), findsNothing);
@@ -25,6 +33,7 @@ void main() {
     final api = FakeParkimetroApi();
     await tester.pumpWidget(ClientApp(api: api));
     await tester.pumpAndSettle();
+    await _enter(tester);
 
     await tester.tap(find.byType(Switch));
     await tester.pumpAndSettle();
@@ -38,6 +47,7 @@ void main() {
       ..error = ApiException('No se pudo conectar con la API.');
     await tester.pumpWidget(ClientApp(api: api));
     await tester.pumpAndSettle();
+    await _enter(tester);
     expect(find.text('No se pudo conectar con la API.'), findsOneWidget);
   });
 }

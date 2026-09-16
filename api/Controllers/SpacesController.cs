@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Parkimetro.Api.Auth;
+using Parkimetro.Api.Billing;
 using Parkimetro.Api.Data;
 using Parkimetro.Api.Dtos;
 using Parkimetro.Api.Identity;
@@ -75,7 +77,7 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
             ZoneId = request.ZoneId,
             Latitude = request.Latitude,
             Longitude = request.Longitude,
-            HourlyRate = request.HourlyRate,
+            HourlyRate = request.HourlyRate > 0 ? request.HourlyRate : ParkingBilling.DefaultHourlyRate,
             Notes = request.Notes,
             Status = SpaceStatus.Free,
             UpdatedAt = DateTimeOffset.UtcNow
@@ -100,7 +102,7 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
         space.Code = request.Code.Trim();
         space.Latitude = request.Latitude;
         space.Longitude = request.Longitude;
-        space.HourlyRate = request.HourlyRate;
+        space.HourlyRate = request.HourlyRate > 0 ? request.HourlyRate : ParkingBilling.DefaultHourlyRate;
         space.Notes = request.Notes;
         space.UpdatedAt = DateTimeOffset.UtcNow;
         await db.SaveChangesAsync();
@@ -118,14 +120,26 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
 
         if (request.Status == SpaceStatus.Reserved)
         {
-            return await ReserveCore(space, request.Dni);
+            return await ReserveCore(space, request.Dni, request.ClientName);
+        }
+
+        if (request.Status == SpaceStatus.Occupied && !space.Sessions.Any(item => item.EndedAt is null))
+        {
+            db.Sessions.Add(new ParkingSession
+            {
+                Id = Guid.NewGuid(),
+                SpaceId = space.Id,
+                OperatorId = HttpContext.GetOperatorId(),
+                StartedAt = DateTimeOffset.UtcNow
+            });
         }
 
         if (request.Status == SpaceStatus.Free)
         {
+            var endedAt = DateTimeOffset.UtcNow;
             foreach (var session in space.Sessions.Where(item => item.EndedAt is null))
             {
-                session.EndedAt = DateTimeOffset.UtcNow;
+                ParkingSettlement.Close(session, space, endedAt);
             }
         }
 
@@ -137,7 +151,8 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
         space.Status = request.Status;
         space.UpdatedAt = DateTimeOffset.UtcNow;
         await db.SaveChangesAsync();
-        return Ok(space.ToDto());
+        space = await FindSpaceAsync(id);
+        return Ok(space!.ToDto());
     }
 
     [HttpPost("{id:guid}/reserve")]
@@ -149,7 +164,7 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
             return NotFound();
         }
 
-        return await ReserveCore(space, request.Dni);
+        return await ReserveCore(space, request.Dni, request.ClientName);
     }
 
     [HttpDelete("{id:guid}")]
@@ -167,7 +182,7 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
         return NoContent();
     }
 
-    private async Task<ActionResult<SpaceDto>> ReserveCore(ParkingSpace space, string? dni)
+    private async Task<ActionResult<SpaceDto>> ReserveCore(ParkingSpace space, string? dni, string? clientName)
     {
         if (space.Status == SpaceStatus.OutOfService)
         {
@@ -179,31 +194,35 @@ public class SpacesController(AppDbContext db, IRucDirectory directory) : Contro
             return Conflict(new { message = "Ese espacio ya tiene una sesión activa." });
         }
 
-        if (DniRuc.NormalizeDni(dni) is null)
+        var normalizedDni = DniRuc.NormalizeDni(dni);
+        if (normalizedDni is null)
         {
             return BadRequest(new { message = "Indica el DNI de 8 dígitos del cliente." });
         }
 
-        ClientIdentity identity;
+        ClientIdentity? found = null;
         try
         {
-            var found = await directory.FindByDniAsync(dni!);
-            if (found is null)
-            {
-                return NotFound(new { message = "No se encontró el DNI en el padrón RUC." });
-            }
-
-            identity = found;
+            found = await directory.FindByDniAsync(normalizedDni);
         }
         catch (InvalidOperationException exception)
         {
-            return StatusCode(StatusCodes.Status503ServiceUnavailable, new { message = exception.Message });
+            if (string.IsNullOrWhiteSpace(clientName))
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, new { message = exception.Message });
+            }
+        }
+
+        var name = string.IsNullOrWhiteSpace(found?.Name) ? clientName?.Trim() : found!.Name;
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            return BadRequest(new { message = "No se encontró el nombre. Ingrésalo manualmente." });
         }
 
         space.Status = SpaceStatus.Reserved;
-        space.ClientDni = identity.Dni;
-        space.ClientRuc = identity.Ruc;
-        space.ClientName = identity.Name;
+        space.ClientDni = normalizedDni;
+        space.ClientRuc = found?.Ruc ?? DniRuc.ToRuc(normalizedDni);
+        space.ClientName = name;
         space.UpdatedAt = DateTimeOffset.UtcNow;
         await db.SaveChangesAsync();
         return Ok(space.ToDto());

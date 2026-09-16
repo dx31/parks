@@ -16,7 +16,8 @@ public record SpaceDto(
     Guid? ActiveSessionId,
     string? ClientDni,
     string? ClientRuc,
-    string? ClientName);
+    string? ClientName,
+    DateTimeOffset? OccupiedSince);
 
 public record CreateSpaceRequest(
     string Code,
@@ -33,6 +34,6 @@ public record UpdateSpaceRequest(
     decimal HourlyRate,
     string? Notes);
 
-public record ChangeStatusRequest(SpaceStatus Status, string? Dni);
+public record ChangeStatusRequest(SpaceStatus Status, string? Dni, string? ClientName);
 
-public record ReserveSpaceRequest(string Dni);
+public record ReserveSpaceRequest(string Dni, string? ClientName);

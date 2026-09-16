@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Parkimetro.Api.Tests.Integration;
 
-public class OperatorsApiTests : IClassFixture<ApiFactory>
+public class OperatorsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
 {
     private readonly HttpClient _client;
 
@@ -12,6 +12,10 @@ public class OperatorsApiTests : IClassFixture<ApiFactory>
     {
         _client = factory.CreateClient();
     }
+
+    public Task InitializeAsync() => _client.LoginAsAnaAsync();
+
+    public Task DisposeAsync() => Task.CompletedTask;
 
     [Fact]
     public async Task GetOperators_ReturnsSeededAna()

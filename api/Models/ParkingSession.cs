@@ -10,6 +10,9 @@ public class ParkingSession
     public string? LicensePlate { get; set; }
     public DateTimeOffset StartedAt { get; set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset? EndedAt { get; set; }
+    public int? BilledHours { get; set; }
+    public decimal? Amount { get; set; }
+    public decimal? ChargedRate { get; set; }
 
     public bool IsActive => EndedAt is null;
 }

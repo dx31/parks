@@ -62,7 +62,13 @@ class _SpacesScreenState extends State<SpacesScreen> {
               SizedBox(
                 height: constraints.maxHeight / 2,
                 width: double.infinity,
-                child: ZoneCameraPanel(url: cameraUrl),
+                child: ZoneCameraPanel(
+                  url: cameraUrl,
+                  headers: {
+                    if (widget.api.token != null)
+                      'Authorization': 'Bearer ${widget.api.token}',
+                  },
+                ),
               ),
               Expanded(child: list),
             ],
@@ -96,11 +102,17 @@ class _SpacesScreenState extends State<SpacesScreen> {
               return Card(
                 child: ListTile(
                   title: Text(space.code),
-                  subtitle: Text(
-                    space.clientName == null
-                        ? '\$${space.hourlyRate.toStringAsFixed(0)} / hora'
-                        : '${space.clientName} · DNI ${space.clientDni}',
-                  ),
+                  subtitle: space.occupiedSince != null
+                      ? OccupancyClock(
+                          startedAt: space.occupiedSince!,
+                          hourlyRate: space.hourlyRate,
+                          compact: true,
+                        )
+                      : Text(
+                          space.clientName == null
+                              ? rateLabel(space.hourlyRate)
+                              : '${space.clientName} · DNI ${space.clientDni}',
+                        ),
                   trailing: StatusChip(status: space.status),
                   onTap: () async {
                     await Navigator.of(context).push(

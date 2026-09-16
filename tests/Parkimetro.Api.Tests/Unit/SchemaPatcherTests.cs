@@ -17,6 +17,7 @@ public class SchemaPatcherTests
             await db.Database.OpenConnectionAsync();
             await db.Database.ExecuteSqlRawAsync("CREATE TABLE Zones (Id TEXT PRIMARY KEY, Name TEXT, City TEXT)");
             await db.Database.ExecuteSqlRawAsync("CREATE TABLE Spaces (Id TEXT PRIMARY KEY, Code TEXT)");
+            await db.Database.ExecuteSqlRawAsync("CREATE TABLE Sessions (Id TEXT PRIMARY KEY, SpaceId TEXT, OperatorId TEXT, StartedAt TEXT, EndedAt TEXT)");
 
             await SchemaPatcher.ApplyAsync(db);
             await SchemaPatcher.ApplyAsync(db);
@@ -24,6 +25,9 @@ public class SchemaPatcherTests
             Assert.True(await ColumnExists(db, "Zones", "VideoUrl"));
             Assert.True(await ColumnExists(db, "Spaces", "ClientDni"));
             Assert.True(await ColumnExists(db, "Spaces", "ClientName"));
+            Assert.True(await ColumnExists(db, "Sessions", "Amount"));
+            Assert.True(await ColumnExists(db, "Sessions", "BilledHours"));
+            Assert.True(await ColumnExists(db, "Sessions", "ChargedRate"));
             await db.Database.CloseConnectionAsync();
         }
 
@@ -50,9 +54,7 @@ public class SchemaPatcherTests
     private static async Task<bool> ColumnExists(AppDbContext db, string table, string column)
     {
         await using var command = db.Database.GetDbConnection().CreateCommand();
-        command.CommandText = table == "Zones"
-            ? """PRAGMA table_info("Zones")"""
-            : """PRAGMA table_info("Spaces")""";
+        command.CommandText = $"""PRAGMA table_info("{table}")""";
         await using var reader = await command.ExecuteReaderAsync();
         while (await reader.ReadAsync())
         {

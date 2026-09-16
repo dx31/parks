@@ -40,14 +40,15 @@ void main() {
       'zoneName': 'Centro',
       'latitude': 19,
       'longitude': -99,
-      'hourlyRate': 18,
+      'hourlyRate': 2,
       'status': 'free',
       'notes': 'cerca',
       'updatedAt': '2026-09-13T12:00:00Z',
       'activeSessionId': null,
     });
     expect(space.isFree, isTrue);
-    expect(space.hourlyRate, 18);
+    expect(space.hourlyRate, 2);
+    expect(space.occupiedSince, isNull);
 
     final session = AuthSession.fromJson({
       'token': 'abc',
@@ -65,9 +66,35 @@ void main() {
       'startedAt': '2026-09-13T12:00:00Z',
       'endedAt': '2026-09-13T13:00:00Z',
       'isActive': false,
+      'billedHours': 1,
+      'amount': 2,
     });
     expect(parkingSession.endedAt, isNotNull);
     expect(parkingSession.isActive, isFalse);
+    expect(parkingSession.billedHours, 1);
+  });
+
+  test('bills by hour or fraction at two soles', () {
+    final started = DateTime.utc(2026, 9, 15, 12);
+    expect(hoursOrFraction(started, started), 1);
+    expect(
+      hoursOrFraction(started, started.add(const Duration(minutes: 1))),
+      1,
+    );
+    expect(hoursOrFraction(started, started.add(const Duration(hours: 1))), 1);
+    expect(
+      hoursOrFraction(
+        started,
+        started.add(const Duration(hours: 1, seconds: 1)),
+      ),
+      2,
+    );
+    expect(
+      billedAmount(started, started.add(const Duration(minutes: 10)), 2),
+      2,
+    );
+    expect(formatSoles(2), 'S/ 2.00');
+    expect(rateLabel(2), 'S/ 2.00 / hora o fracción');
   });
 
   test('ApiException uses the message as string', () {

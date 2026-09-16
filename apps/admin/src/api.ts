@@ -1,4 +1,4 @@
-import type { ClientIdentity, Operator, Space, SpaceStatus, Zone } from "./types";
+import type { ClientIdentity, EarningsReport, Operator, Space, SpaceStatus, Zone } from "./types";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "";
 
@@ -128,16 +128,16 @@ export function changeSpaceStatus(token: string, id: string, status: SpaceStatus
   });
 }
 
-export function reserveSpace(token: string, id: string, dni: string) {
+export function lookupClient(token: string, dni: string) {
+  return request<ClientIdentity>(`/api/clients/${dni}`, { token });
+}
+
+export function reserveSpace(token: string, id: string, dni: string, clientName?: string) {
   return request<Space>(`/api/spaces/${id}/reserve`, {
     token,
     method: "POST",
-    body: JSON.stringify({ dni }),
+    body: JSON.stringify({ dni, clientName }),
   });
-}
-
-export function lookupClient(token: string, dni: string) {
-  return request<ClientIdentity>(`/api/clients/${dni}`, { token });
 }
 
 export function deleteSpace(token: string, id: string) {
@@ -173,4 +173,16 @@ export function updateOperator(
 
 export function deleteOperator(token: string, id: string) {
   return request<void>(`/api/operators/${id}`, { token, method: "DELETE" });
+}
+
+export function getEarningsReport(token: string, query?: { from?: string; to?: string }) {
+  const params = new URLSearchParams();
+  if (query?.from) {
+    params.set("from", query.from);
+  }
+  if (query?.to) {
+    params.set("to", query.to);
+  }
+  const suffix = params.size ? `?${params}` : "";
+  return request<EarningsReport>(`/api/reports/earnings${suffix}`, { token });
 }

@@ -1,3 +1,4 @@
+using Parkimetro.Api.Billing;
 using Parkimetro.Api.Dtos;
 using Parkimetro.Api.Identity;
 using Parkimetro.Api.Models;
@@ -15,25 +16,34 @@ public static class EntityMapper
             zone.Spaces.Count(space => space.Status == SpaceStatus.Free),
             zone.VideoUrl);
 
-    public static SpaceDto ToDto(this ParkingSpace space) =>
-        new(
+    public static SpaceDto ToDto(this ParkingSpace space)
+    {
+        var active = space.Sessions.FirstOrDefault(session => session.EndedAt is null);
+        return new(
             space.Id,
             space.Code,
             space.ZoneId,
             space.Zone?.Name ?? string.Empty,
             space.Latitude,
             space.Longitude,
-            space.HourlyRate,
+            ParkingBilling.EffectiveRate(space.HourlyRate),
             space.Status,
             space.Notes,
             space.UpdatedAt,
-            space.Sessions.FirstOrDefault(session => session.EndedAt is null)?.Id,
+            active?.Id,
             space.ClientDni,
             space.ClientRuc,
-            space.ClientName);
+            space.ClientName,
+            active?.StartedAt);
+    }
 
-    public static SessionDto ToDto(this ParkingSession session) =>
-        new(
+    public static SessionDto ToDto(this ParkingSession session, DateTimeOffset? now = null)
+    {
+        var until = session.EndedAt ?? now ?? DateTimeOffset.UtcNow;
+        var rate = session.ChargedRate ?? ParkingBilling.EffectiveRate(session.Space?.HourlyRate ?? 0);
+        var hours = session.BilledHours ?? ParkingBilling.HoursOrFraction(session.StartedAt, until);
+        var amount = session.Amount ?? ParkingBilling.Amount(session.StartedAt, until, rate);
+        return new(
             session.Id,
             session.SpaceId,
             session.Space?.Code ?? string.Empty,
@@ -42,7 +52,12 @@ public static class EntityMapper
             session.LicensePlate,
             session.StartedAt,
             session.EndedAt,
-            session.IsActive);
+            session.IsActive,
+            hours,
+            amount,
+            rate,
+            session.EndedAt is not null && session.Amount is not null);
+    }
 
     public static ClientIdentityDto ToDto(this ClientIdentity identity) =>
         new(identity.Dni, identity.Ruc, identity.Name, identity.Address);

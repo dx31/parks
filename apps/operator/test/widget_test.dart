@@ -13,7 +13,10 @@ import 'package:parkimetro_core/parkimetro_core.dart';
 import 'helpers/fake_api.dart';
 
 void main() {
-  setUp(() => ZoneCameraPanel.disablePlayer = true);
+  setUp(() {
+    ZoneCameraPanel.disablePlayer = true;
+    OccupancyClock.live = false;
+  });
 
   testWidgets('login exitoso entra a zonas', (tester) async {
     await tester.pumpWidget(OperatorApp(api: FakeParkimetroApi()));
@@ -104,6 +107,8 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('A-01'), findsOneWidget);
+    expect(find.text('A-02'), findsOneWidget);
+    expect(find.textContaining('Ocupado'), findsWidgets);
   });
 
   testWidgets('spaces screen muestra cámara en la mitad de la pantalla', (
@@ -150,6 +155,36 @@ void main() {
     await tester.pumpAndSettle();
     expect(api.reservedDni, '12345678');
     expect(api.lookedUpDni, '12345678');
+    expect(api.reservedName, 'PEREZ PEREZ JUAN');
+  });
+
+  testWidgets('space detail reserva con nombre manual si no hay padrón', (
+    tester,
+  ) async {
+    final api = FakeParkimetroApi()..unknownDnis.add('00000000');
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SpaceDetailScreen(api: api, spaceId: 's1'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Reservar'));
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.widgetWithText(TextField, 'DNI del cliente'),
+      '00000000',
+    );
+    await tester.tap(find.text('Buscar'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('No se encontró'), findsOneWidget);
+    await tester.enterText(
+      find.widgetWithText(TextField, 'Nombre completo'),
+      'JUAN MANUAL',
+    );
+    await tester.tap(find.text('Reservar').last);
+    await tester.pumpAndSettle();
+    expect(api.reservedDni, '00000000');
+    expect(api.reservedName, 'JUAN MANUAL');
   });
 
   testWidgets('space form guarda un espacio', (tester) async {
@@ -193,5 +228,7 @@ void main() {
     await tester.tap(find.text('Ocupar').last);
     await tester.pumpAndSettle();
     expect(api.occupiedSpaceId, 's1');
+    expect(find.textContaining('Tiempo ocupado'), findsOneWidget);
+    expect(find.textContaining('S/'), findsWidgets);
   });
 }

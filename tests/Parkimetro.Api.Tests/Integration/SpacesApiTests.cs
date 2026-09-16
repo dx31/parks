@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Parkimetro.Api.Tests.Integration;
 
-public class SpacesApiTests : IClassFixture<ApiFactory>
+public class SpacesApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
 {
     private static readonly Guid CentroId = Guid.Parse("11111111-1111-1111-1111-111111111111");
     private readonly HttpClient _client;
@@ -13,6 +13,10 @@ public class SpacesApiTests : IClassFixture<ApiFactory>
     {
         _client = factory.CreateClient();
     }
+
+    public Task InitializeAsync() => _client.LoginAsAnaAsync();
+
+    public Task DisposeAsync() => Task.CompletedTask;
 
     [Fact]
     public async Task GetSpaces_CanFilterByZoneAndStatus()
@@ -111,6 +115,14 @@ public class SpacesApiTests : IClassFixture<ApiFactory>
         Assert.Equal("reserved", reservedBody.GetProperty("status").GetString());
         Assert.Equal("12345678", reservedBody.GetProperty("clientDni").GetString());
         Assert.Equal("PEREZ PEREZ JUAN", reservedBody.GetProperty("clientName").GetString());
+        Assert.Equal(JsonValueKind.Null, reservedBody.GetProperty("occupiedSince").ValueKind);
+
+        var occupied = await _client.PatchAsJsonAsync($"/api/spaces/{id}/status", new { status = "occupied" });
+        Assert.Equal(HttpStatusCode.OK, occupied.StatusCode);
+        var occupiedBody = await occupied.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
+        Assert.Equal("occupied", occupiedBody.GetProperty("status").GetString());
+        Assert.NotEqual(JsonValueKind.Null, occupiedBody.GetProperty("occupiedSince").ValueKind);
+        Assert.Equal("PEREZ PEREZ JUAN", occupiedBody.GetProperty("clientName").GetString());
 
         var missing = await _client.PutAsJsonAsync($"/api/spaces/{Guid.NewGuid()}", new
         {
@@ -141,7 +153,12 @@ public class SpacesApiTests : IClassFixture<ApiFactory>
         Assert.Equal(HttpStatusCode.BadRequest, withoutDni.StatusCode);
 
         var unknown = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "00000000" });
-        Assert.Equal(HttpStatusCode.NotFound, unknown.StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, unknown.StatusCode);
+
+        var manual = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "00000000", clientName = "  JUAN MANUAL  " });
+        Assert.Equal(HttpStatusCode.OK, manual.StatusCode);
+        var manualBody = await manual.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
+        Assert.Equal("JUAN MANUAL", manualBody.GetProperty("clientName").GetString());
 
         var reserved = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "12345678" });
         Assert.Equal(HttpStatusCode.OK, reserved.StatusCode);

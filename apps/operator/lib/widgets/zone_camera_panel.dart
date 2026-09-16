@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class ZoneCameraPanel extends StatefulWidget {
-  const ZoneCameraPanel({super.key, required this.url});
+  const ZoneCameraPanel({
+    super.key,
+    required this.url,
+    this.headers = const {},
+  });
 
   final String url;
+  final Map<String, String> headers;
 
   @visibleForTesting
   static bool disablePlayer = false;
@@ -28,7 +33,8 @@ class _ZoneCameraPanelState extends State<ZoneCameraPanel> {
   @override
   void didUpdateWidget(ZoneCameraPanel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.url != widget.url) {
+    if (oldWidget.url != widget.url ||
+        !_sameHeaders(oldWidget.headers, widget.headers)) {
       unawaited(_start());
     }
   }
@@ -45,7 +51,10 @@ class _ZoneCameraPanelState extends State<ZoneCameraPanel> {
       return;
     }
 
-    final controller = VideoPlayerController.networkUrl(Uri.parse(widget.url));
+    final controller = VideoPlayerController.networkUrl(
+      Uri.parse(widget.url),
+      httpHeaders: widget.headers,
+    );
     try {
       await controller.initialize();
       await controller.setLooping(true);
@@ -66,6 +75,21 @@ class _ZoneCameraPanelState extends State<ZoneCameraPanel> {
       }
       setState(() => _error = error);
     }
+  }
+
+  static bool _sameHeaders(
+    Map<String, String> left,
+    Map<String, String> right,
+  ) {
+    if (left.length != right.length) {
+      return false;
+    }
+    for (final entry in left.entries) {
+      if (right[entry.key] != entry.value) {
+        return false;
+      }
+    }
+    return true;
   }
 
   @override

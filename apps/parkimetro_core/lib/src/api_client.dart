@@ -125,11 +125,19 @@ class ParkimetroApi {
     return ParkingSpace.fromJson(json);
   }
 
-  Future<ParkingSpace> reserveSpace(String id, {required String dni}) async {
+  Future<ParkingSpace> reserveSpace(
+    String id, {
+    required String dni,
+    String? clientName,
+  }) async {
     final json = await _send(
       'POST',
       '/api/spaces/$id/reserve',
-      body: {'dni': dni},
+      body: {
+        'dni': dni,
+        if (clientName != null && clientName.trim().isNotEmpty)
+          'clientName': clientName.trim(),
+      },
     ) as Map<String, dynamic>;
     return ParkingSpace.fromJson(json);
   }

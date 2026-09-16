@@ -6,22 +6,40 @@ import {
   deleteSpace,
   listSpaces,
   listZones,
+  lookupClient,
   reserveSpace,
   updateSpace,
 } from "../api";
 import { useAuth } from "../auth";
-import { statusBadge, statusLabel, type Space, type SpaceStatus, type Zone } from "../types";
+import { statusBadge, statusLabel, formatOccupiedDuration, formatSoles, hoursOrFraction, type Space, type SpaceStatus, type Zone } from "../types";
 
 const emptyForm = {
   code: "",
   zoneId: "",
   latitude: "19.43",
   longitude: "-99.13",
-  hourlyRate: "18",
+  hourlyRate: "2",
   notes: "",
 };
 
 type FormState = typeof emptyForm;
+
+function OccupiedTimer({ startedAt, hourlyRate }: { startedAt: string; hourlyRate: number }) {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const hours = hoursOrFraction(new Date(startedAt), new Date(now));
+  const amount = hours * (hourlyRate > 0 ? hourlyRate : 2);
+  return (
+    <span>
+      {formatOccupiedDuration(startedAt, now)} · {formatSoles(amount)}
+    </span>
+  );
+}
 
 export function SpacesPage() {
   const { session } = useAuth();
@@ -111,7 +129,18 @@ export function SpacesPage() {
         if (!dni) {
           return;
         }
-        await reserveSpace(token, space.id, dni.trim());
+        let clientName: string | undefined;
+        try {
+          const found = await lookupClient(token, dni.trim());
+          clientName = found.name;
+        } catch {
+          const typed = window.prompt("No se encontró el DNI. Ingresa el nombre completo:", space.clientName ?? "");
+          if (!typed?.trim()) {
+            return;
+          }
+          clientName = typed.trim();
+        }
+        await reserveSpace(token, space.id, dni.trim(), clientName);
       } else {
         await changeSpaceStatus(token, space.id, status);
       }
@@ -230,6 +259,7 @@ export function SpacesPage() {
               <th>Zona</th>
               <th>Estado</th>
               <th>Tarifa</th>
+              <th>Ocupación</th>
               <th>Notas</th>
               <th>Cliente</th>
               <th></th>
@@ -238,11 +268,11 @@ export function SpacesPage() {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={7}>Cargando…</td>
+                <td colSpan={8}>Cargando…</td>
               </tr>
             ) : spaces.length === 0 ? (
               <tr>
-                <td colSpan={7}>No hay espacios para mostrar.</td>
+                <td colSpan={8}>No hay espacios para mostrar.</td>
               </tr>
             ) : (
               spaces.map((space) => (
@@ -254,7 +284,14 @@ export function SpacesPage() {
                       {statusLabel[space.status]}
                     </span>
                   </td>
-                  <td>${space.hourlyRate}</td>
+                  <td>{formatSoles(space.hourlyRate)} / h</td>
+                  <td>
+                    {space.occupiedSince ? (
+                      <OccupiedTimer startedAt={space.occupiedSince} hourlyRate={space.hourlyRate} />
+                    ) : (
+                      "—"
+                    )}
+                  </td>
                   <td>{space.notes ?? "—"}</td>
                   <td>
                     {space.clientName
@@ -338,7 +375,7 @@ export function SpacesPage() {
             </label>
           </div>
           <label className="form-control">
-            <span className="label-text">Tarifa por hora</span>
+            <span className="label-text">Tarifa por hora (S/)</span>
             <input
               className="input input-bordered"
               value={form.hourlyRate}

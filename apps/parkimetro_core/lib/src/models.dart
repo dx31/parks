@@ -76,6 +76,7 @@ class ParkingSpace {
     this.clientDni,
     this.clientRuc,
     this.clientName,
+    this.occupiedSince,
   });
 
   final String id;
@@ -92,6 +93,7 @@ class ParkingSpace {
   final String? clientDni;
   final String? clientRuc;
   final String? clientName;
+  final DateTime? occupiedSince;
 
   bool get isFree => status == SpaceStatus.free;
 
@@ -110,6 +112,9 @@ class ParkingSpace {
     clientDni: json['clientDni'] as String?,
     clientRuc: json['clientRuc'] as String?,
     clientName: json['clientName'] as String?,
+    occupiedSince: json['occupiedSince'] == null
+        ? null
+        : DateTime.parse(json['occupiedSince'] as String),
   );
 }
 
@@ -157,6 +162,8 @@ class ParkingSession {
     required this.isActive,
     this.licensePlate,
     this.endedAt,
+    this.billedHours = 1,
+    this.amount = 0,
   });
 
   final String id;
@@ -168,6 +175,8 @@ class ParkingSession {
   final DateTime startedAt;
   final DateTime? endedAt;
   final bool isActive;
+  final int billedHours;
+  final double amount;
 
   factory ParkingSession.fromJson(Map<String, dynamic> json) => ParkingSession(
     id: json['id'] as String,
@@ -181,6 +190,8 @@ class ParkingSession {
         ? null
         : DateTime.parse(json['endedAt'] as String),
     isActive: json['isActive'] as bool,
+    billedHours: json['billedHours'] as int? ?? 1,
+    amount: (json['amount'] as num?)?.toDouble() ?? 0,
   );
 }
 

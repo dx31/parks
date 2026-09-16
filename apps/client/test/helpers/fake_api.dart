@@ -6,6 +6,19 @@ class FakeParkimetroApi extends ParkimetroApi {
   Object? error;
   SpaceStatus? lastFilter;
 
+  @override
+  Future<AuthSession> login(String username, String pin) async {
+    token = 'fake-token';
+    return const AuthSession(
+      token: 'fake-token',
+      operatorAccount: OperatorAccount(
+        id: 'o1',
+        name: 'Ana López',
+        username: 'ana',
+      ),
+    );
+  }
+
   final spaces = [
     ParkingSpace(
       id: 's1',
@@ -14,7 +27,7 @@ class FakeParkimetroApi extends ParkimetroApi {
       zoneName: 'Centro Histórico',
       latitude: 19.4,
       longitude: -99.1,
-      hourlyRate: 18,
+      hourlyRate: 2,
       status: SpaceStatus.free,
       notes: 'cerca del parque',
       updatedAt: DateTime.utc(2026, 9, 13),
@@ -26,9 +39,10 @@ class FakeParkimetroApi extends ParkimetroApi {
       zoneName: 'Centro Histórico',
       latitude: 19.41,
       longitude: -99.11,
-      hourlyRate: 18,
+      hourlyRate: 2,
       status: SpaceStatus.occupied,
       updatedAt: DateTime.utc(2026, 9, 13),
+      occupiedSince: DateTime.utc(2026, 9, 15, 19),
     ),
   ];
 

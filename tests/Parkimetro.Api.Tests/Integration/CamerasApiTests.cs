@@ -2,7 +2,7 @@ using System.Net;
 
 namespace Parkimetro.Api.Tests.Integration;
 
-public class CamerasApiTests : IClassFixture<ApiFactory>
+public class CamerasApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
 {
     private readonly HttpClient _client;
 
@@ -10,6 +10,10 @@ public class CamerasApiTests : IClassFixture<ApiFactory>
     {
         _client = factory.CreateClient();
     }
+
+    public Task InitializeAsync() => _client.LoginAsAnaAsync();
+
+    public Task DisposeAsync() => Task.CompletedTask;
 
     [Fact]
     public async Task GetCamera_ReturnsMp4ForDemo()

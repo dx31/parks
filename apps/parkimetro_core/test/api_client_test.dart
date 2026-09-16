@@ -43,7 +43,7 @@ void main() {
               'zoneName': 'Centro',
               'latitude': 19.4,
               'longitude': -99.1,
-              'hourlyRate': 18,
+              'hourlyRate': 2,
               'status': 'free',
               'updatedAt': '2026-09-13T12:00:00Z',
             },

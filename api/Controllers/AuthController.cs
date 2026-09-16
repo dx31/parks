@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Parkimetro.Api.Auth;
@@ -10,6 +11,7 @@ namespace Parkimetro.Api.Controllers;
 [Route("api/auth")]
 public class AuthController(AppDbContext db, OperatorSessionStore sessions) : ControllerBase
 {
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginRequest request)
     {
