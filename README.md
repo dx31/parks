@@ -2,8 +2,6 @@
 
 Bosquejo inicial: API .NET 10 + app Flutter de operador + app Flutter de cliente.
 
-Los scripts de visión (`main.py`, `selector.py`) se quedan en la raíz para integrarlos después.
-
 ## Cómo correrlo
 
 API:
