@@ -33,7 +33,9 @@ public class ReportsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
         var space = await created.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         var spaceId = space.GetProperty("id").GetGuid();
 
-        var started = await _client.PostAsJsonAsync("/api/sessions", new { spaceId });
+        var started = await _client.PostAsJsonAsync(
+            "/api/sessions",
+            HttpClientExtensions.OccupyPayload(spaceId, "12345678"));
         started.EnsureSuccessStatusCode();
         var session = await started.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         var sessionId = session.GetProperty("id").GetGuid();

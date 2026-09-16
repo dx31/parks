@@ -33,17 +33,23 @@ public class SessionsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
     {
         var spaceId = await CreateSpaceAsync("S-01");
 
-        var started = await _client.PostAsJsonAsync("/api/sessions", new { spaceId, licensePlate = " abc123 " });
+        var started = await _client.PostAsJsonAsync(
+            "/api/sessions",
+            HttpClientExtensions.OccupyPayload(spaceId, "12345678", licensePlate: " abc123 "));
         Assert.Equal(HttpStatusCode.Created, started.StatusCode);
         var session = await started.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         Assert.Equal("ABC123", session.GetProperty("licensePlate").GetString());
         Assert.True(session.GetProperty("isActive").GetBoolean());
         Assert.Equal(1, session.GetProperty("billedHours").GetInt32());
         Assert.Equal(2, session.GetProperty("amount").GetDecimal());
+        Assert.NotEqual(JsonValueKind.Null, session.GetProperty("limitUntil").ValueKind);
 
         var space = await _client.GetFromJsonAsync<JsonElement>($"/api/spaces/{spaceId}", HttpClientExtensions.JsonOptions);
         Assert.Equal("occupied", space.GetProperty("status").GetString());
+        Assert.Equal("12345678", space.GetProperty("clientDni").GetString());
+        Assert.Equal("PEREZ PEREZ JUAN", space.GetProperty("clientName").GetString());
         Assert.NotEqual(JsonValueKind.Null, space.GetProperty("occupiedSince").ValueKind);
+        Assert.NotEqual(JsonValueKind.Null, space.GetProperty("limitUntil").ValueKind);
 
         var conflict = await _client.PostAsJsonAsync("/api/sessions", new { spaceId });
         Assert.Equal(HttpStatusCode.Conflict, conflict.StatusCode);
@@ -67,6 +73,32 @@ public class SessionsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
     }
 
     [Fact]
+    public async Task StartSession_RequiresClientDataAndLimit()
+    {
+        var spaceId = await CreateSpaceAsync("S-03");
+        var missing = await _client.PostAsJsonAsync("/api/sessions", new { spaceId, licensePlate = "ABC123" });
+        Assert.Equal(HttpStatusCode.BadRequest, missing.StatusCode);
+
+        var reserved = await _client.PostAsJsonAsync(
+            $"/api/spaces/{spaceId}/reserve",
+            HttpClientExtensions.ReservePayload("12345678"));
+        reserved.EnsureSuccessStatusCode();
+
+        var wrongDni = await _client.PostAsJsonAsync(
+            "/api/sessions",
+            HttpClientExtensions.OccupyPayload(spaceId, "87654321"));
+        Assert.Equal(HttpStatusCode.Conflict, wrongDni.StatusCode);
+
+        var claimed = await _client.PostAsJsonAsync(
+            "/api/sessions",
+            HttpClientExtensions.OccupyPayload(spaceId, "12345678", licensePlate: "XYZ99"));
+        Assert.Equal(HttpStatusCode.Created, claimed.StatusCode);
+        var space = await _client.GetFromJsonAsync<JsonElement>($"/api/spaces/{spaceId}", HttpClientExtensions.JsonOptions);
+        Assert.Equal("occupied", space.GetProperty("status").GetString());
+        Assert.Equal("XYZ99", space.GetProperty("licensePlate").GetString());
+    }
+
+    [Fact]
     public async Task StartSession_WhenSpaceMissingOrOutOfService_Fails()
     {
         var missing = await _client.PostAsJsonAsync("/api/sessions", new { spaceId = Guid.NewGuid() });
@@ -82,7 +114,10 @@ public class SessionsApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
     public async Task ChangeStatusToFree_ClosesActiveSession()
     {
         var spaceId = await CreateSpaceAsync("S-02");
-        var started = await _client.PostAsJsonAsync("/api/sessions", new { spaceId });
+        var started = await _client.PostAsJsonAsync(
+            "/api/sessions",
+            HttpClientExtensions.OccupyPayload(spaceId, "12345678"));
+        started.EnsureSuccessStatusCode();
         var session = await started.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
 
         var freed = await _client.PatchAsJsonAsync($"/api/spaces/{spaceId}/status", new { status = "free" });

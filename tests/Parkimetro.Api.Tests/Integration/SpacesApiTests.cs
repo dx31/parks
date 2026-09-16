@@ -109,15 +109,23 @@ public class SpacesApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
         });
         Assert.Equal(HttpStatusCode.OK, updated.StatusCode);
 
-        var reserved = await _client.PatchAsJsonAsync($"/api/spaces/{id}/status", new { status = "reserved", dni = "12345678" });
+        var start = DateTimeOffset.UtcNow;
+        var reserved = await _client.PatchAsJsonAsync($"/api/spaces/{id}/status", new
+        {
+            status = "reserved",
+            dni = "12345678",
+            startsAt = start,
+            limitUntil = start.AddHours(2)
+        });
         Assert.Equal(HttpStatusCode.OK, reserved.StatusCode);
         var reservedBody = await reserved.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         Assert.Equal("reserved", reservedBody.GetProperty("status").GetString());
         Assert.Equal("12345678", reservedBody.GetProperty("clientDni").GetString());
         Assert.Equal("PEREZ PEREZ JUAN", reservedBody.GetProperty("clientName").GetString());
         Assert.Equal(JsonValueKind.Null, reservedBody.GetProperty("occupiedSince").ValueKind);
+        Assert.NotEqual(JsonValueKind.Null, reservedBody.GetProperty("limitUntil").ValueKind);
 
-        var occupied = await _client.PatchAsJsonAsync($"/api/spaces/{id}/status", new { status = "occupied" });
+        var occupied = await _client.PatchAsJsonAsync($"/api/spaces/{id}/status", new { status = "occupied", dni = "12345678" });
         Assert.Equal(HttpStatusCode.OK, occupied.StatusCode);
         var occupiedBody = await occupied.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         Assert.Equal("occupied", occupiedBody.GetProperty("status").GetString());
@@ -149,18 +157,26 @@ public class SpacesApiTests : IClassFixture<ApiFactory>, IAsyncLifetime
         var space = await created.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         var id = space.GetProperty("id").GetGuid();
 
-        var withoutDni = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "123" });
+        var withoutDni = await _client.PostAsJsonAsync(
+            $"/api/spaces/{id}/reserve",
+            HttpClientExtensions.ReservePayload("123"));
         Assert.Equal(HttpStatusCode.BadRequest, withoutDni.StatusCode);
 
-        var unknown = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "00000000" });
+        var unknown = await _client.PostAsJsonAsync(
+            $"/api/spaces/{id}/reserve",
+            HttpClientExtensions.ReservePayload("00000000"));
         Assert.Equal(HttpStatusCode.BadRequest, unknown.StatusCode);
 
-        var manual = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "00000000", clientName = "  JUAN MANUAL  " });
+        var manual = await _client.PostAsJsonAsync(
+            $"/api/spaces/{id}/reserve",
+            HttpClientExtensions.ReservePayload("00000000", clientName: "  JUAN MANUAL  "));
         Assert.Equal(HttpStatusCode.OK, manual.StatusCode);
         var manualBody = await manual.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         Assert.Equal("JUAN MANUAL", manualBody.GetProperty("clientName").GetString());
 
-        var reserved = await _client.PostAsJsonAsync($"/api/spaces/{id}/reserve", new { dni = "12345678" });
+        var reserved = await _client.PostAsJsonAsync(
+            $"/api/spaces/{id}/reserve",
+            HttpClientExtensions.ReservePayload("12345678"));
         Assert.Equal(HttpStatusCode.OK, reserved.StatusCode);
         var body = await reserved.Content.ReadFromJsonAsync<JsonElement>(HttpClientExtensions.JsonOptions);
         Assert.Equal("reserved", body.GetProperty("status").GetString());
