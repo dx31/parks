@@ -14,7 +14,6 @@ dotnet run --project api/Parkimetro.Api.csproj --launch-profile http
 
 Queda en `http://localhost:5280`.
 
-App operador (usuario `ana`, PIN `1234`):
 
 ```powershell
 cd apps/operator
