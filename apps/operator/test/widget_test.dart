@@ -110,6 +110,72 @@ void main() {
     expect(find.text('A-01'), findsOneWidget);
     expect(find.text('A-02'), findsOneWidget);
     expect(find.textContaining('Ocupado'), findsWidgets);
+    expect(find.text('Grúa'), findsOneWidget);
+  });
+
+  testWidgets('spaces screen alerta si se excedió la salida estimada', (
+    tester,
+  ) async {
+    final api = FakeParkimetroApi();
+    api.spaces.add(
+      ParkingSpace(
+        id: 's3',
+        code: 'A-03',
+        zoneId: 'z1',
+        zoneName: 'Centro Histórico',
+        latitude: 19.42,
+        longitude: -99.12,
+        hourlyRate: 2,
+        status: SpaceStatus.occupied,
+        updatedAt: DateTime.utc(2026, 9, 13),
+        occupiedSince: DateTime.now().subtract(const Duration(hours: 3)),
+        limitUntil: DateTime.now().subtract(const Duration(minutes: 10)),
+      ),
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SpacesScreen(
+          api: api,
+          zone: const Zone(
+            id: 'z1',
+            name: 'Centro Histórico',
+            city: 'Ciudad',
+            spacesCount: 3,
+            freeCount: 1,
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('A-03'), findsOneWidget);
+    expect(find.byIcon(Icons.warning_amber_rounded), findsOneWidget);
+    expect(
+      find.byTooltip('Se excedió la hora de salida estimada'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('spaces screen abre el formulario de grúa', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SpacesScreen(
+          api: FakeParkimetroApi(),
+          zone: const Zone(
+            id: 'z1',
+            name: 'Centro Histórico',
+            city: 'Ciudad',
+            spacesCount: 1,
+            freeCount: 1,
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Grúa'));
+    await tester.pumpAndSettle();
+    expect(find.text('Solicitar grúa'), findsOneWidget);
+    expect(find.text('Placa del vehículo'), findsOneWidget);
+    expect(find.text('Indicaciones adicionales'), findsOneWidget);
   });
 
   testWidgets('spaces screen muestra cámara en la mitad de la pantalla', (
@@ -152,11 +218,20 @@ void main() {
     await tester.tap(find.text('Buscar'));
     await tester.pumpAndSettle();
     expect(find.textContaining('PEREZ PEREZ JUAN'), findsOneWidget);
+    expect(find.text('Hora de inicio'), findsOneWidget);
+    expect(find.text('Hora de fin estimada'), findsOneWidget);
     await tester.tap(find.text('Reservar').last);
     await tester.pumpAndSettle();
     expect(api.reservedDni, '12345678');
     expect(api.lookedUpDni, '12345678');
     expect(api.reservedName, 'PEREZ PEREZ JUAN');
+    expect(api.reservedStartsAt, isNotNull);
+    expect(api.reservedLimitUntil, isNotNull);
+    expect(api.reservedLimitUntil!.isAfter(api.reservedStartsAt!), isTrue);
+    expect(find.textContaining('RUC'), findsNothing);
+    expect(find.textContaining('DNI 12345678'), findsOneWidget);
+    expect(find.textContaining('Inicio:'), findsOneWidget);
+    expect(find.textContaining('Fin estimado:'), findsOneWidget);
   });
 
   testWidgets('space detail reserva con nombre manual si no hay padrón', (
@@ -223,13 +298,63 @@ void main() {
     await tester.tap(find.text('Ocupar'));
     await tester.pumpAndSettle();
     await tester.enterText(
+      find.widgetWithText(TextField, 'DNI del cliente'),
+      '12345678',
+    );
+    await tester.tap(find.text('Buscar'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('PEREZ PEREZ JUAN'), findsOneWidget);
+    expect(find.text('Hora de inicio'), findsNothing);
+    expect(find.text('Hora de fin estimada'), findsOneWidget);
+    expect(
+      find.textContaining('El inicio lo registra el servidor'),
+      findsOneWidget,
+    );
+    await tester.enterText(
       find.widgetWithText(TextField, 'Placa (opcional)'),
       'XYZ99',
     );
     await tester.tap(find.text('Ocupar').last);
     await tester.pumpAndSettle();
     expect(api.occupiedSpaceId, 's1');
+    expect(api.occupiedDni, '12345678');
+    expect(api.occupiedName, 'PEREZ PEREZ JUAN');
+    expect(api.occupiedPlate, 'XYZ99');
+    expect(api.occupiedLimitUntil, isNotNull);
+    expect(api.lookedUpDni, '12345678');
     expect(find.textContaining('Tiempo ocupado'), findsOneWidget);
     expect(find.textContaining('S/'), findsWidgets);
+    expect(find.textContaining('RUC'), findsNothing);
+    expect(find.textContaining('DNI 12345678'), findsOneWidget);
+    expect(find.textContaining('Fin estimado:'), findsOneWidget);
+  });
+
+  testWidgets('space detail ocupa con nombre manual si no hay padrón', (
+    tester,
+  ) async {
+    final api = FakeParkimetroApi()..unknownDnis.add('00000000');
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SpaceDetailScreen(api: api, spaceId: 's1'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Ocupar'));
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.widgetWithText(TextField, 'DNI del cliente'),
+      '00000000',
+    );
+    await tester.tap(find.text('Buscar'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('No se encontró'), findsOneWidget);
+    await tester.enterText(
+      find.widgetWithText(TextField, 'Nombre completo'),
+      'JUAN MANUAL',
+    );
+    await tester.tap(find.text('Ocupar').last);
+    await tester.pumpAndSettle();
+    expect(api.occupiedDni, '00000000');
+    expect(api.occupiedName, 'JUAN MANUAL');
   });
 }

@@ -11,7 +11,7 @@ import {
   updateSpace,
 } from "../api";
 import { useAuth } from "../auth";
-import { statusBadge, statusLabel, formatOccupiedDuration, formatSoles, hoursOrFraction, type Space, type SpaceStatus, type Zone } from "../types";
+import { statusBadge, statusLabel, formatOccupiedDuration, formatSoles, hoursOrFraction, isOverdue, type Space, type SpaceStatus, type Zone } from "../types";
 
 const emptyForm = {
   code: "",
@@ -28,7 +28,7 @@ function OccupiedTimer({ startedAt, hourlyRate }: { startedAt: string; hourlyRat
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    const id = window.setInterval(() => setNow(Date.now()), 60_000);
     return () => window.clearInterval(id);
   }, []);
 
@@ -277,7 +277,16 @@ export function SpacesPage() {
             ) : (
               spaces.map((space) => (
                 <tr key={space.id}>
-                  <td className="font-medium">{space.code}</td>
+                  <td className="font-medium">
+                    <span className="inline-flex items-center gap-2">
+                      {isOverdue(space) ? (
+                        <span className="text-warning" title="Se excedió la hora de salida estimada">
+                          ⚠
+                        </span>
+                      ) : null}
+                      {space.code}
+                    </span>
+                  </td>
                   <td>{space.zoneName}</td>
                   <td>
                     <span className={`badge ${statusBadge[space.status]}`}>

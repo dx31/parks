@@ -118,6 +118,28 @@ public class ParkingOccupationTests
         Assert.Equal(limit, claimed.Session!.LimitUntil);
         Assert.Equal("XYZ99", space.LicensePlate);
         Assert.Equal(SpaceStatus.Occupied, space.Status);
+
+        var overriddenLimit = DateTimeOffset.UtcNow.AddHours(4);
+        var reserved = new ParkingSpace
+        {
+            Id = Guid.NewGuid(),
+            Code = "B-03",
+            Status = SpaceStatus.Reserved,
+            ClientDni = "12345678",
+            ClientRuc = "10123456780",
+            ClientName = "PEREZ PEREZ JUAN",
+            LimitUntil = limit
+        };
+        var overridden = await ParkingOccupation.StartAsync(
+            new InMemoryRucDirectory(),
+            reserved,
+            Guid.NewGuid(),
+            "12345678",
+            null,
+            null,
+            overriddenLimit);
+        Assert.True(overridden.Succeeded);
+        Assert.Equal(overriddenLimit, overridden.Session!.LimitUntil);
     }
 
     private static ParkingSpace FreeSpace() =>

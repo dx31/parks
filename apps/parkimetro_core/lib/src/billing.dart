@@ -26,13 +26,13 @@ String formatOccupiedDuration(DateTime startedAt, [DateTime? now]) {
   }
   final hours = elapsed.inHours;
   final minutes = elapsed.inMinutes.remainder(60);
-  final seconds = elapsed.inSeconds.remainder(60);
-  final minutesText = minutes.toString().padLeft(2, '0');
-  final secondsText = seconds.toString().padLeft(2, '0');
   if (hours > 0) {
-    return '${hours}h ${minutesText}m ${secondsText}s';
+    return '$hours h $minutes min';
   }
-  return '${minutesText}m ${secondsText}s';
+  if (elapsed.inMinutes < 1) {
+    return 'menos de 1 min';
+  }
+  return '$minutes min';
 }
 
 String rateLabel(double hourlyRate) =>

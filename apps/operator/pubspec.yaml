@@ -37,6 +37,9 @@ dependencies:
   parkimetro_core:
     path: ../parkimetro_core
   video_player: ^2.10.0
+  image_picker: ^1.2.0
+  geolocator: ^14.0.2
+  share_plus: ^13.2.0
 
 dev_dependencies:
   flutter_test:

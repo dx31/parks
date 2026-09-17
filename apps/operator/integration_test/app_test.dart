@@ -19,5 +19,11 @@ void main() {
     await tester.tap(find.text('Centro Histórico'));
     await tester.pumpAndSettle();
     expect(find.text('A-01'), findsOneWidget);
+    expect(find.text('Grúa'), findsOneWidget);
+
+    await tester.tap(find.text('Grúa'));
+    await tester.pumpAndSettle();
+    expect(find.text('Solicitar grúa'), findsOneWidget);
+    expect(find.text('Placa del vehículo'), findsOneWidget);
   });
 }

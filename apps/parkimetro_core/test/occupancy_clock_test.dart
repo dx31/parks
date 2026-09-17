@@ -13,6 +13,7 @@ void main() {
     );
 
     expect(find.textContaining('Tiempo ocupado'), findsOneWidget);
+    expect(find.textContaining('8 min'), findsOneWidget);
     expect(find.textContaining('S/ 2.00'), findsOneWidget);
   });
 }

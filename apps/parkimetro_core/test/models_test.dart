@@ -49,6 +49,24 @@ void main() {
     expect(space.isFree, isTrue);
     expect(space.hourlyRate, 2);
     expect(space.occupiedSince, isNull);
+    expect(space.reservedFrom, isNull);
+    expect(space.limitUntil, isNull);
+
+    final reserved = ParkingSpace.fromJson({
+      'id': 's1',
+      'code': 'A-01',
+      'zoneId': 'z1',
+      'zoneName': 'Centro',
+      'latitude': 19,
+      'longitude': -99,
+      'hourlyRate': 2,
+      'status': 'reserved',
+      'updatedAt': '2026-09-13T12:00:00Z',
+      'reservedFrom': '2026-09-17T12:00:00Z',
+      'limitUntil': '2026-09-17T14:00:00Z',
+    });
+    expect(reserved.reservedFrom, DateTime.utc(2026, 9, 17, 12));
+    expect(reserved.limitUntil, DateTime.utc(2026, 9, 17, 14));
 
     final session = AuthSession.fromJson({
       'token': 'abc',
@@ -72,6 +90,70 @@ void main() {
     expect(parkingSession.endedAt, isNotNull);
     expect(parkingSession.isActive, isFalse);
     expect(parkingSession.billedHours, 1);
+  });
+
+  test('formatOccupiedDuration uses minutes without seconds', () {
+    final started = DateTime.utc(2026, 9, 17, 12);
+    expect(
+      formatOccupiedDuration(started, started.add(const Duration(seconds: 40))),
+      'menos de 1 min',
+    );
+    expect(
+      formatOccupiedDuration(started, started.add(const Duration(minutes: 8))),
+      '8 min',
+    );
+    expect(
+      formatOccupiedDuration(
+        started,
+        started.add(const Duration(hours: 1, minutes: 5)),
+      ),
+      '1 h 5 min',
+    );
+  });
+
+  test('exceededStay when reserved or occupied past the estimated end', () {
+    final now = DateTime.utc(2026, 9, 17, 16);
+    final overdue = ParkingSpace(
+      id: 's1',
+      code: 'A-01',
+      zoneId: 'z1',
+      zoneName: 'Centro',
+      latitude: 1,
+      longitude: 1,
+      hourlyRate: 2,
+      status: SpaceStatus.occupied,
+      updatedAt: now,
+      limitUntil: DateTime.utc(2026, 9, 17, 15),
+    );
+    expect(overdue.exceededStay(now), isTrue);
+
+    final reservedOverdue = ParkingSpace(
+      id: 's2',
+      code: 'A-02',
+      zoneId: 'z1',
+      zoneName: 'Centro',
+      latitude: 1,
+      longitude: 1,
+      hourlyRate: 2,
+      status: SpaceStatus.reserved,
+      updatedAt: now,
+      limitUntil: DateTime.utc(2026, 9, 17, 15),
+    );
+    expect(reservedOverdue.exceededStay(now), isTrue);
+
+    final onTime = ParkingSpace(
+      id: 's3',
+      code: 'A-03',
+      zoneId: 'z1',
+      zoneName: 'Centro',
+      latitude: 1,
+      longitude: 1,
+      hourlyRate: 2,
+      status: SpaceStatus.occupied,
+      updatedAt: now,
+      limitUntil: DateTime.utc(2026, 9, 17, 18),
+    );
+    expect(onTime.exceededStay(now), isFalse);
   });
 
   test('bills by hour or fraction at two soles', () {

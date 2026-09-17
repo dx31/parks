@@ -43,6 +43,10 @@ export type Space = {
   clientRuc: string | null;
   clientName: string | null;
   occupiedSince: string | null;
+  licensePlate?: string | null;
+  reservedFrom?: string | null;
+  limitUntil?: string | null;
+  exceededLimit?: boolean;
 };
 
 export const statusLabel: Record<SpaceStatus, string> = {
@@ -71,18 +75,28 @@ export function formatSoles(amount: number) {
   return `S/ ${amount.toFixed(2)}`;
 }
 
+export function isOverdue(space: Space, now = Date.now()) {
+  if (!space.limitUntil) {
+    return false;
+  }
+  if (space.status !== "occupied" && space.status !== "reserved") {
+    return false;
+  }
+  return now > new Date(space.limitUntil).getTime();
+}
+
 export function formatOccupiedDuration(startedAt: string, now = Date.now()) {
   const elapsed = Math.max(0, now - new Date(startedAt).getTime());
-  const totalSeconds = Math.floor(elapsed / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  const minutesText = String(minutes).padStart(2, "0");
-  const secondsText = String(seconds).padStart(2, "0");
+  const totalMinutes = Math.floor(elapsed / 60_000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
   if (hours > 0) {
-    return `${hours}h ${minutesText}m ${secondsText}s`;
+    return `${hours} h ${minutes} min`;
   }
-  return `${minutesText}m ${secondsText}s`;
+  if (totalMinutes < 1) {
+    return "menos de 1 min";
+  }
+  return `${minutes} min`;
 }
 
 export type ParkingPayment = {

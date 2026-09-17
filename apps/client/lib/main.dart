@@ -130,12 +130,19 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
                           backgroundColor: space.isFree
                               ? Colors.green.shade100
                               : Colors.red.shade100,
-                          child: Icon(
-                            space.isFree ? Icons.local_parking : Icons.block,
-                            color: space.isFree
-                                ? Colors.green.shade800
-                                : Colors.red.shade800,
-                          ),
+                          child: space.exceededStay()
+                              ? Icon(
+                                  Icons.warning_amber_rounded,
+                                  color: Colors.deepOrange.shade700,
+                                )
+                              : Icon(
+                                  space.isFree
+                                      ? Icons.local_parking
+                                      : Icons.block,
+                                  color: space.isFree
+                                      ? Colors.green.shade800
+                                      : Colors.red.shade800,
+                                ),
                         ),
                         title: Text('${space.code} · ${space.zoneName}'),
                         subtitle: space.occupiedSince == null

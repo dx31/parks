@@ -99,6 +99,7 @@ void main() {
 
   test('sends authorization when changing status and sessions', () async {
     String? authorization;
+    String? sessionBody;
     final api = ParkimetroApi(
       baseUrl: 'http://api.test',
       httpClient: MockClient((request) async {
@@ -120,6 +121,7 @@ void main() {
             headers: {'content-type': 'application/json'},
           );
         }
+        sessionBody = request.body;
         return http.Response(
           jsonEncode({
             'id': 'p1',
@@ -138,8 +140,19 @@ void main() {
 
     await api.changeStatus('s1', SpaceStatus.reserved);
     expect(authorization, 'Bearer secret');
-    final session = await api.startSession('s1', licensePlate: 'ABC123');
+    final session = await api.startSession(
+      's1',
+      dni: '12345678',
+      clientName: 'PEREZ PEREZ JUAN',
+      licensePlate: 'ABC123',
+      limitUntil: DateTime.utc(2026, 9, 17, 16),
+    );
     expect(session.isActive, isTrue);
+    final payload = jsonDecode(sessionBody!) as Map<String, dynamic>;
+    expect(payload['dni'], '12345678');
+    expect(payload['clientName'], 'PEREZ PEREZ JUAN');
+    expect(payload['licensePlate'], 'ABC123');
+    expect(payload['limitUntil'], isNotNull);
   });
 
   test('parses zone video url and client identity', () async {
@@ -203,7 +216,12 @@ void main() {
     );
     final client = await api.lookupClient('12345678');
     expect(client.name, 'PEREZ PEREZ JUAN');
-    final reserved = await api.reserveSpace('s1', dni: '12345678');
+    final reserved = await api.reserveSpace(
+      's1',
+      dni: '12345678',
+      startsAt: DateTime.utc(2026, 9, 17, 12),
+      limitUntil: DateTime.utc(2026, 9, 17, 14),
+    );
     expect(reserved.clientName, 'PEREZ PEREZ JUAN');
   });
 

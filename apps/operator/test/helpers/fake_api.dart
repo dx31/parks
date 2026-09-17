@@ -6,9 +6,15 @@ class FakeParkimetroApi extends ParkimetroApi {
   bool failLogin = false;
   String? createdZoneName;
   String? occupiedSpaceId;
+  String? occupiedDni;
+  String? occupiedName;
+  String? occupiedPlate;
+  DateTime? occupiedLimitUntil;
   String? lastStatusChange;
   String? reservedDni;
   String? reservedName;
+  DateTime? reservedStartsAt;
+  DateTime? reservedLimitUntil;
   String? lookedUpDni;
   final unknownDnis = <String>{};
 
@@ -145,9 +151,13 @@ class FakeParkimetroApi extends ParkimetroApi {
     String id, {
     required String dni,
     String? clientName,
+    required DateTime startsAt,
+    required DateTime limitUntil,
   }) async {
     reservedDni = dni;
     reservedName = clientName;
+    reservedStartsAt = startsAt;
+    reservedLimitUntil = limitUntil;
     final current = await getSpace(id);
     final reserved = ParkingSpace(
       id: current.id,
@@ -163,6 +173,8 @@ class FakeParkimetroApi extends ParkimetroApi {
       clientDni: dni,
       clientRuc: '10123456780',
       clientName: clientName ?? 'PEREZ PEREZ JUAN',
+      reservedFrom: startsAt,
+      limitUntil: limitUntil,
     );
     _replace(reserved);
     return reserved;
@@ -187,9 +199,16 @@ class FakeParkimetroApi extends ParkimetroApi {
   @override
   Future<ParkingSession> startSession(
     String spaceId, {
+    required String dni,
+    String? clientName,
     String? licensePlate,
+    required DateTime limitUntil,
   }) async {
     occupiedSpaceId = spaceId;
+    occupiedDni = dni;
+    occupiedName = clientName;
+    occupiedPlate = licensePlate;
+    occupiedLimitUntil = limitUntil;
     final current = await getSpace(spaceId);
     final occupied = ParkingSpace(
       id: current.id,
@@ -203,10 +222,12 @@ class FakeParkimetroApi extends ParkimetroApi {
       notes: current.notes,
       updatedAt: DateTime.utc(2026, 9, 13),
       activeSessionId: 'p1',
-      clientDni: current.clientDni,
-      clientRuc: current.clientRuc,
-      clientName: current.clientName,
+      clientDni: dni,
+      clientRuc: '10123456780',
+      clientName: clientName ?? current.clientName ?? 'PEREZ PEREZ JUAN',
       occupiedSince: DateTime.now(),
+      reservedFrom: current.reservedFrom,
+      limitUntil: limitUntil,
     );
     _replace(occupied);
     return ParkingSession(

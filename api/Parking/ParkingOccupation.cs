@@ -50,15 +50,17 @@ public static class ParkingOccupation
                 return Fail(StatusCodes.Status409Conflict, "El DNI no coincide con la reserva.");
             }
 
-            if (space.LimitUntil is null)
-            {
-                return Fail(StatusCodes.Status400BadRequest, "La reserva no tiene hora límite.");
-            }
-
             clientDni = space.ClientDni!;
             clientRuc = space.ClientRuc ?? DniRuc.ToRuc(clientDni);
             clientNameValue = space.ClientName ?? string.Empty;
-            effectiveLimit = space.LimitUntil.Value;
+            var chosenLimit = limitUntil ?? space.LimitUntil;
+            var reservedWindowError = ParkingStay.ValidateWindow(startedAt, chosenLimit);
+            if (reservedWindowError is not null)
+            {
+                return Fail(StatusCodes.Status400BadRequest, reservedWindowError);
+            }
+
+            effectiveLimit = chosenLimit!.Value;
         }
         else
         {

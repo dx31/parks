@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:parkimetro_core/parkimetro_core.dart';
 
+import '../tow/tow_services.dart';
 import '../widgets/status_chip.dart';
 import '../widgets/zone_camera_panel.dart';
 import 'space_detail_screen.dart';
 import 'space_form_screen.dart';
+import 'tow_request_screen.dart';
 
 class SpacesScreen extends StatefulWidget {
-  const SpacesScreen({super.key, required this.api, required this.zone});
+  const SpacesScreen({
+    super.key,
+    required this.api,
+    required this.zone,
+    this.towServices,
+  });
 
   final ParkimetroApi api;
   final Zone zone;
+  final TowServices? towServices;
 
   @override
   State<SpacesScreen> createState() => _SpacesScreenState();
@@ -31,25 +39,58 @@ class _SpacesScreenState extends State<SpacesScreen> {
     });
   }
 
+  Future<void> _openTowRequest() async {
+    await Navigator.of(context).push<void>(
+      MaterialPageRoute(
+        builder: (_) =>
+            TowRequestScreen(zone: widget.zone, services: widget.towServices),
+      ),
+    );
+  }
+
+  Future<void> _openSpaceForm() async {
+    final created = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(
+        builder: (_) => SpaceFormScreen(api: widget.api, zone: widget.zone),
+      ),
+    );
+    if (created == true) {
+      _reload();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final cameraUrl = widget.zone.resolvedVideoUrl(widget.api.baseUrl);
     return Scaffold(
-      appBar: AppBar(title: Text(widget.zone.name)),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          final created = await Navigator.of(context).push<bool>(
-            MaterialPageRoute(
-              builder: (_) =>
-                  SpaceFormScreen(api: widget.api, zone: widget.zone),
-            ),
-          );
-          if (created == true) {
-            _reload();
-          }
-        },
-        icon: const Icon(Icons.add),
-        label: const Text('Espacio'),
+      appBar: AppBar(
+        title: Text(widget.zone.name),
+        actions: [
+          IconButton(
+            onPressed: _openTowRequest,
+            tooltip: 'Solicitar grúa',
+            icon: const Icon(Icons.local_shipping_outlined),
+          ),
+        ],
+      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            heroTag: 'tow',
+            onPressed: _openTowRequest,
+            icon: const Icon(Icons.local_shipping_outlined),
+            label: const Text('Grúa'),
+          ),
+          const SizedBox(height: 12),
+          FloatingActionButton.extended(
+            heroTag: 'space',
+            onPressed: _openSpaceForm,
+            icon: const Icon(Icons.add),
+            label: const Text('Espacio'),
+          ),
+        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -113,7 +154,13 @@ class _SpacesScreenState extends State<SpacesScreen> {
                               ? rateLabel(space.hourlyRate)
                               : '${space.clientName} · DNI ${space.clientDni}',
                         ),
-                  trailing: StatusChip(status: space.status),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      StayLimitIcon(space: space),
+                      StatusChip(status: space.status),
+                    ],
+                  ),
                   onTap: () async {
                     await Navigator.of(context).push(
                       MaterialPageRoute<void>(

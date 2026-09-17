@@ -77,6 +77,8 @@ class ParkingSpace {
     this.clientRuc,
     this.clientName,
     this.occupiedSince,
+    this.reservedFrom,
+    this.limitUntil,
   });
 
   final String id;
@@ -94,8 +96,20 @@ class ParkingSpace {
   final String? clientRuc;
   final String? clientName;
   final DateTime? occupiedSince;
+  final DateTime? reservedFrom;
+  final DateTime? limitUntil;
 
   bool get isFree => status == SpaceStatus.free;
+
+  bool exceededStay([DateTime? now]) {
+    if (limitUntil == null) {
+      return false;
+    }
+    if (status != SpaceStatus.occupied && status != SpaceStatus.reserved) {
+      return false;
+    }
+    return (now ?? DateTime.now()).toUtc().isAfter(limitUntil!.toUtc());
+  }
 
   factory ParkingSpace.fromJson(Map<String, dynamic> json) => ParkingSpace(
     id: json['id'] as String,
@@ -115,6 +129,12 @@ class ParkingSpace {
     occupiedSince: json['occupiedSince'] == null
         ? null
         : DateTime.parse(json['occupiedSince'] as String),
+    reservedFrom: json['reservedFrom'] == null
+        ? null
+        : DateTime.parse(json['reservedFrom'] as String),
+    limitUntil: json['limitUntil'] == null
+        ? null
+        : DateTime.parse(json['limitUntil'] as String),
   );
 }
 

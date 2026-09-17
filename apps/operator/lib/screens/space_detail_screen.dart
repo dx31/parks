@@ -46,9 +46,14 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
   }
 
   Future<void> _reserve() async {
-    final result = await showDialog<_ReserveResult>(
+    final result = await showDialog<_ClientActionResult>(
       context: context,
-      builder: (context) => _ReserveDialog(api: widget.api),
+      builder: (context) => _ClientActionDialog(
+        api: widget.api,
+        title: 'Reservar espacio',
+        confirmLabel: 'Reservar',
+        askStartTime: true,
+      ),
     );
     if (result == null) {
       return;
@@ -58,6 +63,8 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
         widget.spaceId,
         dni: result.dni,
         clientName: result.clientName,
+        startsAt: result.startsAt!,
+        limitUntil: result.limitUntil,
       );
       _reload();
     } on ApiException catch (error) {
@@ -69,18 +76,29 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
     }
   }
 
-  Future<void> _occupy() async {
-    final plate = await showDialog<String>(
+  Future<void> _occupy(ParkingSpace space) async {
+    final result = await showDialog<_ClientActionResult>(
       context: context,
-      builder: (context) => const _OccupyDialog(),
+      builder: (context) => _ClientActionDialog(
+        api: widget.api,
+        title: 'Iniciar ocupación',
+        confirmLabel: 'Ocupar',
+        showPlate: true,
+        initialDni: space.clientDni,
+        initialName: space.clientName,
+        initialLimitUntil: space.limitUntil,
+      ),
     );
-    if (plate == null) {
+    if (result == null) {
       return;
     }
     try {
       await widget.api.startSession(
         widget.spaceId,
-        licensePlate: plate.isEmpty ? null : plate,
+        dni: result.dni,
+        clientName: result.clientName,
+        licensePlate: result.plate,
+        limitUntil: result.limitUntil,
       );
       _reload();
     } on ApiException catch (error) {
@@ -157,7 +175,11 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
                   'Cliente: ${space.clientName}',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Text('DNI ${space.clientDni} · RUC ${space.clientRuc}'),
+                Text('DNI ${space.clientDni}'),
+                if (space.reservedFrom != null)
+                  Text('Inicio: ${_formatStayTime(space.reservedFrom!)}'),
+                if (space.limitUntil != null)
+                  Text('Fin estimado: ${_formatStayTime(space.limitUntil!)}'),
               ],
               if (space.occupiedSince != null) ...[
                 const SizedBox(height: 16),
@@ -174,7 +196,7 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
                   FilledButton.icon(
                     onPressed: space.status == SpaceStatus.occupied
                         ? null
-                        : _occupy,
+                        : () => _occupy(space),
                     icon: const Icon(Icons.directions_car),
                     label: const Text('Ocupar'),
                   ),
@@ -203,31 +225,76 @@ class _SpaceDetailScreenState extends State<SpaceDetailScreen> {
   }
 }
 
-class _ReserveResult {
-  const _ReserveResult({required this.dni, this.clientName});
+class _ClientActionResult {
+  const _ClientActionResult({
+    required this.dni,
+    required this.limitUntil,
+    this.clientName,
+    this.plate,
+    this.startsAt,
+  });
 
   final String dni;
   final String? clientName;
+  final String? plate;
+  final DateTime? startsAt;
+  final DateTime limitUntil;
 }
 
-class _ReserveDialog extends StatefulWidget {
-  const _ReserveDialog({required this.api});
+class _ClientActionDialog extends StatefulWidget {
+  const _ClientActionDialog({
+    required this.api,
+    required this.title,
+    required this.confirmLabel,
+    this.showPlate = false,
+    this.askStartTime = false,
+    this.initialDni,
+    this.initialName,
+    this.initialLimitUntil,
+  });
 
   final ParkimetroApi api;
+  final String title;
+  final String confirmLabel;
+  final bool showPlate;
+  final bool askStartTime;
+  final String? initialDni;
+  final String? initialName;
+  final DateTime? initialLimitUntil;
 
   @override
-  State<_ReserveDialog> createState() => _ReserveDialogState();
+  State<_ClientActionDialog> createState() => _ClientActionDialogState();
 }
 
-class _ReserveDialogState extends State<_ReserveDialog> {
-  final _dni = TextEditingController();
-  final _name = TextEditingController();
-  var _lookupHint = 'Si el padrón no lo trae, escríbelo aquí.';
+class _ClientActionDialogState extends State<_ClientActionDialog> {
+  late final TextEditingController _dni;
+  late final TextEditingController _name;
+  final _plate = TextEditingController();
+  late String _lookupHint;
+  late DateTime _startsAt;
+  late DateTime _limitUntil;
+
+  @override
+  void initState() {
+    super.initState();
+    _dni = TextEditingController(text: widget.initialDni ?? '');
+    _name = TextEditingController(text: widget.initialName ?? '');
+    _lookupHint = widget.initialName == null
+        ? 'Si el padrón no lo trae, escríbelo aquí.'
+        : 'Datos de la reserva.';
+    final now = DateTime.now();
+    _startsAt = DateTime(now.year, now.month, now.day, now.hour, now.minute);
+    final suggestedEnd = widget.initialLimitUntil?.toLocal();
+    _limitUntil = suggestedEnd != null && suggestedEnd.isAfter(_startsAt)
+        ? suggestedEnd
+        : _startsAt.add(const Duration(hours: 2));
+  }
 
   @override
   void dispose() {
     _dni.dispose();
     _name.dispose();
+    _plate.dispose();
     super.dispose();
   }
 
@@ -236,7 +303,7 @@ class _ReserveDialogState extends State<_ReserveDialog> {
       final found = await widget.api.lookupClient(_dni.text.trim());
       setState(() {
         _name.text = found.name;
-        _lookupHint = 'RUC ${found.ruc}';
+        _lookupHint = 'Nombre encontrado en el padrón.';
       });
     } on ApiException catch (error) {
       setState(() {
@@ -251,10 +318,66 @@ class _ReserveDialogState extends State<_ReserveDialog> {
     }
   }
 
+  Future<void> _pickTime({required bool start}) async {
+    final current = start ? _startsAt : _limitUntil;
+    final picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.fromDateTime(current),
+    );
+    if (picked == null || !mounted) {
+      return;
+    }
+    var next = DateTime(
+      current.year,
+      current.month,
+      current.day,
+      picked.hour,
+      picked.minute,
+    );
+    setState(() {
+      if (start) {
+        _startsAt = next;
+        if (!_limitUntil.isAfter(_startsAt)) {
+          _limitUntil = _startsAt.add(const Duration(hours: 2));
+        }
+      } else {
+        final floor = widget.askStartTime ? _startsAt : DateTime.now();
+        if (!next.isAfter(floor)) {
+          next = next.add(const Duration(days: 1));
+        }
+        _limitUntil = next;
+      }
+    });
+  }
+
+  void _confirm() {
+    final start = widget.askStartTime ? _startsAt : DateTime.now();
+    if (!_limitUntil.isAfter(start)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'La hora de fin estimada debe ser posterior al inicio.',
+          ),
+        ),
+      );
+      return;
+    }
+    Navigator.pop(
+      context,
+      _ClientActionResult(
+        dni: _dni.text.trim(),
+        clientName: _name.text.trim().isEmpty ? null : _name.text.trim(),
+        plate: _plate.text.trim().isEmpty ? null : _plate.text.trim(),
+        startsAt: widget.askStartTime ? _startsAt : null,
+        limitUntil: _limitUntil,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Reservar espacio'),
+      title: Text(widget.title),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -281,6 +404,36 @@ class _ReserveDialogState extends State<_ReserveDialog> {
               ),
               textCapitalization: TextCapitalization.characters,
             ),
+            if (widget.showPlate) ...[
+              const SizedBox(height: 12),
+              TextField(
+                controller: _plate,
+                decoration: const InputDecoration(
+                  labelText: 'Placa (opcional)',
+                ),
+                textCapitalization: TextCapitalization.characters,
+              ),
+            ],
+            const SizedBox(height: 8),
+            if (widget.askStartTime)
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: const Text('Hora de inicio'),
+                subtitle: Text(_formatStayTime(_startsAt)),
+                trailing: const Icon(Icons.schedule),
+                onTap: () => _pickTime(start: true),
+              ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Hora de fin estimada'),
+              subtitle: Text(
+                widget.askStartTime
+                    ? _formatStayTime(_limitUntil)
+                    : '${_formatStayTime(_limitUntil)}\nEl inicio lo registra el servidor al ocupar.',
+              ),
+              trailing: const Icon(Icons.event),
+              onTap: () => _pickTime(start: false),
+            ),
           ],
         ),
       ),
@@ -289,56 +442,14 @@ class _ReserveDialogState extends State<_ReserveDialog> {
           onPressed: () => Navigator.pop(context),
           child: const Text('Cancelar'),
         ),
-        FilledButton(
-          onPressed: () => Navigator.pop(
-            context,
-            _ReserveResult(
-              dni: _dni.text.trim(),
-              clientName: _name.text.trim().isEmpty ? null : _name.text.trim(),
-            ),
-          ),
-          child: const Text('Reservar'),
-        ),
+        FilledButton(onPressed: _confirm, child: Text(widget.confirmLabel)),
       ],
     );
   }
 }
 
-class _OccupyDialog extends StatefulWidget {
-  const _OccupyDialog();
-
-  @override
-  State<_OccupyDialog> createState() => _OccupyDialogState();
-}
-
-class _OccupyDialogState extends State<_OccupyDialog> {
-  final _plate = TextEditingController();
-
-  @override
-  void dispose() {
-    _plate.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Iniciar ocupación'),
-      content: TextField(
-        controller: _plate,
-        decoration: const InputDecoration(labelText: 'Placa (opcional)'),
-        textCapitalization: TextCapitalization.characters,
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('Cancelar'),
-        ),
-        FilledButton(
-          onPressed: () => Navigator.pop(context, _plate.text.trim()),
-          child: const Text('Ocupar'),
-        ),
-      ],
-    );
-  }
+String _formatStayTime(DateTime value) {
+  final local = value.toLocal();
+  String two(int number) => number.toString().padLeft(2, '0');
+  return '${two(local.day)}/${two(local.month)}/${local.year} ${two(local.hour)}:${two(local.minute)}';
 }

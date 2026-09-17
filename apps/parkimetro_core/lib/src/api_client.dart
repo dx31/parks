@@ -129,6 +129,8 @@ class ParkimetroApi {
     String id, {
     required String dni,
     String? clientName,
+    required DateTime startsAt,
+    required DateTime limitUntil,
   }) async {
     final json = await _send(
       'POST',
@@ -137,6 +139,8 @@ class ParkimetroApi {
         'dni': dni,
         if (clientName != null && clientName.trim().isNotEmpty)
           'clientName': clientName.trim(),
+        'startsAt': startsAt.toUtc().toIso8601String(),
+        'limitUntil': limitUntil.toUtc().toIso8601String(),
       },
     ) as Map<String, dynamic>;
     return ParkingSpace.fromJson(json);
@@ -150,12 +154,23 @@ class ParkimetroApi {
 
   Future<ParkingSession> startSession(
     String spaceId, {
+    required String dni,
+    String? clientName,
     String? licensePlate,
+    required DateTime limitUntil,
   }) async {
+    final plate = licensePlate?.trim();
+    final name = clientName?.trim();
     final json = await _send(
       'POST',
       '/api/sessions',
-      body: {'spaceId': spaceId, 'licensePlate': licensePlate},
+      body: {
+        'spaceId': spaceId,
+        'dni': dni,
+        if (name != null && name.isNotEmpty) 'clientName': name,
+        if (plate != null && plate.isNotEmpty) 'licensePlate': plate,
+        'limitUntil': limitUntil.toUtc().toIso8601String(),
+      },
     ) as Map<String, dynamic>;
     return ParkingSession.fromJson(json);
   }

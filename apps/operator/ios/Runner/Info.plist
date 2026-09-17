@@ -4,6 +4,14 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Se usa la cámara para fotografiar el vehículo a incautar.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Se usa la galería para adjuntar la foto del vehículo a incautar.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Se usa la ubicación para compartir el punto donde está el vehículo.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Se usa la ubicación para compartir el punto donde está el vehículo.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
