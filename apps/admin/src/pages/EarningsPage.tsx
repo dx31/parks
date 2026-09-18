@@ -61,10 +61,10 @@ export function EarningsPage() {
             Cada liberación de un espacio se registra como pagada (hora o fracción).
           </p>
         </div>
-        <label className="form-control">
-          <span className="label-text">Periodo</span>
+        <label className="flex min-w-48 flex-col gap-1">
+          <span className="text-sm">Periodo</span>
           <select
-            className="select select-bordered"
+            className="select select-bordered w-full"
             value={range}
             onChange={(event) => setRange(event.target.value as Range)}
           >

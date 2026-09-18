@@ -193,11 +193,11 @@ export function SpacesPage() {
       </div>
 
       <div className="card bg-base-100 shadow-sm">
-        <div className="card-body grid gap-3 md:grid-cols-3">
-          <label className="form-control">
-            <span className="label-text">Zona</span>
+        <div className="card-body grid items-end gap-3 sm:grid-cols-2 xl:grid-cols-5">
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Zona</span>
             <select
-              className="select select-bordered"
+              className="select select-bordered w-full"
               value={zoneFilter}
               onChange={(event) => setZoneFilter(event.target.value)}
             >
@@ -209,10 +209,10 @@ export function SpacesPage() {
               ))}
             </select>
           </label>
-          <label className="form-control">
-            <span className="label-text">Estado</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Estado</span>
             <select
-              className="select select-bordered"
+              className="select select-bordered w-full"
               value={statusFilter}
               onChange={(event) => setStatusFilter(event.target.value as SpaceStatus | "")}
             >
@@ -223,26 +223,26 @@ export function SpacesPage() {
               <option value="outOfService">Fuera de servicio</option>
             </select>
           </label>
-          <form className="flex items-end gap-2" onSubmit={onCreateZone}>
-            <label className="form-control flex-1">
-              <span className="label-text">Nueva zona</span>
+          <form className="contents" onSubmit={onCreateZone}>
+            <label className="flex w-full flex-col gap-1">
+              <span className="text-sm">Nueva zona</span>
               <input
-                className="input input-bordered"
+                className="input input-bordered w-full"
                 value={zoneName}
                 onChange={(event) => setZoneName(event.target.value)}
                 placeholder="Nombre de zona"
               />
             </label>
-            <label className="form-control flex-1">
-              <span className="label-text">URL de video</span>
+            <label className="flex w-full flex-col gap-1">
+              <span className="text-sm">URL de video</span>
               <input
-                className="input input-bordered"
+                className="input input-bordered w-full"
                 value={zoneVideoUrl}
                 onChange={(event) => setZoneVideoUrl(event.target.value)}
                 placeholder="/api/cameras/demo"
               />
             </label>
-            <button type="submit" className="btn btn-outline">
+            <button type="submit" className="btn btn-outline w-full">
               Agregar
             </button>
           </form>
@@ -339,20 +339,20 @@ export function SpacesPage() {
       <dialog className={`modal ${open ? "modal-open" : ""}`}>
         <form className="modal-box space-y-3" onSubmit={onSave}>
           <h3 className="text-lg font-bold">{editing ? "Editar espacio" : "Nuevo espacio"}</h3>
-          <label className="form-control">
-            <span className="label-text">Código</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Código</span>
             <input
-              className="input input-bordered"
+              className="input input-bordered w-full"
               value={form.code}
               onChange={(event) => setForm({ ...form, code: event.target.value })}
               required
             />
           </label>
           {!editing ? (
-            <label className="form-control">
-              <span className="label-text">Zona</span>
+            <label className="flex w-full flex-col gap-1">
+              <span className="text-sm">Zona</span>
               <select
-                className="select select-bordered"
+                className="select select-bordered w-full"
                 value={form.zoneId}
                 onChange={(event) => setForm({ ...form, zoneId: event.target.value })}
                 required
@@ -366,35 +366,35 @@ export function SpacesPage() {
             </label>
           ) : null}
           <div className="grid grid-cols-2 gap-3">
-            <label className="form-control">
-              <span className="label-text">Latitud</span>
+            <label className="flex w-full flex-col gap-1">
+              <span className="text-sm">Latitud</span>
               <input
-                className="input input-bordered"
+                className="input input-bordered w-full"
                 value={form.latitude}
                 onChange={(event) => setForm({ ...form, latitude: event.target.value })}
               />
             </label>
-            <label className="form-control">
-              <span className="label-text">Longitud</span>
+            <label className="flex w-full flex-col gap-1">
+              <span className="text-sm">Longitud</span>
               <input
-                className="input input-bordered"
+                className="input input-bordered w-full"
                 value={form.longitude}
                 onChange={(event) => setForm({ ...form, longitude: event.target.value })}
               />
             </label>
           </div>
-          <label className="form-control">
-            <span className="label-text">Tarifa por hora (S/)</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Tarifa por hora (S/)</span>
             <input
-              className="input input-bordered"
+              className="input input-bordered w-full"
               value={form.hourlyRate}
               onChange={(event) => setForm({ ...form, hourlyRate: event.target.value })}
             />
           </label>
-          <label className="form-control">
-            <span className="label-text">Notas</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Notas</span>
             <input
-              className="input input-bordered"
+              className="input input-bordered w-full"
               value={form.notes}
               onChange={(event) => setForm({ ...form, notes: event.target.value })}
             />

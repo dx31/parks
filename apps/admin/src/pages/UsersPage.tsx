@@ -130,28 +130,28 @@ export function UsersPage() {
       <dialog className={`modal ${open ? "modal-open" : ""}`}>
         <form className="modal-box space-y-3" onSubmit={onSave}>
           <h3 className="text-lg font-bold">{editing ? "Editar usuario" : "Nuevo usuario"}</h3>
-          <label className="form-control">
-            <span className="label-text">Nombre</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Nombre</span>
             <input
-              className="input input-bordered"
+              className="input input-bordered w-full"
               value={form.name}
               onChange={(event) => setForm({ ...form, name: event.target.value })}
               required
             />
           </label>
-          <label className="form-control">
-            <span className="label-text">Usuario</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">Usuario</span>
             <input
-              className="input input-bordered"
+              className="input input-bordered w-full"
               value={form.username}
               onChange={(event) => setForm({ ...form, username: event.target.value })}
               required
             />
           </label>
-          <label className="form-control">
-            <span className="label-text">{editing ? "PIN nuevo (opcional)" : "PIN"}</span>
+          <label className="flex w-full flex-col gap-1">
+            <span className="text-sm">{editing ? "PIN nuevo (opcional)" : "PIN"}</span>
             <input
-              className="input input-bordered"
+              className="input input-bordered w-full"
               type="password"
               value={form.pin}
               onChange={(event) => setForm({ ...form, pin: event.target.value })}

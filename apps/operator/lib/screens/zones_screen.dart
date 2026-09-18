@@ -34,67 +34,6 @@ class _ZonesScreenState extends State<ZonesScreen> {
     });
   }
 
-  Future<void> _createZone() async {
-    final name = TextEditingController();
-    final city = TextEditingController(text: 'Ciudad');
-    final videoUrl = TextEditingController(text: '/api/cameras/demo');
-    final created = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Nueva zona'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: name,
-              decoration: const InputDecoration(labelText: 'Nombre'),
-            ),
-            TextField(
-              controller: city,
-              decoration: const InputDecoration(labelText: 'Ciudad'),
-            ),
-            TextField(
-              controller: videoUrl,
-              decoration: const InputDecoration(
-                labelText: 'URL de video (opcional)',
-                hintText: '/api/cameras/demo',
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancelar'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Crear'),
-          ),
-        ],
-      ),
-    );
-
-    if (created != true || !mounted) {
-      return;
-    }
-
-    try {
-      await widget.api.createZone(
-        name: name.text.trim(),
-        city: city.text.trim(),
-        videoUrl: videoUrl.text.trim().isEmpty ? null : videoUrl.text.trim(),
-      );
-      _reload();
-    } on ApiException catch (error) {
-      if (!mounted) {
-        return;
-      }
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(error.message)));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,11 +51,6 @@ class _ZonesScreenState extends State<ZonesScreen> {
             icon: const Icon(Icons.logout),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _createZone,
-        icon: const Icon(Icons.add_location_alt),
-        label: const Text('Zona'),
       ),
       body: FutureBuilder<List<Zone>>(
         future: _future,

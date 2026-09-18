@@ -62,7 +62,7 @@ void main() {
     expect(find.text('Fuera de servicio'), findsOneWidget);
   });
 
-  testWidgets('zones screen lista zonas y crea una nueva', (tester) async {
+  testWidgets('zones screen lista zonas sin botón de crear', (tester) async {
     final api = FakeParkimetroApi();
     await tester.pumpWidget(
       MaterialApp(
@@ -79,16 +79,7 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('Centro Histórico'), findsOneWidget);
-
-    await tester.tap(find.text('Zona'));
-    await tester.pumpAndSettle();
-    await tester.enterText(
-      find.widgetWithText(TextField, 'Nombre'),
-      'Nueva zona',
-    );
-    await tester.tap(find.text('Crear'));
-    await tester.pumpAndSettle();
-    expect(api.createdZoneName, 'Nueva zona');
+    expect(find.text('Zona'), findsNothing);
   });
 
   testWidgets('spaces screen muestra espacios de la zona', (tester) async {
@@ -111,6 +102,8 @@ void main() {
     expect(find.text('A-02'), findsOneWidget);
     expect(find.textContaining('Ocupado'), findsWidgets);
     expect(find.text('Grúa'), findsOneWidget);
+    expect(find.byIcon(Icons.local_shipping_outlined), findsOneWidget);
+    expect(find.text('Espacio'), findsNothing);
   });
 
   testWidgets('spaces screen alerta si se excedió la salida estimada', (

@@ -5,7 +5,6 @@ import '../tow/tow_services.dart';
 import '../widgets/status_chip.dart';
 import '../widgets/zone_camera_panel.dart';
 import 'space_detail_screen.dart';
-import 'space_form_screen.dart';
 import 'tow_request_screen.dart';
 
 class SpacesScreen extends StatefulWidget {
@@ -48,49 +47,17 @@ class _SpacesScreenState extends State<SpacesScreen> {
     );
   }
 
-  Future<void> _openSpaceForm() async {
-    final created = await Navigator.of(context).push<bool>(
-      MaterialPageRoute(
-        builder: (_) => SpaceFormScreen(api: widget.api, zone: widget.zone),
-      ),
-    );
-    if (created == true) {
-      _reload();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final cameraUrl = widget.zone.resolvedVideoUrl(widget.api.baseUrl);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.zone.name),
-        actions: [
-          IconButton(
-            onPressed: _openTowRequest,
-            tooltip: 'Solicitar grúa',
-            icon: const Icon(Icons.local_shipping_outlined),
-          ),
-        ],
       ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton.extended(
-            heroTag: 'tow',
-            onPressed: _openTowRequest,
-            icon: const Icon(Icons.local_shipping_outlined),
-            label: const Text('Grúa'),
-          ),
-          const SizedBox(height: 12),
-          FloatingActionButton.extended(
-            heroTag: 'space',
-            onPressed: _openSpaceForm,
-            icon: const Icon(Icons.add),
-            label: const Text('Espacio'),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _openTowRequest,
+        icon: const Icon(Icons.local_shipping_outlined),
+        label: const Text('Grúa'),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
